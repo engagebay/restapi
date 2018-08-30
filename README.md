@@ -47,7 +47,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 
 * [1 Listing deals](#31-listing-deals-)
 * [2 Get deal by its ID](#32-get-deal-by-its-id-)
-* [3 Create deal](#33-create-deal)
+* [3 Create deal](#33-create-deal-)
 * [4 Create deal to a contact using email ID](#34-create-deal-to-a-contact-using-email-id)
 * [6 Delete deal](#36-delete-deal)
 * [7 Get deals from default track grouped by milestones](#37-get-deals-from-default-track-grouped-by-milestones)
@@ -900,4 +900,46 @@ curl https://app.engagebay.com/dev/api/panel/deals/1234 \
 		"name": "checkharry"
 }
 ```
+
+### 3.3 Create deal : 
+- Accepts deal JSON as data in Post request to the url specified above, which creates new deal and returns the deal JSON with id field generated when new deal is created. If Post data includes valid deal id, respective deal is updated with the data sent in request. Milestone name should be same as the the one in the website and it is case sensitive. (If the milestone name is given in the wrong case, it will not be shown in the milestone view.)
+- Each field is case sensitive.
+- Don't pass null value.
+- If you don't know value of field then either don't pass that field or pass empty data to a field.
+
+###### Endpoint
+POST dev/api/panel/deals/deal
+
+###### Acceptable request representation
+```
+{
+	"name": "sample deal",
+	"name_sort": "sample deal",
+	"amount": 100,
+	"milestoneLabelName": "Proposal",
+	"tags": [],
+	"properties": [],
+	"probability": 0.2,
+}
+```
+###### Example request
+```sh
+curl https://app.engagebay.com/dev/api/panel/deals/deal \
+-H "Authorization : xxxxxxxxx" \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+	"name": "sample deal",
+	"name_sort": "sample deal",
+	"amount": 100,
+	"milestoneLabelName": "Proposal",
+	"tags": [],
+	"properties": [],
+	"probability": 0.2,
+}' \
+-v -u sarah@engagebay.com:123456 -X POST
+```
+
+
+
 
