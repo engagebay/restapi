@@ -10,9 +10,9 @@ API is in active development. Currently it allows you to:
 - Forms
 
 ### Authentication
-This is an HTTPS-only API. Authentications are performed based on the respective account REST API Key.
+This is an HTTPS-only API.
 
-The API key should pass as header with the name as "Authentication"(Value is REST API Key Ex:- -h "Authentication":"xxxxxxxxx").
+All API calls require ```Authorization``` header. You should pass REST API Key as a header value.
 
 ###### API Key
 You can find your API Key in the EngageBay Account Admin Settings -> API -> API Key.
