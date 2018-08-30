@@ -48,7 +48,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [1 Listing deals](#31-listing-deals-)
 * [2 Get deal by its ID](#32-get-deal-by-its-id-)
 * [3 Create deal](#33-create-deal-)
-* [4 Delete deal](#34-delete-deal)
+* [4 Delete deal](#34-delete-deal-)
 * [5 Create deal to a contact using email ID](#35-create-deal-to-a-contact-using-email-id)
 * [6 Get deals from default track grouped by milestones](#36-get-deals-from-default-track-grouped-by-milestones)
 * [7 Get deals for a particular track (grouped by milestone)](#37-get-deals-for-a-particular-track-grouped-by-milestone)
@@ -939,6 +939,21 @@ curl https://app.engagebay.com/dev/api/panel/deals/deal \
 }' \
 -v -u sarah@engagebay.com:123456 -X POST
 ```
+### 3.4 Delete deal : 
+- Deletes the deal based on the id specified in the url.
+
+###### Endpoint
+POST dev/api/panel/deals/{id}
+
+###### Example request
+```sh
+curl https://app.engagebay.com/dev/api/panel/deals/1 \
+-H "Authorization : xxxxxxxxx" \
+-v -u sarah@engagebay.com:123456 -X POST
+```
+
+
+
 
 
 
