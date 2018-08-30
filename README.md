@@ -66,11 +66,13 @@ POST dev/api/panel/subscribers
 ###### Optional parameters
 - ``page_size `` - Pagesize for paginated results.
 - ``sort_key`` - Sort order for results.
+- ``cursor`` - To get next set of resultset. Will get you in the last record of previous resultset.
 
 ###### Example request
 ```sh
-curl https://app.engagebay.com/dev/api/panel/subscribers?page_size=20&cursor=Cl0KFgoMY3JlYXRlZF90aW1lEgYI2IWV3AUSP2oRYWNjb3VudGJveC0xNTQ2MDVyFwsSClN1YnNjcmliZXIYgICAgIDAowgMogEQNTYyOTQ5OTUzNDIxMzEyMBgAIAE \
--H "Accept : application/json" \
+curl https://app.engagebay.com/dev/api/panel/subscribers \
+-H "Authorization : xxxxxxxxx" \
+-H "Accept : application/json"  \
 -v -u sample@engagebay.com:123456 
 ```
 
@@ -232,7 +234,8 @@ GET /dev/api/panel/subscribers/{id}
 ``id`` - Contact Id.
 ###### Example request
 ```sh
-curl https://app.engagebay.com/dev/api/panel/subscribers/1
+curl https://app.engagebay.com/dev/api/panel/subscribers/1 
+-H "Authorization : xxxxxxxxx" \
 -H "Accept : application/json" \
 -v -u sample@engagebay.com:123456 
 ```
@@ -356,6 +359,7 @@ Method POST dev/api/panel/subscribers/subscriber
 ###### Example request
 ```sh
 curl https://app.engagebay.com/dev/api/panel/subscribers/subscriber \
+-H "Authorization : xxxxxxxxx" \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
@@ -404,6 +408,7 @@ PUT dev/api/panel/subscribers/subscriber
 ###### Acceptable request representation
 ```sh
 curl https://app.engagebay.com/dev/api/panel/subscribers/subscriber \
+-H "Authorization : xxxxxxxxx" \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
@@ -452,6 +457,7 @@ POST dev/api/panel/subscribers/email/tags/add
 ###### Example request
 ```sh
 curl https://app.engagebay.com/dev/api/panel/subscribers/email/tags/add -H "Accept: application/json" \
+-H "Authorization : xxxxxxxxx" \
 -H "Content-Type :application/x-www-form-urlencoded" \
 -d 'email=samson@engagebay.com&tags=["testsample"]' \
 -v -u sample@engagebay.com:123456 -X POST
@@ -466,7 +472,9 @@ POST dev/api/panel/subscribers/email/tags/delete
 
 ###### Example request
 ```sh
-curl https://app.engagebay.com/dev/api/contacts/email/tags/delete -H "Accept: application/json"
+curl https://app.engagebay.com/dev/api/contacts/email/tags/delete 
+-H "Accept: application/json"
+-H "Authorization : xxxxxxxxx" \
 -H "Content-Type :application/x-www-form-urlencoded" \
 -d 'email=sample@engagebay.com&tags=["sampletest"]' \
 -v -u sarah@engagebay.com:123456 -X POST
@@ -481,7 +489,9 @@ POST dev/api/panel/subscribers/get-tags/{subscriber-email}
 
 ###### Example request
 ```sh
-curl https://app.engagebay.com/dev/api/panel/subscribers/get-tags/{subscriber-email} -H "Accept: application/json"
+curl https://app.engagebay.com/dev/api/panel/subscribers/get-tags/{subscriber-email} 
+-H "Authorization : xxxxxxxxx" \
+-H "Accept: application/json" \
 -H "Content-Type :application/x-www-form-urlencoded" \
 -v -u sarah@engagebay.com:123456 -X POST
 ```
@@ -495,7 +505,9 @@ POST dev/api/panel/subscribers/add-score
 
 ###### Example request
 ```sh
-curl https://app.engagebay.com/dev/api/panel/subscribers/add-score -H "Accept: application/json" \
+curl https://app.engagebay.com/dev/api/panel/subscribers/add-score 
+-H "Authorization : xxxxxxxxx" \
+-H "Accept: application/json" \
 -H "Content-Type :application/x-www-form-urlencoded" \
 -d 'email=samson@walt.ltd&score=100' \
 -v -u sarah@engagebay.com:123456 -X POST
@@ -543,6 +555,7 @@ POST dev/api/panel/companies/company
 ###### Example request
 ```sh
 curl https://app.engagebay.com/dev/api/panel/companies/company \
+-H "Authorization : xxxxxxxxx" \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
@@ -619,6 +632,7 @@ PUT dev/api/panel/companies/company
 ###### Example request
 ```sh
 curl https://app.engagebay.com/dev/api/panel/companies/company \
+-H "Authorization : xxxxxxxxx" \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
@@ -665,9 +679,9 @@ POST dev/api/panel/companies
 ###### Example request
 ```sh
 curl https://app.engagebay.com/dev/api/panel/companies \
+-H "Authorization : xxxxxxxxx" \
 -H "Accept: application/json" \
 -H "Content-Type :application/x-www-form-urlencoded" \
--d 'page_size=10&sort_key=-created_time&cursor=ClMKFgoMY3JlYXRlZF90aW1lEgYI-rbWrgUSNWoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAkNv0nQoMogEJZ2hhbnNoeWFtGAAgAQ' \
 -v -u sarah@engagebay.com:123456 -X POST
 ```
 
@@ -759,7 +773,9 @@ GET dev/api/panel/companies/{id}
 
 ###### Example request
 ```sh
-curl https://app.engagebay.com/dev/api/panel/companies/{id} -H "Accept :application/json" 
+curl https://app.engagebay.com/dev/api/panel/companies/{id} \
+-H "Authorization : xxxxxxxxx" \
+-H "Accept :application/json" 
 -v -u {email}:{apikey}
 ```
 
@@ -815,6 +831,7 @@ DELETE dev/api/panel/companies/{id}
 ###### Example request
 ```sh
 curl https://app.engagebay.com/dev/api/panel/companies/{id}  \
+-H "Authorization : xxxxxxxxx" \
 -v -u {email}:{apikey} -X DELETE
 ```
 
@@ -824,9 +841,16 @@ Returns list of all "Deals" in the domain in JSON format, which are ordered by c
 ###### Endpoint
 POST dev/api/panel/deals
 
+###### Optional Parameters
+```page_size``` : Pagesize for paginated results.
+```sort_key``` :  Sort order for results.
+```cursor``` : To get next set of resultset. Will get you in the last record of previous resultset.
+
 ###### Example request
 ```sh
-curl https://app.engagebay.com/dev/api/panel/deals?page_size=10&cursor=E-ABAIICNGoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAgKLThAoMogEIcHJhYmF0aGuIAgAU -H  "Accept:application/json" -v -u {email}:{API Key}
+curl https://app.engagebay.com/dev/api/panel/deals \
+-H "Authorization : xxxxxxxxx" \
+-H  "Accept:application/json" -v -u {email}:{API Key}
 ```
 ######  Example JSON response
 ```
@@ -854,7 +878,9 @@ GET dev/api/panel/deals/{id}
 
 ###### Example request
 ```sh
-curl https://app.engagebay.com/dev/api/panel/deals/1234 -H  "Accept : application/json" -v -u {email}:{API Key}
+curl https://app.engagebay.com/dev/api/panel/deals/1234 \
+-H "Authorization : xxxxxxxxx" \
+-H  "Accept : application/json" -v -u {email}:{API Key}
 ```
 ######  Example JSON response
 ```
@@ -874,10 +900,4 @@ curl https://app.engagebay.com/dev/api/panel/deals/1234 -H  "Accept : applicatio
 		"name": "checkharry"
 }
 ```
-
-
-
-
-
-
 
