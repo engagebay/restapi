@@ -10,11 +10,13 @@ API is in active development. Currently it allows you to:
 - Forms
 
 ### Authentication
-This is an HTTPS-only API. Authentications are performed based on the email address of the user and the respective API Key.
+This is an HTTPS-only API. Authentications are performed based on the respective account REST API Key.
 
-The Email and API key should pass basic HTTP Authentication. For this, use email address as the username and the respective API Key as the password)
+The API key should pass as header with the name as "Authentication"(Value is REST API Key Ex:- -h "Authentication":"xxxxxxxxx").
+
 ###### API Key
 You can find your API Key in the EngageBay Account Admin Settings -> API -> API Key.
+
 ###### End Points
 All API requests should be made to: https://app.engagebay.com/dev/
 
