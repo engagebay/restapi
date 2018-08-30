@@ -48,12 +48,12 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [1 Listing deals](#31-listing-deals-)
 * [2 Get deal by its ID](#32-get-deal-by-its-id-)
 * [3 Create deal](#33-create-deal-)
-* [4 Create deal to a contact using email ID](#34-create-deal-to-a-contact-using-email-id)
-* [6 Delete deal](#36-delete-deal)
-* [7 Get deals from default track grouped by milestones](#37-get-deals-from-default-track-grouped-by-milestones)
-* [8 Get deals for a particular track (grouped by milestone)](#38-get-deals-for-a-particular-track-grouped-by-milestone)
-* [9 Get deals from particular track](#39-get-deals-from-particular-track)
-* [10 Get deals related to specific contact](#310-get-deals-related-to-specific-contact)
+* [4 Delete deal](#34-delete-deal)
+* [5 Create deal to a contact using email ID](#35-create-deal-to-a-contact-using-email-id)
+* [6 Get deals from default track grouped by milestones](#36-get-deals-from-default-track-grouped-by-milestones)
+* [7 Get deals for a particular track (grouped by milestone)](#37-get-deals-for-a-particular-track-grouped-by-milestone)
+* [8 Get deals from particular track](#38-get-deals-from-particular-track)
+* [9 Get deals related to specific contact](#39-get-deals-related-to-specific-contact)
 
 ### 1.1 Listing contacts : 
 - Returns a list of your contacts
