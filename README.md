@@ -702,7 +702,6 @@ POST dev/api/panel/companies
 curl https://app.engagebay.com/dev/api/panel/companies \
 -H "Authorization : xxxxxxxxx" \
 -H "Accept: application/json" \
--H "Content-Type :application/x-www-form-urlencoded" \
 -v -u sarah@engagebay.com:123456 -X POST
 ```
 
