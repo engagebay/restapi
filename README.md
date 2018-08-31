@@ -57,7 +57,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [2 Get the task based on ID](#42-get-the-task-based-on-id-)
 * [3 Create task](#43-create-task-)
 * [4 Update task](#44-update-task-)
-* [5 Delete a task based on ID](#44-delete-a-task-based-on-id)
+* [5 Delete a task based on ID](#45-delete-a-task-based-on-id)
 
 
 
