@@ -1139,7 +1139,7 @@ curl -i -X POST \
 }
 ```
 
-### 4.3 Update task : 
+### 4.4 Update task : 
 - Update a task based on its ID
 
 ###### Endpoint
@@ -1148,7 +1148,7 @@ PUT dev/api/panel/tasks
 ######  Acceptable request Representation:
 ```
 {
-    "id": 5740495045132288,
+       "id": 5740495045132288,
 	"entiy_group_name": "task",
 	"is_due": true,
 	"name": "sss4ssss",
