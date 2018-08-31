@@ -1217,3 +1217,37 @@ curl -i -X DELETE \
  'https://app.engagebay.com/dev/api/panel/tasks/5147920286351360'
 ```
 ### 5.1 List of forms :
+- Get list of forms
+
+###### Endpoint
+GET dev/api/panel/forms
+
+
+###### Example request
+```sh
+curl -i -X GET \
+   -H "Authorization:xxxxxxxxxxx" \
+   -H "Accept:application/json" \
+ 'https://app.engagebay.com/dev/api/panel/forms'
+```
+
+###### Example JSON response
+```javascript
+[{
+"id": 5664313465372672,
+"name": "\n\t\t\t\t\t Form-25-Jun-18-07:55:00 \n\t\t\t\t",
+"alias_name": "\n\t\t\t\t\t form-25-jun-18-07:55:00 \n\t\t\t\t",
+"owner_id": 5636470266134528,
+"created_time": 1529936702,
+"updated_time": 1529936706,
+"formHtml": "\n<form class=\"form form-style-form1 \" onsubmit=\"window.parent.EhForm.submit_form(event,this)\" style=\"\n \n background-color:#00afe9;max-width:550px;background-position:0% 0%\">\n\n<fieldset>\n\n<!-- Form Name -->\n<h2 class=\"form-title\" style=\"\"><p>Start Today for Free</p></h2>\n<div class=\"form-description\"><p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p></div>\n\n\n\n\n\n\n\n<div class=\"form-group\" style=\"color:#333;\">\n \n <div class=\"controls\">\n <input id=\"Email-email\" title=\"\" name=\"email\" type=\"email\" style=\"color:#333;background-color:#fff;\" placeholder=\"Enter your email id\" class=\"form-control\" required=\"true\">\n \n </div>\n</div>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"form-group\">\n <div>\n <button type=\"submit\" class=\"submit-btn\" style=\"color:#ffffff;background-color:#dc542a;\n \">Get Started</button>\n <br><span id=\"error-msg\"></span>\n </div>\n</div>\n\n</fieldset>\n\n<div class=\"error-success-container\"></div>\n\n<div class=\"form-footer-message\"><p>Incididunt ut labore et dolore magna</p></div>\n\n\n <div class=\"branding-footer\">Powered By <a href=\"https://ehhub.org/openurl?lid=5749921122615296&nid=5726607939469312&c=5700641305395200&b=5677026937667584\" rel=\"nofollow\" target=\"_blank\">EngageBay</a> </div>\n\n\n</form>\n",
+"form_attributes": "{\"title_image\":\"\",\"background_image\":\"\",\"background_image_alignment\":\"0% 0%\",\"border_image\":\"\",\"form_background_color\":\"#00afe9\",\"form_size\":\"550px\",\"submit_button_color\":\"#dc542a\",\"submit_button_text_color\":\"#ffffff\",\"submit_button_text\":\"Get Started\",\"redirect_on_subscribe\":\"false\",\"success_message\":\"Success! Now check your email to confirm your submission.\",\"redirect_url\":\"\",\"show_title_image\":false,\"show_background_image\":false,\"show_border_image\":false,\"title\":\"<p>Start Today for Free</p>\",\"description\":\"<p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>\",\"footer_text\":\"<p>Incididunt ut labore et dolore magna</p>\",\"form_fields\":[{\"type\":\"email\",\"name\":\"email\",\"title\":\"\",\"pattern\":\"\",\"label\":\"Email\",\"placeholder\":\"Enter your email id\",\"required\":\"true\",\"help_text\":\"\"}]}",
+"enable_whitelabel": false,
+"form_style": "form1",
+"version": "V2",
+"incentiveEmail":{"send_incentive": false, "incentive_email_subject": "Important: Confirm your subscription", "incentive_email_message_one": "Thanks for signing up. Click the link below to confirm your subscription and you'll be on your way.",…},
+"thumbnail": "https://s3.amazonaws.com/board-uploads/uploads/1529936704700-screenshot.png",
+"formStats":{"id": 5734792670740480, "formId": 5664313465372672, "totalVisitors": 0, "uniqueVisitors": 0, "totalContacts": 0,…}
+}
+]
+```
