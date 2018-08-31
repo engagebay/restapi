@@ -59,6 +59,10 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [4 Update task](#44-update-task-)
 * [5 Delete a task based on ID](#45-delete-a-task-based-on-id-)
 
+**[Forms](#51-listing-forms)**
+
+* [1 List of forms](#51-list-of-forms-)
+* [2 Add contact to a form](#52-add-contact-to-a-form-)
 
 
 ### 1.1 Listing contacts : 
@@ -1212,3 +1216,4 @@ curl -i -X DELETE \
    -H "Accept:application/json" \
  'https://app.engagebay.com/dev/api/panel/tasks/5147920286351360'
 ```
+### 5.1 List of forms :
