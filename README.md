@@ -64,9 +64,9 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [1 List of forms](#51-list-of-forms-)
 * [2 Add contact to a form](#52-add-contact-to-a-form)
 
-**[Sequences](#61-add-subscriber-to-a-sequence-)**
+**[Sequences](#61-add-contact-to-a-sequence-)**
 
-* [1 Add subscriber to a sequence](#61-add-subscriber-to-a-sequence-)
+* [1 Add contact to a sequence](#61-add-contact-to-a-sequence-)
 
 
 
@@ -1271,4 +1271,19 @@ curl https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-form/
    -v -u sample@engagebay.com:123456 
 ```
 
-### 6.1 Add subscriber to a sequence :
+### 6.1 Add contact to a sequence :
+
+- Add contact to a sequence
+
+###### Endpoint
+POST dev/api/panel/subscribers/add-subscriber-to-sequence/{subscriber-email}{sequenceId}
+
+###### Example request
+```sh
+curl https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-sequence/sample@engagebay.com/1234  \
+   -H "Authorization:xxxxxxxxxxx" \
+   -H "Accept:application/json" \
+   -H Content-Type: application/json; charset=utf-8" \
+   -v -u sample@engagebay.com:123456 
+```
+
