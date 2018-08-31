@@ -72,6 +72,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 **[Lists](#71-list-of-lists-)**
 
 * [1 List of lists](#71-list-of-lists-)
+* [2 Add contact to list](#72-add-contact-to-list-)
 
 
 
@@ -1327,6 +1328,9 @@ curl -i -X GET \
     }
 }]
 ```
+
+### 7.2 Add contact to list :
+
 
 
 
