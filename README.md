@@ -534,6 +534,16 @@ curl -i -X POST \
 -d 'email=samson@walt.ltd&score=100' \
 'https://app.engagebay.com/dev/api/panel/subscribers/add-score'
 ```
+###### Example JSON response
+```
+[{
+	"tag": "sampletag1",
+	"assigned_time": 1535709035
+},{
+	"tag": "sampletag2",
+	"assigned_time": 1535709035
+}]
+```
 ### 2.1 Creating a company : 
 - Accepts company JSON as post data along with the credentials of domain User (User name and API Key).
 - Each field is case sensitive.
