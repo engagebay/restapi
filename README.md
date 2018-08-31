@@ -69,6 +69,10 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 
 * [1 Add contact to a sequence](#61-add-contact-to-a-sequence-)
 
+**[Lists](#71-list-of-lists-)**
+
+* [1 List of lists](#71-list-of-lists-)
+
 
 
 ### 1.1 Listing contacts : 
@@ -1292,4 +1296,6 @@ curl https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-seque
    -H Content-Type: application/json; charset=utf-8" \
    -v -u sample@engagebay.com:123456 
 ```
+
+### 7.1 List of lists :
 
