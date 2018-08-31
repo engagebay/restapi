@@ -1251,3 +1251,17 @@ curl -i -X GET \
 }
 ]
 ```
+### 5.3 Add contact to a form
+- Add contact to a form
+- 
+###### Endpoint
+POST dev/api/panel/subscribers/add-subscriber-to-form/{subscriber-email}/{formId}
+
+###### Example request
+```sh
+curl https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-form/sample@engagebay.com/1234  \
+   -H "Authorization:xxxxxxxxxxx" \
+   -H "Accept:application/json" \
+   -H Content-Type: application/json; charset=utf-8" \
+   -v -u sample@engagebay.com:123456 
+```
