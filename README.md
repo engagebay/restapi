@@ -53,7 +53,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 
 **[Tasks](#41-listing-tasks)**
 
-* [1 Listing tasks](#41-listing-tasks-)
+* [1 Get the list of tasks based on given filters](#41-get-the-list-of-tasks-based-on-given-filters-)
 * [2 Get task by its ID](#42-get-task-by-its-id-)
 * [3 Create task](#43-create-task-)
 * [4 Delete task](#44-delete-task-)
@@ -956,9 +956,57 @@ curl https://app.engagebay.com/dev/api/panel/deals/1 \
 -H "Authorization : xxxxxxxxx" \
 -v -u sarah@engagebay.com:123456 -X POST
 ```
+### 4.1 Get the list of tasks based on given filters : 
+- Returns a list of your tasks based on given filters
+```
+-Retrives the list of tasks based on the given filters. The filters available are ‘type’,‘status’, and ‘page_size’. These should be sent as a query parameters in the URL.
+-taskStatus  = Any of these ('not_started','in_progress','waiting','completed','deferred')
+- taskType = Any of these ('TODO','EMAIL','CALL')
+```
+###### Endpoint
+POST dev/api/panel/tasks
 
+###### Optional parameters
+- ``page_size `` - Pagesize for paginated results.
+- ``sort_key`` - Sort order for results.
+- ``cursor`` - To get next set of resultset. Will get you in the last record of previous resultset.
 
+###### Example request
+```sh
+curl -i -X POST \
+   -H "Authorization:xxxxxxxxxxxx" \
+   -H "Content-Type:application/x-www-form-urlencoded; charset=UTF-8" \
+   -H "Accept:application/json" \
+   -d "taskStatus=not_started" \
+   -d "taskType=ALL" \
+   -d "page_size=10" \
+   -d "sort_key=created_time" \
+ 'https://sarah.engagebay.com/dev/api/panel/tasks'
+```
 
+###### Example JSON response
+```javascript
+[{
+	"id": 4512395720392704,
+	"owner_id": 6192449487634432,
+	"entiy_group_name": "task",
+	"is_due": true,
+	"name": "qqqq",
+	"description": "",
+	"name_sort": "qqqq",
+	"type": "TODO",
+	"created_time": 1534757461,
+	"updated_time": 0,
+	"closed_date": 1534757400,
+	"task_milestone": "not_started",
+	"queue_id": 0,
+	"owner": {
+		"id": 6192449487634432,
+		"email": "sample@engagebay.com",
+		"name": "sample"
+	}
+}]
+```
 
 
 
