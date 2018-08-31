@@ -8,6 +8,7 @@ API is in active development. Currently it allows you to:
 - Deals
 - Tasks
 - Forms
+- Sequences
 
 ### Authentication
 This is an HTTPS-only API.
