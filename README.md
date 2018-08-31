@@ -1078,5 +1078,64 @@ curl https://app.engagebay.com/dev/api/panel/tasks/1234 \
 	}
 }
 ```
+### 4.3 Create task : 
+- Creates a task 
 
+###### Endpoint
+POST dev/api/panel/tasks
+
+###### Example request
+```sh
+curl -i -X POST \
+   -H "Authorization:xxxxxxxxxxx" \
+   -H "Accept:application/json" \
+   -H "Content-Type:application/json" \
+   -d \
+'{
+	"entiy_group_name": "task",
+	"is_due": true,
+	"name": "sss4",
+	"description": "sss",
+	"name_sort": "sss",
+	"type": "TODO",
+	"updated_time": 0,
+	"closed_date": 1535696880,
+	"task_milestone": "not_started",
+	"queue_id": 0,
+	"contact_ids": [],
+	"company_ids": [],
+	"deal_ids": [],
+	"task_ids": [],
+	"subscribers": [],
+	"companies": [],
+	"deals": []
+}' \
+ 'https://sarah.engagebay.com/dev/api/panel/tasks'
+```
+
+###### Example JSON response
+```javascript
+{
+	"id": 4539883511087104,
+	"owner_id": 6192449487634432,
+	"entiy_group_name": "task",
+	"is_due": true,
+	"name": "sss",
+	"description": "sss",
+	"name_sort": "sss",
+	"type": "TODO",
+	"created_time": 1535696911,
+	"updated_time": 0,
+	"closed_date": 1535696880,
+	"task_milestone": "not_started",
+	"queue_id": 0,
+	"contact_ids": [],
+	"company_ids": [],
+	"deal_ids": [],
+	"task_ids": [],
+	"subscribers": [],
+	"companies": [],
+	"deals": []
+}
+```
 
