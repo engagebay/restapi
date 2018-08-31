@@ -57,6 +57,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [2 Get the task based on ID](#42-get-the-task-based-on-id-)
 * [3 Create task](#43-create-task-)
 * [4 Update task](#44-update-task-)
+* [5 Delete a task based on ID](#44-delete-a-task-based-on-id)
 
 
 
@@ -1197,4 +1198,17 @@ curl -i -X PUT \
 	"deals": []
 }' \
  'https://sarah.engagebay.com/dev/api/panel/tasks'
+```
+### 4.5 Delete a task based on ID : 
+- Delete a task based on its ID
+
+###### Endpoint
+DELETE dev/api/panel/tasks/{id}
+
+###### Example request
+```sh
+curl -i -X DELETE \
+   -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
+   -H "Accept:application/json" \
+ 'https://app.engagebay.com/dev/api/panel/tasks/5147920286351360'
 ```
