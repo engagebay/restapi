@@ -1251,7 +1251,7 @@ curl -i -X GET \
 }
 ]
 ```
-### 5.3 Add contact to a form
+### 5.2 Add contact to a form
 - Add contact to a form
 - 
 ###### Endpoint
