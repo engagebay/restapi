@@ -1025,9 +1025,11 @@ GET dev/api/panel/tasks/{id}
 
 ###### Example request
 ```sh
-curl https://app.engagebay.com/dev/api/panel/tasks/1234 \
--H "Authorization : xxxxxxxxx" \
--H  "Accept : application/json" -v -u {email}:{API Key}
+curl -i -X GET \
+   -H "Authorization:xxxxxxxxxxxxxx" \
+   -H "Accept:application/json" \
+   -H "Content-Type:application/x-www-form-urlencoded" \
+ 'https://app.engagebay.com/dev/api/panel/tasks/5695756786728960'
 ```
 
 ###### Example JSON response
