@@ -894,9 +894,12 @@ GET dev/api/panel/deals/{id}
 ###### Example request
 ```sh
 curl https://app.engagebay.com/dev/api/panel/deals/1234 \
--H "Authorization : xxxxxxxxx" \
--H  "Accept : application/json" -v -u {email}:{API Key}
+ -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
+ -H "Accept:application/json" \
+ -H "Content-Type:application/x-www-form-urlencoded" \
+-v -u {email}:{API Key}
 ```
+
 ######  Example JSON response
 ```
 {
