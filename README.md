@@ -517,6 +517,17 @@ curl -i -X POST \
 -H "Content-Type :application/x-www-form-urlencoded" \
 'https://app.engagebay.com/dev/api/panel/subscribers/get-tags/{subscriber-email}' 
 ```
+###### Example JSON response
+```
+[{
+	"tag": "sampletag1",
+	"assigned_time": 1535709035
+},{
+	"tag": "sampletag2",
+	"assigned_time": 1535709035
+}]
+```
+
 ### 1.9 Add score to a contact using email ID : 
 It is used to change the score of the contact using the email address.
 ###### Endpoint
@@ -534,16 +545,7 @@ curl -i -X POST \
 -d 'email=samson@walt.ltd&score=100' \
 'https://app.engagebay.com/dev/api/panel/subscribers/add-score'
 ```
-###### Example JSON response
-```
-[{
-	"tag": "sampletag1",
-	"assigned_time": 1535709035
-},{
-	"tag": "sampletag2",
-	"assigned_time": 1535709035
-}]
-```
+
 ### 2.1 Creating a company : 
 - Accepts company JSON as post data along with the credentials of domain User (User name and API Key).
 - Each field is case sensitive.
