@@ -1139,7 +1139,7 @@ curl -i -X POST \
 }
 ```
 
-### 4.3 Update a task : 
+### 4.3 Update task : 
 - Update a task based on its ID
 
 ###### Endpoint
