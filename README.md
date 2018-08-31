@@ -56,7 +56,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [1 Get the list of tasks based on given filters](#41-get-the-list-of-tasks-based-on-given-filters-)
 * [2 Get the task based on ID](#42-get-the-task-based-on-id-)
 * [3 Create task](#43-create-task-)
-* [4 Delete task](#44-delete-task-)
+* [4 Update task](#44-update-task-)
 
 
 
@@ -1139,3 +1139,62 @@ curl -i -X POST \
 }
 ```
 
+### 4.3 Update a task : 
+- Update a task based on its ID
+
+###### Endpoint
+PUT dev/api/panel/tasks
+
+######  Acceptable request Representation:
+```
+{
+    "id": 5740495045132288,
+	"entiy_group_name": "task",
+	"is_due": true,
+	"name": "sss4ssss",
+	"description": "sssssss",
+	"name_sort": "sss",
+	"type": "TODO",
+	"updated_time": 0,
+	"closed_date": 1535696880,
+	"task_milestone": "not_started",
+	"queue_id": 0,
+	"contact_ids": [],
+	"company_ids": [],
+	"deal_ids": [],
+	"task_ids": [],
+	"subscribers": [],
+	"companies": [],
+	"deals": []
+}
+```
+
+###### Example request
+```sh
+curl -i -X PUT \
+   -H "Authorization:xxxxxxxxxx" \
+   -H "Accept:application/json" \
+   -H "Content-Type:application/json" \
+   -d \
+'{
+        "id": 5740495045132288,
+	"entiy_group_name": "task",
+	"is_due": true,
+	"name": "sss4ssss",
+	"description": "sssssss",
+	"name_sort": "sss",
+	"type": "TODO",
+	"updated_time": 0,
+	"closed_date": 1535696880,
+	"task_milestone": "not_started",
+	"queue_id": 0,
+	"contact_ids": [],
+	"company_ids": [],
+	"deal_ids": [],
+	"task_ids": [],
+	"subscribers": [],
+	"companies": [],
+	"deals": []
+}' \
+ 'https://sarah.engagebay.com/dev/api/panel/tasks'
+```
