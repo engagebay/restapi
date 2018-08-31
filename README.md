@@ -64,6 +64,11 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [1 List of forms](#51-list-of-forms-)
 * [2 Add contact to a form](#52-add-contact-to-a-form)
 
+**[Sequences](#61-add-subscriber-to-a-sequence-)**
+
+* [1 Add subscriber to a sequence](#61-add-subscriber-to-a-sequence-)
+
+
 
 ### 1.1 Listing contacts : 
 - Returns a list of your contacts
@@ -1251,7 +1256,7 @@ curl -i -X GET \
 }
 ]
 ```
-### 5.2 Add contact to a form
+### 5.2 Add contact to a form :
 - Add contact to a form
 - 
 ###### Endpoint
@@ -1265,3 +1270,5 @@ curl https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-form/
    -H Content-Type: application/json; charset=utf-8" \
    -v -u sample@engagebay.com:123456 
 ```
+
+### 6.1 Add subscriber to a sequence :
