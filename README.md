@@ -1331,6 +1331,19 @@ curl -i -X GET \
 
 ### 7.2 Add contact to list :
 
+- Add contact to list based on list id
+ 
+###### Endpoint
+POST dev/api/panel/contactlist/add-subscriber/{subscriber-email}/{listId}
+
+###### Example request
+```sh
+curl -i -X POST \
+   -H "Authorization:xxxxxxx" \
+   -H "Accept:application/json" \
+ 'https://app.engagebay.com/dev/api/panel/contactlist/add-subscriber/sample@engagebay.com/12356'
+```
+
 
 
 
