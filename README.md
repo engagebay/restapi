@@ -54,7 +54,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 **[Tasks](#41-listing-tasks)**
 
 * [1 Get the list of tasks based on given filters](#41-get-the-list-of-tasks-based-on-given-filters-)
-* [2 Get task by its ID](#42-get-task-by-its-id-)
+* [2 Get the task based on ID](#42-get-the-task-based-on-ID-)
 * [3 Create task](#43-create-task-)
 * [4 Delete task](#44-delete-task-)
 
@@ -1008,6 +1008,41 @@ curl -i -X POST \
 }]
 ```
 ### 4.2 Get the task based on ID : 
+- Gets the task with the given ID.
+
+###### Endpoint
+GET dev/api/panel/tasks/{id}
+
+###### Example request
+```sh
+curl https://app.engagebay.com/dev/api/panel/tasks/1234 \
+-H "Authorization : xxxxxxxxx" \
+-H  "Accept : application/json" -v -u {email}:{API Key}
+```
+
+###### Example JSON response
+```javascript
+{
+	"id": 1234,
+	"owner_id": 6192449487634432,
+	"entiy_group_name": "task",
+	"is_due": true,
+	"name": "qqqq",
+	"description": "",
+	"name_sort": "qqqq",
+	"type": "TODO",
+	"created_time": 1534757461,
+	"updated_time": 0,
+	"closed_date": 1534757400,
+	"task_milestone": "not_started",
+	"queue_id": 0,
+	"owner": {
+		"id": 6192449487634432,
+		"email": "sample@engagebay.com",
+		"name": "sample"
+	}
+}
+``` : 
 - Gets the task with the given ID.
 
 ###### Endpoint
