@@ -1298,4 +1298,35 @@ curl https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-seque
 ```
 
 ### 7.1 List of lists :
+- List of lists
+
+###### Endpoint
+GET dev/api/panel/contactlist
+
+###### Example request
+```sh
+curl -i -X GET \
+   -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
+   -H "Accept:application/json" \
+ 'https://app.engagebay.com/dev/api/panel/contactlist'
+```
+###### Example JSON response
+```javascript
+[{
+    "rules":[],
+    "or_rules":[],
+    "id": 5668574207148032,
+    "owner_id": 5154169597984768,
+    "name": "Default List",
+    "created_time": 1527152195,
+    "updated_time": 1527152195,
+    "owner":{
+    "id": 5154169597984768,
+    "email": "sample@engagebay.com",
+    "name": "engagebay"
+    }
+}]
+```
+
+
 
