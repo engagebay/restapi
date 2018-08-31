@@ -62,7 +62,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 **[Forms](#51-listing-forms)**
 
 * [1 List of forms](#51-list-of-forms-)
-* [2 Add contact to a form](#52-add-contact-to-a-form-)
+* [2 Add contact to a form](#52-add-contact-to-a-form)
 
 
 ### 1.1 Listing contacts : 
