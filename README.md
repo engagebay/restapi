@@ -94,6 +94,7 @@ POST dev/api/panel/subscribers
 curl -i -X POST \
 -H "Authorization : xxxxxxxxx" \
 -H "Accept : application/json"  \
+-d "{}" \
 'https://{{domain}}.engagebay.com/dev/api/panel/subscribers'
 ```
 
@@ -515,6 +516,7 @@ curl -i -X POST \
 -H "Authorization : xxxxxxxxx" \
 -H "Accept: application/json" \
 -H "Content-Type :application/x-www-form-urlencoded" \
+-d "{}" \
 'https://{{domain}}.engagebay.com/dev/api/panel/subscribers/get-tags/{subscriber-email}' 
 ```
 ###### Example JSON response
@@ -715,6 +717,7 @@ POST dev/api/panel/companies
 curl -i -X POST \
 -H "Authorization : xxxxxxxxx" \
 -H "Accept: application/json" \
+-d "{}" \
 'https://{{domain}}.engagebay.com/dev/api/panel/companies'
 ```
 
@@ -883,7 +886,8 @@ POST dev/api/panel/deals
 ```sh
 curl  -i -X POST\
 -H "Authorization : xxxxxxxxx" \
--H  "Accept:application/json" 
+-H  "Accept:application/json" \
+-d "{}" \
 'https://{{domain}}.engagebay.com/dev/api/panel/deals'
 ```
 ######  Example JSON response
@@ -986,6 +990,7 @@ POST dev/api/panel/deals/{id}
 ```sh
 curl -i -X POST \
 -H "Authorization : xxxxxxxxx" \
+-d "{}" \
 'https://{{domain}}.engagebay.com/dev/api/panel/deals/1' 
 ```
 ### 4.1 Get the list of tasks based on given filters : 
@@ -1354,8 +1359,8 @@ POST dev/api/panel/contactlist/add-subscriber/{subscriber-email}/{listId}
 curl -i -X POST \
    -H "Authorization:xxxxxxx" \
    -H "Accept:application/json" \
+   -d "{}" \
  'https://{{domain}}.engagebay.com/dev/api/panel/contactlist/add-subscriber/sample@engagebay.com/12356'
 ```
-
 
 
