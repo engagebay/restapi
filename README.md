@@ -1,8 +1,9 @@
 EngageBay REST API
 =================
-[EngageBay](https://www.engagebay.com/) is a simple, affordable all-in-one marketing and sales software built for small businesses. Get the power of an enterprise software at a fraction of the cost.
+[EngageBay](https://www.engagebay.com/) is a simple, affordable all-in-one marketing and sales software built for growing businesses. Get the power of an enterprise software at a fraction of the cost.
+
 ### Overview
-API is in active development. Currently it allows you to:
+API is in active development. Currently it allows you to access:
 - Contacts
 - Companies
 - Deals
@@ -76,18 +77,18 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 
 
 
-### 1.1 Listing contacts : 
+### 1.1 Listing contacts: 
 - Returns a list of your contacts
 
-For the Response in the Json format, add the header 'Accept' as application/json. By default, the response will be in XML format. Paging can be applied using the page_size and cursor query parameters. Count of the contacts will be in the first contact and Cursor for the next page will be in the last contact of the list. If there is no cursor, it means that it is the end of list.
+For the Response in JSON format, add the header 'Accept' as application/json. By default, the response will be in XML format. Paging can be applied using the page_size and cursor query parameters. Count of the contacts will be in the first contact and Cursor for the next page will be in the last contact of the list. If there is no cursor, it means that it is the end of list.
 
 ###### Endpoint
 POST dev/api/panel/subscribers
 
 ###### Optional parameters
-- ``page_size `` - Pagesize for paginated results.
+- ``page_size `` - Page size for paginated results.
 - ``sort_key`` - Sort order for results.
-- ``cursor`` - To get next set of resultset. Will get you in the last record of previous resultset.
+- ``cursor`` - To get next set of resultset. You will get it in the last record of previous resultset.
 
 ###### Example request
 ```sh
@@ -346,7 +347,7 @@ Accepts contact JSON as post data along with the credentials of domain User (Use
 ###### Endpoint
 POST dev/api/panel/subscribers/subscriber
 
-###### Acceptable request Representation:
+###### Acceptable request representation:
 ```
 {
 	"score" : 10,
@@ -418,7 +419,7 @@ curl -i -X POST \
 ### 1.4 Updating contact : 
 - Updates the information for a single contact.
 
-We can update required property fields of the contact using this call. It is used to add the new property or update the existing property. It accepts property object of contact with valid parameter in it. We need to send the ContactId of the contact to identify it. This will not affect other fields.
+We can update the required property fields of the contact using this call. It is used to add a new property or update the existing property. It accepts property object of the contact with a valid parameter in it. Send the ContactId of the contact to identify it. This will not affect other fields.
 
 ###### Endpoint
 PUT dev/api/panel/subscribers/subscriber
@@ -468,13 +469,13 @@ curl -i -X DELETE \
 'https://{{domain}}.engagebay.com/dev/api/panel/subscribers/{contact-id}'
 ```
 
-### 1.6 Adding tags to a contact based on email : 
-Searches for the contact based on the given email address and adds the given tags to the contact. You can add multiple tags. Tags should be sent as an array. Email address (email) and tags (tags) array should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded ).Tag name should start with an alphabet and can not contain special characters other than underscore and space.
+### 1.6 Adding tags to a contact based on email address: 
+Searches for the contact based on the given email address and adds the given tags to the contact. You can add multiple tags. Tags should be sent as an array. Email address (email) and tags (tags) array should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded).Tag name should start with an alphabet and cannot contain special characters other than underscore and space.
 ###### Endpoint
 POST dev/api/panel/subscribers/email/tags/add
 ###### Required parameters
-``Email`` - Contact email
-``tags`` -  Tags need to add contact
+``Email`` - Email address of the contact
+``tags`` -  Tags to be added to the contact
 
 ###### Example request
 ```sh
@@ -485,13 +486,13 @@ curl -i -X POST \
 -d 'email=samson@engagebay.com&tags=["testsample"]' \
 'https://{{domain}}.engagebay.com/dev/api/panel/subscribers/email/tags/add'
 ```
-### 1.7 Delete tags to a contact based on email : 
-Searches for the contact based on the given email address and searches for the given tag in the contact's tag list. If there is a match, then it deletes that tag. You can delete multiple tags. Tags should be sent as an array. Email address (email) and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded )
+### 1.7 Delete tags to a contact based on email address: 
+Searches for the contact based on the given email address and searches for the given tag in the contact's tag list. If there is a match, then it deletes that tag. You can delete multiple tags. Tags should be sent as an array. Email address (email) and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded)
 ###### Endpoint
 POST dev/api/panel/subscribers/email/tags/delete
 ###### Required parameters
-``Email`` - Contact email
-``tags`` -  Tags need to add contact
+``Email`` - Email address of the contact
+``tags`` -  Tags to be deleted for the contact
 
 ###### Example request
 ```sh
@@ -503,12 +504,12 @@ curl -i -X POST \
 'https://{{domain}}.engagebay.com/dev/api/contacts/email/tags/delete '
 ```
 
-### 1.8 List tags for a contact : 
-Lists all the tags for a contact.
+### 1.8 List tags for a contact: 
+Lists all the tags for a contact
 ###### Endpoint
 POST dev/api/panel/subscribers/get-tags/{subscriber-email}
 ###### Required parameters
-``Email`` - Contact email
+``Email`` - Email address of the contact
 
 ###### Example request
 ```sh
@@ -530,12 +531,12 @@ curl -i -X POST \
 }]
 ```
 
-### 1.9 Add score to a contact using email ID : 
-It is used to change the score of the contact using the email address.
+### 1.9 Add score to a contact using email address: 
+Add or change the score of the contact using the contact's email address.
 ###### Endpoint
 POST dev/api/panel/subscribers/add-score
 ###### Required parameters
-``Email`` - Contact email
+``Email`` - Email address of the contact
 ``score`` - Score value
 
 ###### Example request
@@ -548,11 +549,11 @@ curl -i -X POST \
 'https://{{domain}}.engagebay.com/dev/api/panel/subscribers/add-score'
 ```
 
-### 2.1 Creating a company : 
+### 2.1 Creating a company: 
 - Accepts company JSON as post data along with the credentials of domain User (User name and API Key).
 - Each field is case sensitive.
 - Please don't pass null value.
-- If you don't know value of field then either don't pass that field or pass empty data to a field.
+- If you don't know the value of field then don't pass that field at all or pass empty data for the field.
 ###### Endpoint
 POST dev/api/panel/companies/company
 ######  Acceptable request representation:
@@ -626,8 +627,8 @@ curl -i -X POST \
 } ' \
 'https://{{domain}}.engagebay.com/dev/api/panel/companies/company'
 ```
-### 2.2 Updating a company : 
-We can update required property fields of the company using this call. It is used to add the new property or update the existing property. It accepts property object of company with valid parameter in it. We need to send the Company-Id of the company to identify it. This will not affect other fields.
+### 2.2 Updating a company: 
+We can update required property fields of the company using this call. It is used to add a new property or update the existing property. It accepts property object of company with valid parameter in it. Send the Company-Id of the company to identify it. This will not affect other fields.
 
 ###### Endpoint
 PUT dev/api/panel/companies/company
@@ -707,7 +708,7 @@ curl -i -X PUT \
 ### 2.3 Get list of companies : 
 - Get list of companies
 
-Fetches list of companies. Page_size,sort_key and cursor should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded ).Paging can be applied using the page_size and cursor form parameters. Cursor for the next page will be in the last company of the list. If there is no cursor, it means that it is the end of list.
+Fetches the list of companies. Page_size, sort_key and cursor should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded). Paging can be applied using the page_size and cursor form parameters. Cursor for the next page will be in the last company of the list. If there is no cursor, it means that it is the end of the list.
 
 ###### Endpoint
 POST dev/api/panel/companies
@@ -858,8 +859,8 @@ curl -i -X GET \
 }
 ```
 
-### 2.5 Delete single company : 
-- Deletes company based on the id of the company, which is sent in request url path.
+### 2.5 Delete a single company: 
+- Deletes company based on the id of the company, which is sent in the request URL path.
 
 ###### Endpoint
 DELETE dev/api/panel/companies/{id}
@@ -880,7 +881,7 @@ POST dev/api/panel/deals
 ###### Optional Parameters
 ```page_size``` : Pagesize for paginated results.
 ```sort_key``` :  Sort order for results.
-```cursor``` : To get next set of resultset. Will get you in the last record of previous resultset.
+```cursor``` : To get next set of resultset. It will be provided in the last record of previous resultset.
 
 ###### Example request
 ```sh
@@ -942,11 +943,11 @@ curl -i -X GET \
 }
 ```
 
-### 3.3 Create deal : 
-- Accepts deal JSON as data in Post request to the url specified above, which creates new deal and returns the deal JSON with id field generated when new deal is created. If Post data includes valid deal id, respective deal is updated with the data sent in request. Milestone name should be same as the the one in the website and it is case sensitive. (If the milestone name is given in the wrong case, it will not be shown in the milestone view.)
+### 3.3 Create a deal: 
+- Accepts deal JSON as data in Post request to the URL specified below. The call returns the deal JSON with id field generated when a new deal is created. If Post data includes valid deal id, the respective deal is updated with the data sent in the request. Milestone name should be same as the one in your account. Please note that it is case sensitive too. (If the milestone name is given incorrectly, it will not be shown in the milestone view.)
 - Each field is case sensitive.
 - Don't pass null value.
-- If you don't know value of field then either don't pass that field or pass empty data to a field.
+- If you don't know the value of field then don't pass that field at all or pass empty data for the field.
 
 ###### Endpoint
 POST dev/api/panel/deals/deal
@@ -980,7 +981,7 @@ curl -i -X POST \
 }' \
 'https://{{domain}}.engagebay.com/dev/api/panel/deals/deal'
 ```
-### 3.4 Delete deal : 
+### 3.4 Delete deal: 
 - Deletes the deal based on the id specified in the url.
 
 ###### Endpoint
@@ -993,12 +994,12 @@ curl -i -X POST \
 -d "{}" \
 'https://{{domain}}.engagebay.com/dev/api/panel/deals/1' 
 ```
-### 4.1 Get the list of tasks based on given filters : 
+### 4.1 Get the list of tasks based on given filters: 
 - Returns a list of your tasks based on given filters
 ```
--Retrives the list of tasks based on the given filters. The filters available are ‘type’,‘status’, and ‘page_size’. These should be sent as a query parameters in the URL.
--taskStatus  = Any of these ('not_started','in_progress','waiting','completed','deferred')
-- taskType = Any of these ('TODO','EMAIL','CALL')
+- Retrives the list of tasks based on the given filters. The filters available are ‘type’,‘status’, and ‘page_size’. These should be sent as a query parameters in the URL.
+- taskStatus = one of these values ('not_started','in_progress','waiting','completed','deferred')
+- taskType = one of these values ('TODO','EMAIL','CALL')
 ```
 ###### Endpoint
 POST dev/api/panel/tasks
@@ -1006,7 +1007,7 @@ POST dev/api/panel/tasks
 ###### Optional parameters
 - ``page_size `` - Pagesize for paginated results.
 - ``sort_key`` - Sort order for results.
-- ``cursor`` - To get next set of resultset. Will get you in the last record of previous resultset.
+- ``cursor`` - To get next set of resultset. You will get this in the last record of previous resultset.
 
 ###### Example request
 ```sh
@@ -1044,7 +1045,7 @@ curl -i -X POST \
 	}
 }]
 ```
-### 4.2 Get the task based on ID : 
+### 4.2 Get the task based on ID: 
 - Gets the task with the given ID.
 
 ###### Endpoint
@@ -1117,7 +1118,7 @@ curl https://{{domain}}.engagebay.com/dev/api/panel/tasks/1234 \
 	}
 }
 ```
-### 4.3 Create task : 
+### 4.3 Create a task: 
 - Creates a task 
 
 ###### Endpoint
@@ -1178,7 +1179,7 @@ curl -i -X POST \
 }
 ```
 
-### 4.4 Update task : 
+### 4.4 Update task: 
 - Update a task based on its ID
 
 ###### Endpoint
@@ -1237,7 +1238,7 @@ curl -i -X PUT \
 }' \
  'https://{{domain}}.engagebay.com/dev/api/panel/tasks'
 ```
-### 4.5 Delete a task based on ID : 
+### 4.5 Delete a task based on ID: 
 - Delete a task based on its ID
 
 ###### Endpoint
@@ -1250,7 +1251,7 @@ curl -i -X DELETE \
    -H "Accept:application/json" \
  'https://{{domain}}.engagebay.com/dev/api/panel/tasks/5147920286351360'
 ```
-### 5.1 List of forms :
+### 5.1 List of forms:
 - Get list of forms
 
 ###### Endpoint
@@ -1285,7 +1286,7 @@ curl -i -X GET \
 }
 ]
 ```
-### 5.2 Add contact to a form :
+### 5.2 Add contact to a form:
 - Add contact to a form
 - 
 ###### Endpoint
@@ -1300,7 +1301,7 @@ curl https://{{domain}}.engagebay.com/dev/api/panel/subscribers/add-subscriber-t
    -v -u sample@engagebay.com:123456 
 ```
 
-### 6.1 Add contact to a sequence :
+### 6.1 Add contact to a sequence:
 
 - Add contact to a sequence
 
@@ -1316,7 +1317,7 @@ curl https://{{domain}}.engagebay.com/dev/api/panel/subscribers/add-subscriber-t
    -v -u sample@engagebay.com:123456 
 ```
 
-### 7.1 List of lists :
+### 7.1 List of lists:
 - List of lists
 
 ###### Endpoint
@@ -1347,7 +1348,7 @@ curl -i -X GET \
 }]
 ```
 
-### 7.2 Add contact to list :
+### 7.2 Add contact to list:
 
 - Add contact to list based on list id
  
