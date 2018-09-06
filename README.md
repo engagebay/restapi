@@ -19,7 +19,7 @@ All API calls require ```Authorization``` header. You should pass REST API Key a
 You can find your API Key in the EngageBay Account Admin Settings -> API -> API Key.
 
 ###### End Points
-All API requests should be made to: https://app.engagebay.com/dev/
+All API requests should be made to: https://{{domain}}.engagebay.com/dev/
 
 Note: All data is case-sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered two different words.
 
@@ -94,7 +94,7 @@ POST dev/api/panel/subscribers
 curl -i -X POST \
 -H "Authorization : xxxxxxxxx" \
 -H "Accept : application/json"  \
-'https://{{domainname}}.engagebay.com/dev/api/panel/subscribers'
+'https://{{domain}}.engagebay.com/dev/api/panel/subscribers'
 ```
 
 ###### Example JSON response
@@ -258,7 +258,7 @@ GET /dev/api/panel/subscribers/{id}
 curl -i -X GET \
 -H "Authorization : xxxxxxxxx" \
 -H "Accept : application/json" \
-'https://{{domainname}}.engagebay.com/dev/api/panel/subscribers/1'
+'https://{{domain}}.engagebay.com/dev/api/panel/subscribers/1'
 ```
 ###### Example JSON response
 ```javascript
@@ -412,7 +412,7 @@ curl -i -X POST \
 	}],
 	"tags" : [{"tag": "sample"}]
 }' \
-'https://{{domainname}}.engagebay.com/dev/api/panel/subscribers/subscriber'
+'https://{{domain}}.engagebay.com/dev/api/panel/subscribers/subscriber'
 ```
 ### 1.4 Updating contact : 
 - Updates the information for a single contact.
@@ -454,7 +454,7 @@ curl -i -X PUT  \
 		"type": "SYSTEM"
 	}]
 }' \
-'https://app.engagebay.com/dev/api/panel/subscribers/subscriber'
+'https://{{domain}}.engagebay.com/dev/api/panel/subscribers/subscriber'
 ```
 ### 1.5 Delete single contact : 
 - Delete the single contact from account
@@ -464,7 +464,7 @@ DELETE dev/api/panel/subscribers/{contact-id}
 ###### Example Request
 ```sh
 curl -i -X DELETE \
-'https://app.engagebay.com/dev/api/panel/subscribers/{contact-id}'
+'https://{{domain}}.engagebay.com/dev/api/panel/subscribers/{contact-id}'
 ```
 
 ### 1.6 Adding tags to a contact based on email : 
@@ -482,7 +482,7 @@ curl -i -X POST \
 -H "Authorization : xxxxxxxxx" \
 -H "Content-Type :application/x-www-form-urlencoded" \
 -d 'email=samson@engagebay.com&tags=["testsample"]' \
-'https://app.engagebay.com/dev/api/panel/subscribers/email/tags/add'
+'https://{{domain}}.engagebay.com/dev/api/panel/subscribers/email/tags/add'
 ```
 ### 1.7 Delete tags to a contact based on email : 
 Searches for the contact based on the given email address and searches for the given tag in the contact's tag list. If there is a match, then it deletes that tag. You can delete multiple tags. Tags should be sent as an array. Email address (email) and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded )
@@ -499,7 +499,7 @@ curl -i -X POST \
 -H "Authorization : xxxxxxxxx" \
 -H "Content-Type :application/x-www-form-urlencoded" \
 -d 'email=sample@engagebay.com&tags=["sampletest"]' \
-'https://app.engagebay.com/dev/api/contacts/email/tags/delete '
+'https://{{domain}}.engagebay.com/dev/api/contacts/email/tags/delete '
 ```
 
 ### 1.8 List tags for a contact : 
@@ -515,7 +515,7 @@ curl -i -X POST \
 -H "Authorization : xxxxxxxxx" \
 -H "Accept: application/json" \
 -H "Content-Type :application/x-www-form-urlencoded" \
-'https://app.engagebay.com/dev/api/panel/subscribers/get-tags/{subscriber-email}' 
+'https://{{domain}}.engagebay.com/dev/api/panel/subscribers/get-tags/{subscriber-email}' 
 ```
 ###### Example JSON response
 ```
@@ -543,7 +543,7 @@ curl -i -X POST \
 -H "Accept: application/json" \
 -H "Content-Type :application/x-www-form-urlencoded" \
 -d 'email=samson@walt.ltd&score=100' \
-'https://app.engagebay.com/dev/api/panel/subscribers/add-score'
+'https://{{domain}}.engagebay.com/dev/api/panel/subscribers/add-score'
 ```
 
 ### 2.1 Creating a company : 
@@ -622,7 +622,7 @@ curl -i -X POST \
 	"entiy_group_name": "company",
 	"companyIds": []
 } ' \
-'https://app.engagebay.com/dev/api/panel/companies/company'
+'https://{{domain}}.engagebay.com/dev/api/panel/companies/company'
 ```
 ### 2.2 Updating a company : 
 We can update required property fields of the company using this call. It is used to add the new property or update the existing property. It accepts property object of company with valid parameter in it. We need to send the Company-Id of the company to identify it. This will not affect other fields.
@@ -700,7 +700,7 @@ curl -i -X PUT \
 	"entiy_group_name": "company",
 	"companyIds": []
 } ' \
-'https://app.engagebay.com/dev/api/panel/companies/company'
+'https://{{domain}}.engagebay.com/dev/api/panel/companies/company'
 ```
 ### 2.3 Get list of companies : 
 - Get list of companies
@@ -715,7 +715,7 @@ POST dev/api/panel/companies
 curl -i -X POST \
 -H "Authorization : xxxxxxxxx" \
 -H "Accept: application/json" \
-'https://app.engagebay.com/dev/api/panel/companies'
+'https://{{domain}}.engagebay.com/dev/api/panel/companies'
 ```
 
 ###### Example JSON response
@@ -809,7 +809,7 @@ GET dev/api/panel/companies/{id}
 curl -i -X GET \
 -H "Authorization : xxxxxxxxx" \
 -H "Accept :application/json" 
-'https://app.engagebay.com/dev/api/panel/companies/{id}'
+'https://{{domain}}.engagebay.com/dev/api/panel/companies/{id}'
 ```
 
 ###### Example JSON response
@@ -865,7 +865,7 @@ DELETE dev/api/panel/companies/{id}
 ```sh
 curl -i -X DELETE  \
 -H "Authorization : xxxxxxxxx" \
-'https://app.engagebay.com/dev/api/panel/companies/{id}' 
+'https://{{domain}}.engagebay.com/dev/api/panel/companies/{id}' 
 ```
 
 ### 3.1 Listing deals : 
@@ -884,7 +884,7 @@ POST dev/api/panel/deals
 curl  -i -X POST\
 -H "Authorization : xxxxxxxxx" \
 -H  "Accept:application/json" 
-'https://app.engagebay.com/dev/api/panel/deals'
+'https://{{domain}}.engagebay.com/dev/api/panel/deals'
 ```
 ######  Example JSON response
 ```
@@ -916,7 +916,7 @@ curl -i -X GET \
  -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
  -H "Accept:application/json" \
  -H "Content-Type:application/x-www-form-urlencoded" \
-'https://app.engagebay.com/dev/api/panel/deals/1234'
+'https://{{domain}}.engagebay.com/dev/api/panel/deals/1234'
 ```
 
 ######  Example JSON response
@@ -974,7 +974,7 @@ curl -i -X POST \
 	"properties": [],
 	"probability": 0.2,
 }' \
-'https://app.engagebay.com/dev/api/panel/deals/deal'
+'https://{{domain}}.engagebay.com/dev/api/panel/deals/deal'
 ```
 ### 3.4 Delete deal : 
 - Deletes the deal based on the id specified in the url.
@@ -986,7 +986,7 @@ POST dev/api/panel/deals/{id}
 ```sh
 curl -i -X POST \
 -H "Authorization : xxxxxxxxx" \
-'https://app.engagebay.com/dev/api/panel/deals/1' 
+'https://{{domain}}.engagebay.com/dev/api/panel/deals/1' 
 ```
 ### 4.1 Get the list of tasks based on given filters : 
 - Returns a list of your tasks based on given filters
@@ -1013,7 +1013,7 @@ curl -i -X POST \
    -d "taskType=ALL" \
    -d "page_size=10" \
    -d "sort_key=created_time" \
- 'https://sarah.engagebay.com/dev/api/panel/tasks'
+ 'https://{{domain}}.engagebay.com/dev/api/panel/tasks'
 ```
 
 ###### Example JSON response
@@ -1051,7 +1051,7 @@ curl -i -X GET \
    -H "Authorization:xxxxxxxxxxxxxx" \
    -H "Accept:application/json" \
    -H "Content-Type:application/x-www-form-urlencoded" \
- 'https://app.engagebay.com/dev/api/panel/tasks/5695756786728960'
+ 'https://{{domain}}.engagebay.com/dev/api/panel/tasks/5695756786728960'
 ```
 
 ###### Example JSON response
@@ -1084,7 +1084,7 @@ GET dev/api/panel/tasks/{id}
 
 ###### Example request
 ```sh
-curl https://app.engagebay.com/dev/api/panel/tasks/1234 \
+curl https://{{domain}}.engagebay.com/dev/api/panel/tasks/1234 \
 -H "Authorization : xxxxxxxxx" \
 -H  "Accept : application/json" -v -u {email}:{API Key}
 ```
@@ -1144,7 +1144,7 @@ curl -i -X POST \
 	"companies": [],
 	"deals": []
 }' \
- 'https://sarah.engagebay.com/dev/api/panel/tasks'
+ 'https://{{domain}}.engagebay.com/dev/api/panel/tasks'
 ```
 
 ###### Example JSON response
@@ -1230,7 +1230,7 @@ curl -i -X PUT \
 	"companies": [],
 	"deals": []
 }' \
- 'https://sarah.engagebay.com/dev/api/panel/tasks'
+ 'https://{{domain}}.engagebay.com/dev/api/panel/tasks'
 ```
 ### 4.5 Delete a task based on ID : 
 - Delete a task based on its ID
@@ -1243,7 +1243,7 @@ DELETE dev/api/panel/tasks/{id}
 curl -i -X DELETE \
    -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
    -H "Accept:application/json" \
- 'https://app.engagebay.com/dev/api/panel/tasks/5147920286351360'
+ 'https://{{domain}}.engagebay.com/dev/api/panel/tasks/5147920286351360'
 ```
 ### 5.1 List of forms :
 - Get list of forms
@@ -1257,7 +1257,7 @@ GET dev/api/panel/forms
 curl -i -X GET \
    -H "Authorization:xxxxxxxxxxx" \
    -H "Accept:application/json" \
- 'https://app.engagebay.com/dev/api/panel/forms'
+ 'https://{{domain}}.engagebay.com/dev/api/panel/forms'
 ```
 
 ###### Example JSON response
@@ -1288,7 +1288,7 @@ POST dev/api/panel/subscribers/add-subscriber-to-form/{subscriber-email}/{formId
 
 ###### Example request
 ```sh
-curl https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-form/sample@engagebay.com/1234  \
+curl https://{{domain}}.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-form/sample@engagebay.com/1234  \
    -H "Authorization:xxxxxxxxxxx" \
    -H "Accept:application/json" \
    -H Content-Type: application/json; charset=utf-8" \
@@ -1304,7 +1304,7 @@ POST dev/api/panel/subscribers/add-subscriber-to-sequence/{subscriber-email}{seq
 
 ###### Example request
 ```sh
-curl https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-sequence/sample@engagebay.com/1234  \
+curl https://{{domain}}.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-sequence/sample@engagebay.com/1234  \
    -H "Authorization:xxxxxxxxxxx" \
    -H "Accept:application/json" \
    -H Content-Type: application/json; charset=utf-8" \
@@ -1322,7 +1322,7 @@ GET dev/api/panel/contactlist
 curl -i -X GET \
    -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
    -H "Accept:application/json" \
- 'https://app.engagebay.com/dev/api/panel/contactlist'
+ 'https://{{domain}}.engagebay.com/dev/api/panel/contactlist'
 ```
 ###### Example JSON response
 ```javascript
@@ -1354,9 +1354,8 @@ POST dev/api/panel/contactlist/add-subscriber/{subscriber-email}/{listId}
 curl -i -X POST \
    -H "Authorization:xxxxxxx" \
    -H "Accept:application/json" \
- 'https://app.engagebay.com/dev/api/panel/contactlist/add-subscriber/sample@engagebay.com/12356'
+ 'https://{{domain}}.engagebay.com/dev/api/panel/contactlist/add-subscriber/sample@engagebay.com/12356'
 ```
-
 
 
 
