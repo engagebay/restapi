@@ -94,7 +94,7 @@ POST dev/api/panel/subscribers
 curl -i -X POST \
 -H "Authorization : xxxxxxxxx" \
 -H "Accept : application/json"  \
-'https://app.engagebay.com/dev/api/panel/subscribers'
+'https://{{domainname}}.engagebay.com/dev/api/panel/subscribers'
 ```
 
 ###### Example JSON response
@@ -258,7 +258,7 @@ GET /dev/api/panel/subscribers/{id}
 curl -i -X GET \
 -H "Authorization : xxxxxxxxx" \
 -H "Accept : application/json" \
-'https://app.engagebay.com/dev/api/panel/subscribers/1'
+'https://{{domainname}}.engagebay.com/dev/api/panel/subscribers/1'
 ```
 ###### Example JSON response
 ```javascript
@@ -412,7 +412,7 @@ curl -i -X POST \
 	}],
 	"tags" : [{"tag": "sample"}]
 }' \
-'https://app.engagebay.com/dev/api/panel/subscribers/subscriber'
+'https://{{domainname}}.engagebay.com/dev/api/panel/subscribers/subscriber'
 ```
 ### 1.4 Updating contact : 
 - Updates the information for a single contact.
