@@ -27,7 +27,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 ### Getting Started
 
 **[Contacts](#1-contacts---companies-api)**
-* [1 Listing contacts](#11-listing-contacts-)
+* [1 Listing contacts](#11-listing-contacts)
 * [2 Get contact by ID](#12-get-contact-by-id)
 * [3 Creating a contact](#13-creating-a-contact-)
 * [4 Updating contact](#14-updating-contact-)
