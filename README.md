@@ -78,8 +78,8 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [2 Add contact to list](#72-add-contact-to-list-)
 
 
-**[Notes](#81-create-note)**
-* [1 Create a note](#81-create-note)
+**[Notes](#81-create-a-note)**
+* [1 Create a note](#81-create-a-note)
 
 
 ### 1.1 Listing contacts: 
