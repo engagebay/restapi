@@ -79,7 +79,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 
 
 **[Notes](#81-create-note)**
-* [1 Create Note](#81-create-note-)
+* [1 Create a note](#81-create-note)
 
 
 ### 1.1 Listing contacts: 
@@ -1394,7 +1394,8 @@ curl -i -X POST \
 ```
 ###### Example JSON response
 ```javascript
-{"id":6263278833500160,
+{
+"id":6263278833500160,
 "parentId":5359259403419648,
 "subject":"Engagebay Note",
 "content":"Here you can see",
