@@ -8,6 +8,7 @@ API is in active development. Currently it allows you to access:
 - Companies
 - Deals
 - Tasks
+- Notes
 - Forms
 - Sequences
 
@@ -61,6 +62,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [4 Update task](#44-update-task-)
 * [5 Delete a task based on ID](#45-delete-a-task-based-on-id-)
 
+
 **[Forms](#51-listing-forms)**
 
 * [1 List of forms](#51-list-of-forms-)
@@ -75,6 +77,9 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [1 List of lists](#71-list-of-lists-)
 * [2 Add contact to list](#72-add-contact-to-list-)
 
+
+**[Notes](#81-create-note)**
+* [1 Create Note](#81-create-note-)
 
 
 ### 1.1 Listing contacts: 
@@ -1364,4 +1369,37 @@ curl -i -X POST \
  'https://app.engagebay.com/dev/api/panel/contactlist/add-subscriber/sample@engagebay.com/12356'
 ```
 
+### 8.1 Create a note:
+
+- Add note to contacts,companies or deals
+
+###### Required parameters
+``subject``  - Subject of the note
+``parentId`` - Related contact/company/deal Id
+ 
+###### Endpoint
+
+POST dev/api/panel/dev/api/panel/notes
+
+###### Example request
+```sh
+curl -i -X POST \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxx" \
+   -H "Content-Type:application/json" \
+   -d "{}"\
+'{"subject": "Engagebay Note", "content": "Engagebay note", "parentId": "5359259403419648"}
+' \
+ 'https://app.engagebay.com/dev/api/panel/notes'
+```
+###### Example JSON response
+```javascript
+{"id":6263278833500160,
+"parentId":5359259403419648,
+"subject":"Engagebay Note",
+"content":"Here you can see",
+"type":"PUBLIC",
+"created_time":1540531365
+}
+```
 
