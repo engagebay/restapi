@@ -50,7 +50,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 
 * [1 Listing deals](#31-listing-deals-)
 * [2 Get deal by its ID](#32-get-deal-by-its-id-)
-* [3 Create deal](#33-create-deal-)
+* [3 Create deal](#33-create-deal)
 * [4 Delete deal](#34-delete-deal-)
 
 
@@ -963,10 +963,11 @@ POST dev/api/panel/deals/deal
 	"name": "sample deal",
 	"name_sort": "sample deal",
 	"amount": 100,
-	"milestoneLabelName": "Proposal",
+        "track_id":"5697266736168960",
+        "milestoneActualName" :"New_Actual",
+        "milestoneLabelName":"New",
 	"tags": [],
-	"properties": [],
-	"probability": 0.2,
+	"properties": []
 }
 ```
 ###### Example request
@@ -979,10 +980,11 @@ curl -i -X POST \
 	"name": "sample deal",
 	"name_sort": "sample deal",
 	"amount": 100,
-	"milestoneLabelName": "Proposal",
+        "track_id":"5697266736168960",
+        "milestoneActualName" :"New_Actual",
+        "milestoneLabelName":"New",
 	"tags": [],
-	"properties": [],
-	"probability": 0.2,
+	"properties": []
 }' \
 'https://app.engagebay.com/dev/api/panel/deals/deal'
 ```
