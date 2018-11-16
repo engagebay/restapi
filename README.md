@@ -50,7 +50,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 
 * [1 Listing deals](#31-listing-deals-)
 * [2 Get deal by its ID](#32-get-deal-by-its-id-)
-* [3 Create deal](#33-create-deal)
+* [3 Create deal](#33-create-a-deal)
 * [4 Delete deal](#34-delete-deal-)
 
 
