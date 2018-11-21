@@ -41,6 +41,8 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [8 List tags for a contact](#18-list-tags-for-a-contact-)
 * [9 Add score to a contact using email ID](#19-add-score-to-a-contact-using-email-id-)
 * [10 Search contacts/companies/deals](#110-search-contactscompaniesdeals)
+* [11 Delete tags value by ID](#111-delete-tags-value-by-id)
+* [12 Change contact owner](#112-change-contact-owner)
 
 **[Company APIs](#21-creating-a-company)**
 
@@ -56,7 +58,9 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [2 Get deal by its ID](#32-get-deal-by-its-id-)
 * [3 Create deal](#33-create-a-deal)
 * [4 Delete deal](#34-delete-deal-)
+* [5 Create deal to a contact using emailID](#35-create-deal-to-a-contact-using-emailid)
 
+  
 
 **[Tasks](#41-listing-tasks)**
 
@@ -98,6 +102,8 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [1 Get all the tracks](#101-get-all-the-tracks)
 * [3 Create track](#102-create-track)
 * [4 Update track](#103-update-track)
+* [5 Get track by ID](#104-get-track-by-id)
+* [6 Delete track by ID](#105-delete-track-by-id)
 
 **[Owners](#111-get-list-of-owners)**
 
@@ -514,7 +520,7 @@ curl -i -X POST \
 -d 'email=samson@engagebay.com&tags=["testsample"]' \
 'https://app.engagebay.com/dev/api/panel/subscribers/email/tags/add'
 ```
-### 1.7 Delete tags to a contact based on email address: 
+### 1.7 Delete tags to a contact based on email: 
 Searches for the contact based on the given email address and searches for the given tag in the contact's tag list. If there is a match, then it deletes that tag. You can delete multiple tags. Tags should be sent as an array. Email address (email) and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded)
 ###### Endpoint
 POST dev/api/panel/subscribers/email/tags/delete
@@ -641,6 +647,101 @@ curl -i -X GET \
 	"score": 20
 }]
 ```
+### 1.11 Delete tags value by ID:
+
+- Delete tag values by contact id.
+
+###### Required parameters
+
+``contactId`` - ID of the contact.
+``tags`` - List of tags to delete
+
+###### Endpoint
+
+POST dev/api/panel/subscribers/contact/tags/delete
+
+###### Example request
+```sh
+curl -i -X POST \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxx" \
+   -H "Content-Type:application/x-www-form-urlencoded" \
+   -d "contactId=5015780936646656" \
+   -d "tags=[\"testtag\"]" \
+ 'https://app.engagebay.com/dev/api/panel/subscribers/contact/tags/delete'
+```
+
+### 1.12 Change contact owner:
+
+- Change contact owner using owner email and contact Id.
+
+###### Required parameters
+
+``subscriberId`` - ID of the contact.
+``ownerEmail`` - Owner Email
+
+###### Endpoint
+
+POST dev/api/panel/subscribers/update-owner-by-email?subscriberId=5015780936646656&ownerEmail=test@engagebay.com
+
+###### Example request
+```sh
+curl -i -X POST \
+   -H "Accept:application/json" \
+   -H "Authorization:p5nlcfg7m89a8lb9gf1p1nf6bd" \
+   -H "Content-Type:application/json" \
+ 'https://app.engagebay.com/dev/api/panel/subscribers/update-owner-by-email?subscriberId=5015780936646656&ownerEmail=test@engagebay.com'
+```
+#### 
+```javascript
+{
+	"id": 5015780936646656,
+	"owner_id": 5676618345349120,
+	"name": "homer8",
+	"firstname": "homer8",
+	"lastname": "",
+	"fullname": "homer8 ",
+	"name_sort": "homer8",
+	"email": "homer@snpp8.com",
+	"created_time": 1542786798,
+	"updated_time": 1542793315,
+	"status": "CONFIRMED",
+	"sources": [{
+		"type": "DEFAULT",
+		"id": 0,
+		"subscribed_on": 1542786798,
+		"status": "ACTIVE",
+		"custom": 0
+	}],
+	"companyIds": [],
+	"contactIds": [],
+	"properties": [{
+		"name": "name",
+		"value": "homer8",
+		"field_type": "TEXT",
+		"is_searchable": false,
+		"type": "SYSTEM"
+	},{
+		"name": "email",
+		"value": "homer@snpp8.com",
+		"field_type": "TEXT",
+		"is_searchable": false,
+		"type": "SYSTEM"
+	}],
+	"listIds": [4893748567736320],
+	"entiy_group_name": "subscriber",
+	"tags": [{
+		"tag": "Zapier tag",
+		"assigned_time": 1542788077
+	}, {
+		"tag": "Zapier",
+		"assigned_time": 1542788077
+	}],
+	"score": 20
+}
+```
+
+
 
 
 ### 2.1 Creating a company: 
@@ -1090,6 +1191,59 @@ curl -i -X POST \
 -d "{}" \
 'https://app.engagebay.com/dev/api/panel/deals/1' 
 ```
+
+### 3.5 Create deal to a contact using emailID:
+
+- Create deal to contact using contact email Id.
+
+###### Required parameters
+
+``email`` - Email of contact
+
+###### Endpoint
+
+POST dev/api/panel/create-deal/{email}
+
+###### Example request
+```sh
+curl -i -X POST \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxxx" \
+   -H "Content-Type:application/json" \
+ 'https://app.engagebay.com/dev/api/panel/dev/api/panel/create-deal/test@engagebay.com'
+```
+#### 
+```javascript
+{
+	"id": 5758313757147136,
+	"name": "sample deal",
+	"name_sort": "sample deal",
+	"amount": 100,
+	"track_id": 5697266736168960,
+	"contact_ids": [5015780936646656],
+	"company_ids": [],
+	"deal_ids": [],
+	"entiy_group_name": "deal",
+	"milestoneLabelName": "New",
+	"milestoneActualName": "New_Actual",
+	"tags": [],
+	"properties": [],
+	"created_time": 1542796719,
+	"probability": 0.1,
+	"owner": {
+		"id": 5676618345349120,
+		"email": "test12@engagebay.com",
+		"name": "tes12"
+	},
+	"subscribers": [{
+		"id": 5015780936646656,
+		"email": "test@engagebay.com",
+		"name": "test"
+	}],
+	"companies": []
+}
+```
+
 ### 4.1 Get the list of tasks based on given filters: 
 - Returns a list of your tasks based on given filters
 ```
@@ -1819,6 +1973,81 @@ curl -i -X PUT \
 	"updated_time": 1542788052
 }
 ```
+### 10.4 Get track by ID:
+
+- Get track by ID.
+
+###### Endpoint
+GET dev/api/panel/tracks/{id}
+
+###### Example request
+```sh
+curl -i -X GET \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxxxxx" \
+ 'https://app.engagebay.com/dev/api/panel/tracks/5676424065187840'
+```
+#### Example JSON response
+
+```javascript
+{
+	"id": 5676424065187840,
+	"name": "Default",
+	"milestones": [{
+		"labelName": "New",
+		"labelActualName": "New_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#e2e0e0",
+		"probability": 0.1
+	}, {
+		"labelName": "Prospect",
+		"labelActualName": "Prospect_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#c5dec3",
+		"probability": 0.2
+	}, {
+		"labelName": "Proposal",
+		"labelActualName": "Proposal_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#c9dde4",
+		"probability": 0.3
+	}, {
+		"labelName": "Won",
+		"labelActualName": "Won_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#a6dca2",
+		"probability": 1.0
+	}, {
+		"labelName": "Lost",
+		"labelActualName": "Lost_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#e4b5b6",
+		"probability": 0.0
+	}],
+	"isDefault": true,
+	"created_time": 1542604315
+}
+```
+### 10.5 Delete track by ID:
+- Delete track by ID.
+
+###### Endpoint
+DELETE dev/api/panel/tracks/{id}
+
+###### Example request
+```sh
+curl -i -X DELETE \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxxxxxxx" \
+ 'https://app.engagebay.com/dev/api/panel/tracks/5676424065187840'
+```
+
+
 
 
 ### 11.1 Get list of owners:
