@@ -40,6 +40,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [7 Delete tags to a contact based on email](#17-delete-tags-to-a-contact-based-on-email-)
 * [8 List tags for a contact](#18-list-tags-for-a-contact-)
 * [9 Add score to a contact using email ID](#19-add-score-to-a-contact-using-email-id-)
+* [10 Search contacts/companies/deals](#110-search-contactscompaniesdeals)
 
 **[Company APIs](#21-creating-a-company)**
 
@@ -575,6 +576,72 @@ curl -i -X POST \
 -d 'email=samson@walt.ltd&score=100' \
 'https://app.engagebay.com/dev/api/panel/subscribers/add-score'
 ```
+
+### 1.10 Search contacts/companies/deals:
+
+- Search using keyword.
+
+###### Required parameters
+``q`` - Search keyword (all contact/company/deal default fields and searchable custom fields will be searched).
+``page_size`` - Number of results to fetch
+``type`` - Should be 'Subscriber' for searching Contacts, 'Company' for Companies and 'Deal' for Deals 
+
+###### Endpoint
+GET dev/api/search?q=searchtext&type=Subscriber
+
+###### Example request
+```sh
+curl -i -X GET \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxx" \
+ 'https://app.engagebay.com/dev/api/search?q=test&type=Subscriber'
+```
+###### Example JSON response
+```javascript
+[{
+	"count": 1,
+	"id": 5604787936559104,
+	"owner_id": 5676618345349120,
+	"name": "test",
+	"firstname": "test",
+	"lastname": "",
+	"fullname": "test ",
+	"name_sort": "test",
+	"email": "test@engagebay.com",
+	"created_time": 1540474374,
+	"updated_time": 1540962133,
+	"status": "CONFIRMED",
+	"sources": [{
+		"type": "DEFAULT",
+		"subscribed_on": 1540474374,
+		"status": "ACTIVE",
+		"custom": 0
+	}],
+	"companyIds": [],
+	"contactIds": [],
+	"properties": [{
+		"name": "name",
+		"value": "test",
+		"field_type": "TEXT",
+		"is_searchable": false,
+		"type": "SYSTEM"
+	}, {
+		"name": "email",
+		"value": "test@engagebay.com",
+		"field_type": "TEXT",
+		"is_searchable": false,
+		"type": "SYSTEM"
+	}],
+	"listIds": [],
+	"entiy_group_name": "subscriber",
+	"tags": [{
+		"tag": "import",
+		"assigned_time": 1540474374
+	}],
+	"score": 20
+}]
+```
+
 
 ### 2.1 Creating a company: 
 - Accepts company JSON as post data along with the credentials of domain User (User name and API Key).
@@ -1760,7 +1827,7 @@ curl -i -X PUT \
 
 ###### Endpoint
 
-GET dev/api/panel/dev/api/api/panel/users
+GET dev/api/panel/users
 
 ###### Example request
 ```sh
