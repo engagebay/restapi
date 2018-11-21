@@ -83,11 +83,11 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 
 **[Tasks](#61-listing-tasks)**
 
-* [1 Get the list of tasks based on given filters](#61-get-the-list-of-tasks-based-on-given-filters-)
-* [2 Get the task based on ID](#62-get-the-task-based-on-id-)
-* [3 Create task](#63-create-task-)
-* [4 Update task](#64-update-task-)
-* [5 Delete a task based on ID](#65-delete-a-task-based-on-id-)
+* [1 Get the list of tasks based on given filters](#61-get-the-list-of-tasks-based-on-given-filters)
+* [2 Get the task based on ID](#62-get-the-task-based-on-id)
+* [3 Create task](#63-create-task)
+* [4 Update task](#64-update-task)
+* [5 Delete a task based on ID](#65-delete-a-task-based-on-id)
 
 
 **[Notes](#71-create-a-note)**
@@ -96,21 +96,21 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 
 **[Forms](#81-listing-forms)**
 
-* [1 List of forms](#81-list-of-forms-)
+* [1 List of forms](#81-list-of-forms)
 * [2 Add contact to a form](#82-add-contact-to-a-form)
 
 
 
-**[Sequences](#91-add-contact-to-a-sequence-)**
+**[Sequences](#91-add-contact-to-a-sequence)**
 
-* [1 Add contact to a sequence](#91-add-contact-to-a-sequence-)
+* [1 Add contact to a sequence](#91-add-contact-to-a-sequence)
 
 
 
 **[Lists](#101-list-of-lists-)**
 
-* [1 List of lists](#101-list-of-lists-)
-* [2 Add contact to list](#102-add-contact-to-list-)
+* [1 List of lists](#101-list-of-lists)
+* [2 Add contact to list](#102-add-contact-to-list)
 
 
 
