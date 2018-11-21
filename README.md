@@ -98,6 +98,10 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [3 Create track](#102-create-track)
 * [4 Update track](#103-update-track)
 
+**[Owners](#111-get-list-of-owners)**
+
+* [1 Get list of owners](#111-get-list-of-owners)
+
 
 
 ### 1.1 Listing contacts: 
@@ -1747,4 +1751,49 @@ curl -i -X PUT \
 	"created_time": 1542786809,
 	"updated_time": 1542788052
 }
+```
+
+
+### 11.1 Get list of owners:
+
+- Get list of all owners.
+
+###### Endpoint
+
+GET dev/api/panel/dev/api/api/panel/users
+
+###### Example request
+```sh
+curl -i -X GET \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxx" \
+ 'https://app.engagebay.com/dev/api/panel/users'
+```
+###### Example JSON response
+```javascript
+[{
+	"id": 5676618345349120,
+	"domain_id": 5641864006860800,
+	"email": "engagebayowner@engagebay.com",
+	"password_decrypted": "",
+	"name": "sahith",
+	"created_time": 1529331672,
+	"updated_time": 1542787667,
+	"is_admin": true,
+	"is_verified": true,
+	"is_owner": true,
+	"job_title": "sales_manager",
+	"role": "vice-president-senior-management",
+	"phone_number": "+91 88888 88886",
+	"language": "en",
+	"time_zone": "Asia/Kolkata",
+	"time_zone_offset": 330,
+	"loggedin_time": 1536128969,
+	"misc_info": "{\"country\":\"India\",\"country_code\":\"IN\",\"city\":\"hyderabad\",\"latitude\":\"78.486671\",\"ip_address\":\"183.83.213.105\",\"region\":\"ap\",\"longitude\":\"17.385044\"}",
+	"is_signup_process_completed": true,
+	"profile_img_url": "https://s3.amazonaws.com/board-uploads/uploads/1531997503373-28279403_116951275800796_612655445084212117_n.jpg",
+	"category": "MARKETING",
+	"signupSource": "DEFAULT",
+	"domainId": 5641864006860800
+}]
 ```
