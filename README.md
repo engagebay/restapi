@@ -11,6 +11,9 @@ API is in active development. Currently it allows you to access:
 - Notes
 - Forms
 - Sequences
+- Events
+- Tracks
+- Owners
 
 ### Authentication
 This is an HTTPS-only API.
@@ -80,6 +83,15 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 
 **[Notes](#81-create-a-note)**
 * [1 Create a note](#81-create-a-note)
+
+
+**[Events](#91-get-list-of-events)**
+
+* [1 Get list of events](#91-get-list-of-events)
+* [2 Get events related to contact](#92-get-events-related-to-contact)
+* [3 Create event](#93-create-event)
+* [4 Update event](#94-update-event)
+
 
 
 ### 1.1 Listing contacts: 
@@ -1406,3 +1418,182 @@ curl -i -X POST \
 }
 ```
 
+### 9.1 Get list of events:
+
+- Fetches the list of events happened in particular time. The start time and end time have to be sent in epoch format as query parameters.
+
+###### Required parameters
+``start_time``  - Start time
+``end_time`` - End time
+``source_type`` - API
+ 
+###### Endpoint
+
+GET dev/api/panel/dev/api/calendar/event/list?start_time=xxxxx&end_time=xxxxx&source_type=API
+
+###### Example request
+```sh
+curl -i -X GET \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxx" \
+ 'https://app.engagebay.com/dev/api/panel/dev/api/calendar/event/list?start_time=1542220200000&end_time=1542824999999&source_type=API'
+```
+###### Example JSON response
+```javascript
+[{
+	"id": 5288460441092096,
+	"owner_id": 5676618345349120,
+	"created_time": 1538996150,
+	"start_time": 1538998200000,
+	"end_time": 1539001799999,
+	"user_data": "{\"firstname\":\"sample\",\"lastname\":\"contact\",\"email\":\"samplecontact@gmail.com\"}",
+	"color": "#46d6db",
+	"name": "60 min",
+	"user_time_zone": "Asia/Calcutta",
+	"subscriber_id": 4991310645690368,
+	"source_type": "WEB",
+	"contact_ids": [4991310645690368],
+	"company_ids": [],
+	"deal_ids": [],
+	"event_ids": [],
+	"subscribers": [],
+	"companies": [],
+	"deals": [],
+	"owner": {
+		"id": 5676618345349120,
+		"email": "samplecontact@gmail.com",
+		"name": "sample"
+	},
+	"entiy_group_name": "event"
+}]
+```
+
+### 9.2 Get events related to contact:
+
+- Retrieves the events related to contact sorted by date.
+
+###### Required parameters
+``contact_id``  - Contact ID
+ 
+###### Endpoint
+
+POST dev/api/panel/dev/api/calendar/event/contact/{contact_id}/events
+
+###### Example request
+```sh
+curl -i -X POST \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxxxxx" \
+   -H "Content-Type:application/json" \
+   -d \
+   '{
+   }' \
+   'https://app.engagebay.com/dev/api/calendar/event/contact/5134228568145920/events'
+```
+###### Example JSON response
+```javascript
+[{
+	"id": 6596436544192512,
+	"owner_id": 5676618345349120,
+	"created_time": 1542265607,
+	"start_time": 1542267000000,
+	"end_time": 1542268799999,
+	"user_data": "{\"firstname\":\"contactfirst\",\"lastname\":\"lastname\",\"email\":\"samplecontact@engagebay.com\"}",
+	"color": "#7ae7bf",
+	"name": "30 Minute Meeting",
+	"user_time_zone": "Asia/Calcutta",
+	"subscriber_id": 5134228568145920,
+	"source_type": "WEB",
+	"contact_ids": [5134228568145920],
+	"company_ids": [],
+	"deal_ids": [],
+	"event_ids": [],
+	"subscribers": [],
+	"companies": [],
+	"deals": [],
+	"entiy_group_name": "event"
+}]
+```
+
+### 9.3 Create event:
+
+- Creates an event.
+
+###### Required parameters
+``contact_id``  - Contact ID
+ 
+###### Endpoint
+
+POST dev/api/calendar/event/normal
+
+###### Example request
+```sh
+curl -i -X POST \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxxxx" \
+   -H "Content-Type:application/json" \
+   -d \
+'{
+  "name" : "sampleEvent",
+  "start_time":"1542868560",
+  "end_time":"1542868560",
+  "source_type":"API",
+  "owner_id":"5676618345349120"
+}' \
+ 'https://app.engagebay.com/dev/api/calendar/event/normal'
+```
+###### Example JSON response
+```javascript
+{
+	"id": 5270109991993344,
+	"owner_id": 5676618345349120,
+	"created_time": 1542782746,
+	"start_time": 1542868560000,
+	"end_time": 1542868560000,
+	"name": "sampleEvent",
+	"source_type": "API",
+	"contact_ids": [],
+	"entiy_group_name": "event"
+}
+```
+
+### 9.4 Update event:
+
+- Updates an event.
+
+###### Endpoint
+
+PUT dev/api/panel/dev/api/calendar/event/normal
+
+###### Example request
+```sh
+curl -i -X PUT \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxx" \
+   -H "Content-Type:application/json" \
+   -d \
+'{
+  "id" :"5270109991993344",
+  "name" : "sampleEvent",
+  "start_time":"1542868560",
+  "end_time":"1542868560",
+  "source_type":"API",
+  "owner_id":"5676618345349120",
+  "created_time":"1542782746"
+}' \
+ 'https://app.engagebay.com/dev/api/calendar/event/normal'
+```
+###### Example JSON response
+```javascript
+{
+	"id": 5270109991993344,
+	"owner_id": 5676618345349120,
+	"created_time": 1542782746,
+	"start_time": 1542868560000,
+	"end_time": 1542868560000,
+	"name": "sampleEventtest",
+	"source_type": "API",
+	"contact_ids": [],
+	"entiy_group_name": "event"
+}
+```
