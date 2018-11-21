@@ -3,16 +3,18 @@ EngageBay REST API
 [EngageBay](https://www.engagebay.com/) is a simple, affordable all-in-one marketing and sales software built for growing businesses. Get the power of an enterprise software at a fraction of the cost.
 
 ### Overview
+
 API is in active development. Currently it allows you to access:
+
 - Contacts
 - Companies
 - Deals
+- Tracks
+- Events
 - Tasks
 - Notes
 - Forms
 - Sequences
-- Events
-- Tracks
 - Owners
 
 ### Authentication
@@ -40,7 +42,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [7 Delete tags to a contact based on email](#17-delete-tags-to-a-contact-based-on-email-)
 * [8 List tags for a contact](#18-list-tags-for-a-contact-)
 * [9 Add score to a contact using email ID](#19-add-score-to-a-contact-using-email-id-)
-* [10 Search contacts/companies/deals](#110-search-contactscompaniesdeals)
+* [10 Search contacts](#110-search-contacts)
 * [11 Delete tags value by ID](#111-delete-tags-value-by-id)
 * [12 Change contact owner](#112-change-contact-owner)
 
@@ -51,6 +53,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [3 Get list of companies](#23-get-list-of-companies-)
 * [4 Get company by id](#24-get-company-by-id-)
 * [5 Delete single company](#25-delete-single-company-)
+* [6 Search companies](#26-search-companies)
 
 **[Deals](#31-listing-deals)**
 
@@ -59,51 +62,57 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [3 Create deal](#33-create-a-deal)
 * [4 Delete deal](#34-delete-deal-)
 * [5 Create deal to a contact using email ID](#35-create-deal-to-a-contact-using-email-id)
+* [6 Search deals](#36-search-deals)
 
-  
+**[Tracks](#41-get-list-of-tracks)**
 
-**[Tasks](#41-listing-tasks)**
-
-* [1 Get the list of tasks based on given filters](#41-get-the-list-of-tasks-based-on-given-filters-)
-* [2 Get the task based on ID](#42-get-the-task-based-on-id-)
-* [3 Create task](#43-create-task-)
-* [4 Update task](#44-update-task-)
-* [5 Delete a task based on ID](#45-delete-a-task-based-on-id-)
-
-
-**[Forms](#51-listing-forms)**
-
-* [1 List of forms](#51-list-of-forms-)
-* [2 Add contact to a form](#52-add-contact-to-a-form)
-
-**[Sequences](#61-add-contact-to-a-sequence-)**
-
-* [1 Add contact to a sequence](#61-add-contact-to-a-sequence-)
-
-**[Lists](#71-list-of-lists-)**
-
-* [1 List of lists](#71-list-of-lists-)
-* [2 Add contact to list](#72-add-contact-to-list-)
+* [1 Get all the tracks](#41-get-all-the-tracks)
+* [3 Create track](#42-create-track)
+* [4 Update track](#43-update-track)
+* [5 Get track by ID](#44-get-track-by-id)
+* [6 Delete track by ID](#45-delete-track-by-id)
 
 
-**[Notes](#81-create-a-note)**
-* [1 Create a note](#81-create-a-note)
+**[Events](#51-get-list-of-events)**
+
+* [1 Get list of events](#51-get-list-of-events)
+* [2 Get events related to contact](#52-get-events-related-to-contact)
+* [3 Create event](#53-create-event)
+* [4 Update event](#54-update-event)
 
 
-**[Events](#91-get-list-of-events)**
+**[Tasks](#61-listing-tasks)**
 
-* [1 Get list of events](#91-get-list-of-events)
-* [2 Get events related to contact](#92-get-events-related-to-contact)
-* [3 Create event](#93-create-event)
-* [4 Update event](#94-update-event)
+* [1 Get the list of tasks based on given filters](#61-get-the-list-of-tasks-based-on-given-filters-)
+* [2 Get the task based on ID](#62-get-the-task-based-on-id-)
+* [3 Create task](#63-create-task-)
+* [4 Update task](#64-update-task-)
+* [5 Delete a task based on ID](#65-delete-a-task-based-on-id-)
 
-**[Tracks](#101-get-list-of-tracks)**
 
-* [1 Get all the tracks](#101-get-all-the-tracks)
-* [3 Create track](#102-create-track)
-* [4 Update track](#103-update-track)
-* [5 Get track by ID](#104-get-track-by-id)
-* [6 Delete track by ID](#105-delete-track-by-id)
+**[Notes](#71-create-a-note)**
+* [1 Create a note](#71-create-a-note)
+
+
+**[Forms](#81-listing-forms)**
+
+* [1 List of forms](#81-list-of-forms-)
+* [2 Add contact to a form](#82-add-contact-to-a-form)
+
+
+
+**[Sequences](#91-add-contact-to-a-sequence-)**
+
+* [1 Add contact to a sequence](#91-add-contact-to-a-sequence-)
+
+
+
+**[Lists](#101-list-of-lists-)**
+
+* [1 List of lists](#101-list-of-lists-)
+* [2 Add contact to list](#102-add-contact-to-list-)
+
+
 
 **[Owners](#111-get-list-of-owners)**
 
@@ -583,14 +592,14 @@ curl -i -X POST \
 'https://app.engagebay.com/dev/api/panel/subscribers/add-score'
 ```
 
-### 1.10 Search contacts/companies/deals:
+### 1.10 Search contacts:
 
 - Search using keyword.
 
 ###### Required parameters
-``q`` - Search keyword (all contact/company/deal default fields and searchable custom fields will be searched).
+``q`` - Search keyword (all contact default fields and searchable custom fields will be searched).
 ``page_size`` - Number of results to fetch
-``type`` - Should be 'Subscriber' for searching Contacts, 'Company' for Companies and 'Deal' for Deals 
+``type`` - Should be 'Subscriber' for searching Contacts
 
 ###### Endpoint
 GET dev/api/search?q=searchtext&type=Subscriber
@@ -1067,6 +1076,64 @@ curl -i -X DELETE  \
 'https://app.engagebay.com/dev/api/panel/companies/{id}' 
 ```
 
+### 2.6 Search companies:
+
+- Search using keyword.
+
+###### Required parameters
+``q`` - Search keyword (all contact default fields and searchable custom fields will be searched).
+``page_size`` - Number of results to fetch
+``type`` - Should be 'Company' for searching companies
+
+###### Endpoint
+GET dev/api/search?q=searchtext&type=Company
+
+###### Example request
+```sh
+curl -i -X GET \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxx" \
+ 'https://app.engagebay.com/dev/api/search?q=samplecompany&type=Company'
+```
+###### Example JSON response
+```javascript
+[{
+	"count": 1,
+	"id": 5737773445152768,
+	"name": "samplecompany.in",
+	"name_sort": "samplecompany.in",
+	"url": "samplecompany.in",
+	"created_time": 1536909642,
+	"updated_time": 1542103938,
+	"properties": [{
+		"name": "url",
+		"value": "samplecompany.in",
+		"field_type": "TEXT",
+		"is_searchable": false,
+		"type": "SYSTEM"
+	}, {
+		"name": "name",
+		"value": "samplecompany.in",
+		"field_type": "TEXT",
+		"is_searchable": false,
+		"type": "SYSTEM"
+	}, {
+		"name": "email",
+		"value": "",
+		"field_type": "TEXT",
+		"is_searchable": false,
+		"type": "SYSTEM"
+	}],
+	"tags": [],
+	"contactIds": [],
+	"entiy_group_name": "company",
+	"owner_id": 5676618345349120,
+	"importedEntity": false,
+	"forceCreate": false,
+	"companyIds": []
+}]
+```
+
 ### 3.1 Listing deals : 
 Returns list of all "Deals" in the domain in JSON format, which are ordered by created time. Paging can be applied using the page_size and cursor query parameters. Count of the deals will be in the first deal and the cursor for the next page will be in the last deal of the list. If there is no cursor, it means that it is the end of the list.
 
@@ -1243,8 +1310,466 @@ curl -i -X POST \
 	"companies": []
 }
 ```
+### 3.6 Search deals:
 
-### 4.1 Get the list of tasks based on given filters: 
+- Search using keyword.
+
+###### Required parameters
+``q`` - Search keyword (all contact default fields and searchable custom fields will be searched).
+``page_size`` - Number of results to fetch
+``type`` - Should be 'Deal' for searching deals
+
+###### Endpoint
+GET dev/api/search?q=sampledeal&type=Deal
+
+###### Example request
+```sh
+curl -i -X GET \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxx" \
+ 'https://app.engagebay.com/dev/api/search?q=sampledeal&type=Deal'
+```
+###### Example JSON response
+```javascript
+[{
+	"count": 11,
+	"id": 5883207295696896,
+	"name": "test deal",
+	"name_sort": "test deal",
+	"amount": 52222,
+	"closed_date": 1542883560,
+	"track_id": 5697266736168960,
+	"contact_ids": [5386679414161408],
+	"company_ids": [],
+	"deal_ids": [],
+	"entiy_group_name": "deal",
+	"milestoneLabelName": "New",
+	"milestoneActualName": "New_Actual",
+	"tags": [{
+		"tag": "hi",
+		"assigned_time": 1541766966
+	}],
+	"properties": [{
+		"name": "Mobile",
+		"value": "",
+		"field_type": "NUMBER",
+		"is_searchable": true,
+		"type": "CUSTOM"
+	}, {
+		"name": "comments",
+		"value": "dfb fgge rhigihrhe bgjer",
+		"field_type": "TEXT",
+		"is_searchable": true,
+		"type": "CUSTOM"
+	}],
+	"owner_id": 5676618345349120,
+	"created_time": 1541674023,
+	"probability": 0.1,
+	"updated_time": 1542697277,
+}]
+```
+
+
+### 4.1 Get all the tracks:
+
+- Gets all the tracks.
+
+###### Endpoint
+
+GET dev/api/panel/dev/api/panel/tracks
+
+###### Example request
+```sh
+curl -i -X GET \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxxxxxxx" \
+ 'https://app.engagebay.com/dev/api/panel/tracks'
+```
+###### Example JSON response
+```javascript
+[{
+	"id": 5697266736168960,
+	"name": "Default",
+	"milestones": [{
+		"labelName": "New",
+		"labelActualName": "New_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#e2e0e0",
+		"probability": 0.1
+	}, {
+		"labelName": "Prospect",
+		"labelActualName": "Prospect_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#c5dec3",
+		"probability": 0.2
+	}, {
+		"labelName": "Proposal",
+		"labelActualName": "Proposal_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#c9dde4",
+		"probability": 0.3
+	}, {
+		"labelName": "Won",
+		"labelActualName": "Won_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#a6dca2",
+		"probability": 1.0
+	}, {
+		"labelName": "Lost",
+		"labelActualName": "Lost_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#e4b5b6",
+		"probability": 0.0
+	}],
+	"isDefault": true,
+	"created_time": 1531995775,
+	"updated_time": 1540792886
+}]
+```
+
+
+### 4.2 Create track:
+
+- Creates a track.
+
+###### Endpoint
+
+POST dev/api/panel/dev/api/panel/tracks/track
+
+###### Example request
+```sh
+curl -i -X POST \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxxxxx" \
+   -H "Content-Type:application/json" \
+   -d \
+'{
+  "name" : "sampletrack",
+  "milestones" : [{"labelName": "New", "labelActualName": "New_Actual", "probability": "0.1", "color": "#e2e0e0"}]
+}' \
+ 'https://app.engagebay.com/dev/api/panel/tracks/track'
+```
+###### Example JSON response
+```javascript
+[{
+	"id": 5697266736168960,
+	"name": "sampletrack",
+	"milestones": [{
+		"labelName": "New",
+		"labelActualName": "New_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#e2e0e0",
+		"probability": 0.1
+	}],
+	"isDefault": false,
+    "created_time": 1542786809
+}]
+```
+
+### 4.3 Update track:
+
+- Updates a track.
+
+###### Endpoint
+
+PUT dev/api/panel/dev/api/panel/tracks/track
+
+###### Example request
+```sh
+curl -i -X PUT \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxxx" \
+   -H "Content-Type:application/json" \
+   -d \
+'{
+  "id": "5729175541383168",
+  "name" : "sample track update",
+  "milestones" : [{"labelName": "New", "labelActualName": "New_Actual", "probability": "0.1", "color": "#e2e0e0"}],
+  "created_time":"1542786809"
+}' \
+ 'https://app.engagebay.com/dev/api/panel/tracks/track'
+```
+###### Example JSON response
+```javascript
+{
+	"id": 5729175541383168,
+	"name": "sample track update",
+	"milestones": [{
+		"labelName": "New",
+		"labelActualName": "New_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#e2e0e0",
+		"probability": 0.1
+	}],
+	"isDefault": false,
+	"created_time": 1542786809,
+	"updated_time": 1542788052
+}
+```
+### 4.4 Get track by ID:
+
+- Get track by ID.
+
+###### Endpoint
+GET dev/api/panel/tracks/{id}
+
+###### Example request
+```sh
+curl -i -X GET \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxxxxx" \
+ 'https://app.engagebay.com/dev/api/panel/tracks/5676424065187840'
+```
+#### Example JSON response
+
+```javascript
+{
+	"id": 5676424065187840,
+	"name": "Default",
+	"milestones": [{
+		"labelName": "New",
+		"labelActualName": "New_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#e2e0e0",
+		"probability": 0.1
+	}, {
+		"labelName": "Prospect",
+		"labelActualName": "Prospect_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#c5dec3",
+		"probability": 0.2
+	}, {
+		"labelName": "Proposal",
+		"labelActualName": "Proposal_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#c9dde4",
+		"probability": 0.3
+	}, {
+		"labelName": "Won",
+		"labelActualName": "Won_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#a6dca2",
+		"probability": 1.0
+	}, {
+		"labelName": "Lost",
+		"labelActualName": "Lost_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#e4b5b6",
+		"probability": 0.0
+	}],
+	"isDefault": true,
+	"created_time": 1542604315
+}
+```
+### 4.5 Delete track by ID:
+- Delete track by ID.
+
+###### Endpoint
+DELETE dev/api/panel/tracks/{id}
+
+###### Example request
+```sh
+curl -i -X DELETE \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxxxxxxx" \
+ 'https://app.engagebay.com/dev/api/panel/tracks/5676424065187840'
+```
+
+
+### 5.1 Get list of events:
+
+- Fetches the list of events happened in particular time. The start time and end time have to be sent in epoch format as query parameters.
+
+###### Required parameters
+``start_time``  - Start time
+``end_time`` - End time
+``source_type`` - API
+ 
+###### Endpoint
+
+GET dev/api/panel/dev/api/calendar/event/list?start_time=xxxxx&end_time=xxxxx&source_type=API
+
+###### Example request
+```sh
+curl -i -X GET \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxx" \
+ 'https://app.engagebay.com/dev/api/panel/dev/api/calendar/event/list?start_time=1542220200000&end_time=1542824999999&source_type=API'
+```
+###### Example JSON response
+```javascript
+[{
+	"id": 5288460441092096,
+	"owner_id": 5676618345349120,
+	"created_time": 1538996150,
+	"start_time": 1538998200000,
+	"end_time": 1539001799999,
+	"user_data": "{\"firstname\":\"sample\",\"lastname\":\"contact\",\"email\":\"samplecontact@gmail.com\"}",
+	"color": "#46d6db",
+	"name": "60 min",
+	"user_time_zone": "Asia/Calcutta",
+	"subscriber_id": 4991310645690368,
+	"source_type": "WEB",
+	"contact_ids": [4991310645690368],
+	"company_ids": [],
+	"deal_ids": [],
+	"event_ids": [],
+	"subscribers": [],
+	"companies": [],
+	"deals": [],
+	"owner": {
+		"id": 5676618345349120,
+		"email": "samplecontact@gmail.com",
+		"name": "sample"
+	},
+	"entiy_group_name": "event"
+}]
+```
+
+### 5.2 Get events related to contact:
+
+- Retrieves the events related to contact sorted by date.
+
+###### Required parameters
+``contact_id``  - Contact ID
+ 
+###### Endpoint
+
+POST dev/api/panel/dev/api/calendar/event/contact/{contact_id}/events
+
+###### Example request
+```sh
+curl -i -X POST \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxxxxx" \
+   -H "Content-Type:application/json" \
+   -d \
+   '{
+   }' \
+   'https://app.engagebay.com/dev/api/calendar/event/contact/5134228568145920/events'
+```
+###### Example JSON response
+```javascript
+[{
+	"id": 6596436544192512,
+	"owner_id": 5676618345349120,
+	"created_time": 1542265607,
+	"start_time": 1542267000000,
+	"end_time": 1542268799999,
+	"user_data": "{\"firstname\":\"contactfirst\",\"lastname\":\"lastname\",\"email\":\"samplecontact@engagebay.com\"}",
+	"color": "#7ae7bf",
+	"name": "30 Minute Meeting",
+	"user_time_zone": "Asia/Calcutta",
+	"subscriber_id": 5134228568145920,
+	"source_type": "WEB",
+	"contact_ids": [5134228568145920],
+	"company_ids": [],
+	"deal_ids": [],
+	"event_ids": [],
+	"subscribers": [],
+	"companies": [],
+	"deals": [],
+	"entiy_group_name": "event"
+}]
+```
+
+### 5.3 Create event:
+
+- Creates an event.
+
+###### Required parameters
+``contact_id``  - Contact ID
+ 
+###### Endpoint
+
+POST dev/api/calendar/event/normal
+
+###### Example request
+```sh
+curl -i -X POST \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxxxx" \
+   -H "Content-Type:application/json" \
+   -d \
+'{
+  "name" : "sampleEvent",
+  "start_time":"1542868560",
+  "end_time":"1542868560",
+  "source_type":"API",
+  "owner_id":"5676618345349120"
+}' \
+ 'https://app.engagebay.com/dev/api/calendar/event/normal'
+```
+###### Example JSON response
+```javascript
+{
+	"id": 5270109991993344,
+	"owner_id": 5676618345349120,
+	"created_time": 1542782746,
+	"start_time": 1542868560000,
+	"end_time": 1542868560000,
+	"name": "sampleEvent",
+	"source_type": "API",
+	"contact_ids": [],
+	"entiy_group_name": "event"
+}
+```
+
+### 5.4 Update event:
+
+- Updates an event.
+
+###### Endpoint
+
+PUT dev/api/panel/dev/api/calendar/event/normal
+
+###### Example request
+```sh
+curl -i -X PUT \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxx" \
+   -H "Content-Type:application/json" \
+   -d \
+'{
+  "id" :"5270109991993344",
+  "name" : "sampleEvent",
+  "start_time":"1542868560",
+  "end_time":"1542868560",
+  "source_type":"API",
+  "owner_id":"5676618345349120",
+  "created_time":"1542782746"
+}' \
+ 'https://app.engagebay.com/dev/api/calendar/event/normal'
+```
+###### Example JSON response
+```javascript
+{
+	"id": 5270109991993344,
+	"owner_id": 5676618345349120,
+	"created_time": 1542782746,
+	"start_time": 1542868560000,
+	"end_time": 1542868560000,
+	"name": "sampleEventtest",
+	"source_type": "API",
+	"contact_ids": [],
+	"entiy_group_name": "event"
+}
+```
+
+
+### 6.1 Get the list of tasks based on given filters: 
 - Returns a list of your tasks based on given filters
 ```
 - Retrives the list of tasks based on the given filters. The filters available are ‘type’,‘status’, and ‘page_size’. These should be sent as a query parameters in the URL.
@@ -1295,7 +1820,7 @@ curl -i -X POST \
 	}
 }]
 ```
-### 4.2 Get the task based on ID: 
+### 6.2 Get the task based on ID: 
 - Gets the task with the given ID.
 
 ###### Endpoint
@@ -1368,7 +1893,7 @@ curl https://app.engagebay.com/dev/api/panel/tasks/1234 \
 	}
 }
 ```
-### 4.3 Create a task: 
+### 6.3 Create a task: 
 - Creates a task 
 
 ###### Endpoint
@@ -1429,7 +1954,7 @@ curl -i -X POST \
 }
 ```
 
-### 4.4 Update task: 
+### 6.4 Update task: 
 - Update a task based on its ID
 
 ###### Endpoint
@@ -1488,7 +2013,8 @@ curl -i -X PUT \
 }' \
  'https://app.engagebay.com/dev/api/panel/tasks'
 ```
-### 4.5 Delete a task based on ID: 
+### 6.5 Delete a task based on ID: 
+
 - Delete a task based on its ID
 
 ###### Endpoint
@@ -1501,121 +2027,8 @@ curl -i -X DELETE \
    -H "Accept:application/json" \
  'https://app.engagebay.com/dev/api/panel/tasks/5147920286351360'
 ```
-### 5.1 List of forms:
-- Get list of forms
 
-###### Endpoint
-GET dev/api/panel/forms
-
-
-###### Example request
-```sh
-curl -i -X GET \
-   -H "Authorization:xxxxxxxxxxx" \
-   -H "Accept:application/json" \
- 'https://app.engagebay.com/dev/api/panel/forms'
-```
-
-###### Example JSON response
-```javascript
-[{
-"id": 5664313465372672,
-"name": "\n\t\t\t\t\t Form-25-Jun-18-07:55:00 \n\t\t\t\t",
-"alias_name": "\n\t\t\t\t\t form-25-jun-18-07:55:00 \n\t\t\t\t",
-"owner_id": 5636470266134528,
-"created_time": 1529936702,
-"updated_time": 1529936706,
-"formHtml": "\n<form class=\"form form-style-form1 \" onsubmit=\"window.parent.EhForm.submit_form(event,this)\" style=\"\n \n background-color:#00afe9;max-width:550px;background-position:0% 0%\">\n\n<fieldset>\n\n<!-- Form Name -->\n<h2 class=\"form-title\" style=\"\"><p>Start Today for Free</p></h2>\n<div class=\"form-description\"><p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p></div>\n\n\n\n\n\n\n\n<div class=\"form-group\" style=\"color:#333;\">\n \n <div class=\"controls\">\n <input id=\"Email-email\" title=\"\" name=\"email\" type=\"email\" style=\"color:#333;background-color:#fff;\" placeholder=\"Enter your email id\" class=\"form-control\" required=\"true\">\n \n </div>\n</div>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"form-group\">\n <div>\n <button type=\"submit\" class=\"submit-btn\" style=\"color:#ffffff;background-color:#dc542a;\n \">Get Started</button>\n <br><span id=\"error-msg\"></span>\n </div>\n</div>\n\n</fieldset>\n\n<div class=\"error-success-container\"></div>\n\n<div class=\"form-footer-message\"><p>Incididunt ut labore et dolore magna</p></div>\n\n\n <div class=\"branding-footer\">Powered By <a href=\"https://ehhub.org/openurl?lid=5749921122615296&nid=5726607939469312&c=5700641305395200&b=5677026937667584\" rel=\"nofollow\" target=\"_blank\">EngageBay</a> </div>\n\n\n</form>\n",
-"form_attributes": "{\"title_image\":\"\",\"background_image\":\"\",\"background_image_alignment\":\"0% 0%\",\"border_image\":\"\",\"form_background_color\":\"#00afe9\",\"form_size\":\"550px\",\"submit_button_color\":\"#dc542a\",\"submit_button_text_color\":\"#ffffff\",\"submit_button_text\":\"Get Started\",\"redirect_on_subscribe\":\"false\",\"success_message\":\"Success! Now check your email to confirm your submission.\",\"redirect_url\":\"\",\"show_title_image\":false,\"show_background_image\":false,\"show_border_image\":false,\"title\":\"<p>Start Today for Free</p>\",\"description\":\"<p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>\",\"footer_text\":\"<p>Incididunt ut labore et dolore magna</p>\",\"form_fields\":[{\"type\":\"email\",\"name\":\"email\",\"title\":\"\",\"pattern\":\"\",\"label\":\"Email\",\"placeholder\":\"Enter your email id\",\"required\":\"true\",\"help_text\":\"\"}]}",
-"enable_whitelabel": false,
-"form_style": "form1",
-"version": "V2",
-"incentiveEmail":{"send_incentive": false, "incentive_email_subject": "Important: Confirm your subscription", "incentive_email_message_one": "Thanks for signing up. Click the link below to confirm your subscription and you'll be on your way.",…},
-"thumbnail": "https://s3.amazonaws.com/board-uploads/uploads/1529936704700-screenshot.png",
-"formStats":{"id": 5734792670740480, "formId": 5664313465372672, "totalVisitors": 0, "uniqueVisitors": 0, "totalContacts": 0,…}
-}
-]
-```
-### 5.2 Add contact to a form:
-
-- Add contact to a form
-
-###### Endpoint
-POST dev/api/panel/subscribers/add-subscriber-to-form/{subscriber-email}/{formId}
-
-###### Example request
-```sh
-curl https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-form/sample@engagebay.com/1234  \
-   -H "Authorization:xxxxxxxxxxx" \
-   -H "Accept:application/json" \
-   -H Content-Type: application/json; charset=utf-8" \
-   -v -u sample@engagebay.com:123456 
-```
-
-### 6.1 Add contact to a sequence:
-
-- Add contact to a sequence
-
-###### Endpoint
-POST dev/api/panel/subscribers/add-subscriber-to-sequence/{subscriber-email}{sequenceId}
-
-###### Example request
-```sh
-curl https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-sequence/sample@engagebay.com/1234  \
-   -H "Authorization:xxxxxxxxxxx" \
-   -H "Accept:application/json" \
-   -H Content-Type: application/json; charset=utf-8" \
-   -v -u sample@engagebay.com:123456 
-```
-
-### 7.1 List of lists:
-- List of lists
-
-###### Endpoint
-GET dev/api/panel/contactlist
-
-###### Example request
-```sh
-curl -i -X GET \
-   -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
-   -H "Accept:application/json" \
- 'https://app.engagebay.com/dev/api/panel/contactlist'
-```
-###### Example JSON response
-```javascript
-[{
-    "rules":[],
-    "or_rules":[],
-    "id": 5668574207148032,
-    "owner_id": 5154169597984768,
-    "name": "Default List",
-    "created_time": 1527152195,
-    "updated_time": 1527152195,
-    "owner":{
-    "id": 5154169597984768,
-    "email": "sample@engagebay.com",
-    "name": "engagebay"
-    }
-}]
-```
-
-### 7.2 Add contact to list:
-
-- Add contact to list based on list id
- 
-###### Endpoint
-POST dev/api/panel/contactlist/add-subscriber/{subscriber-email}/{listId}
-
-###### Example request
-```sh
-curl -i -X POST \
-   -H "Authorization:xxxxxxx" \
-   -H "Accept:application/json" \
-   -d "{}" \
- 'https://app.engagebay.com/dev/api/panel/contactlist/add-subscriber/sample@engagebay.com/12356'
-```
-
-### 8.1 Create a note:
+### 7.1 Create a note:
 
 - Add note to contacts,companies or deals
 
@@ -1650,405 +2063,119 @@ curl -i -X POST \
 }
 ```
 
-### 9.1 Get list of events:
+### 8.1 List of forms:
+- Get list of forms
 
-- Fetches the list of events happened in particular time. The start time and end time have to be sent in epoch format as query parameters.
-
-###### Required parameters
-``start_time``  - Start time
-``end_time`` - End time
-``source_type`` - API
- 
 ###### Endpoint
+GET dev/api/panel/forms
 
-GET dev/api/panel/dev/api/calendar/event/list?start_time=xxxxx&end_time=xxxxx&source_type=API
 
 ###### Example request
 ```sh
 curl -i -X GET \
+   -H "Authorization:xxxxxxxxxxx" \
    -H "Accept:application/json" \
+ 'https://app.engagebay.com/dev/api/panel/forms'
+```
+
+###### Example JSON response
+```javascript
+[{
+"id": 5664313465372672,
+"name": "\n\t\t\t\t\t Form-25-Jun-18-07:55:00 \n\t\t\t\t",
+"alias_name": "\n\t\t\t\t\t form-25-jun-18-07:55:00 \n\t\t\t\t",
+"owner_id": 5636470266134528,
+"created_time": 1529936702,
+"updated_time": 1529936706,
+"formHtml": "\n<form class=\"form form-style-form1 \" onsubmit=\"window.parent.EhForm.submit_form(event,this)\" style=\"\n \n background-color:#00afe9;max-width:550px;background-position:0% 0%\">\n\n<fieldset>\n\n<!-- Form Name -->\n<h2 class=\"form-title\" style=\"\"><p>Start Today for Free</p></h2>\n<div class=\"form-description\"><p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p></div>\n\n\n\n\n\n\n\n<div class=\"form-group\" style=\"color:#333;\">\n \n <div class=\"controls\">\n <input id=\"Email-email\" title=\"\" name=\"email\" type=\"email\" style=\"color:#333;background-color:#fff;\" placeholder=\"Enter your email id\" class=\"form-control\" required=\"true\">\n \n </div>\n</div>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"form-group\">\n <div>\n <button type=\"submit\" class=\"submit-btn\" style=\"color:#ffffff;background-color:#dc542a;\n \">Get Started</button>\n <br><span id=\"error-msg\"></span>\n </div>\n</div>\n\n</fieldset>\n\n<div class=\"error-success-container\"></div>\n\n<div class=\"form-footer-message\"><p>Incididunt ut labore et dolore magna</p></div>\n\n\n <div class=\"branding-footer\">Powered By <a href=\"https://ehhub.org/openurl?lid=5749921122615296&nid=5726607939469312&c=5700641305395200&b=5677026937667584\" rel=\"nofollow\" target=\"_blank\">EngageBay</a> </div>\n\n\n</form>\n",
+"form_attributes": "{\"title_image\":\"\",\"background_image\":\"\",\"background_image_alignment\":\"0% 0%\",\"border_image\":\"\",\"form_background_color\":\"#00afe9\",\"form_size\":\"550px\",\"submit_button_color\":\"#dc542a\",\"submit_button_text_color\":\"#ffffff\",\"submit_button_text\":\"Get Started\",\"redirect_on_subscribe\":\"false\",\"success_message\":\"Success! Now check your email to confirm your submission.\",\"redirect_url\":\"\",\"show_title_image\":false,\"show_background_image\":false,\"show_border_image\":false,\"title\":\"<p>Start Today for Free</p>\",\"description\":\"<p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>\",\"footer_text\":\"<p>Incididunt ut labore et dolore magna</p>\",\"form_fields\":[{\"type\":\"email\",\"name\":\"email\",\"title\":\"\",\"pattern\":\"\",\"label\":\"Email\",\"placeholder\":\"Enter your email id\",\"required\":\"true\",\"help_text\":\"\"}]}",
+"enable_whitelabel": false,
+"form_style": "form1",
+"version": "V2",
+"incentiveEmail":{"send_incentive": false, "incentive_email_subject": "Important: Confirm your subscription", "incentive_email_message_one": "Thanks for signing up. Click the link below to confirm your subscription and you'll be on your way.",…},
+"thumbnail": "https://s3.amazonaws.com/board-uploads/uploads/1529936704700-screenshot.png",
+"formStats":{"id": 5734792670740480, "formId": 5664313465372672, "totalVisitors": 0, "uniqueVisitors": 0, "totalContacts": 0,…}
+}
+]
+```
+### 8.2 Add contact to a form:
+
+- Add contact to a form
+
+###### Endpoint
+POST dev/api/panel/subscribers/add-subscriber-to-form/{subscriber-email}/{formId}
+
+###### Example request
+```sh
+curl https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-form/sample@engagebay.com/1234  \
+   -H "Authorization:xxxxxxxxxxx" \
+   -H "Accept:application/json" \
+   -H Content-Type: application/json; charset=utf-8" \
+   -v -u sample@engagebay.com:123456 
+```
+
+### 9.1 Add contact to a sequence:
+
+- Add contact to a sequence
+
+###### Endpoint
+POST dev/api/panel/subscribers/add-subscriber-to-sequence/{subscriber-email}{sequenceId}
+
+###### Example request
+```sh
+curl https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-sequence/sample@engagebay.com/1234  \
+   -H "Authorization:xxxxxxxxxxx" \
+   -H "Accept:application/json" \
+   -H Content-Type: application/json; charset=utf-8" \
+   -v -u sample@engagebay.com:123456 
+```
+
+### 10.1 List of lists:
+- List of lists
+
+###### Endpoint
+GET dev/api/panel/contactlist
+
+###### Example request
+```sh
+curl -i -X GET \
+   -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
+   -H "Accept:application/json" \
+ 'https://app.engagebay.com/dev/api/panel/contactlist'
+```
+###### Example JSON response
+```javascript
+[{
+    "rules":[],
+    "or_rules":[],
+    "id": 5668574207148032,
+    "owner_id": 5154169597984768,
+    "name": "Default List",
+    "created_time": 1527152195,
+    "updated_time": 1527152195,
+    "owner":{
+    "id": 5154169597984768,
+    "email": "sample@engagebay.com",
+    "name": "engagebay"
+    }
+}]
+```
+
+### 10.2 Add contact to list:
+
+- Add contact to list based on list id
+ 
+###### Endpoint
+POST dev/api/panel/contactlist/add-subscriber/{subscriber-email}/{listId}
+
+###### Example request
+```sh
+curl -i -X POST \
    -H "Authorization:xxxxxxx" \
- 'https://app.engagebay.com/dev/api/panel/dev/api/calendar/event/list?start_time=1542220200000&end_time=1542824999999&source_type=API'
-```
-###### Example JSON response
-```javascript
-[{
-	"id": 5288460441092096,
-	"owner_id": 5676618345349120,
-	"created_time": 1538996150,
-	"start_time": 1538998200000,
-	"end_time": 1539001799999,
-	"user_data": "{\"firstname\":\"sample\",\"lastname\":\"contact\",\"email\":\"samplecontact@gmail.com\"}",
-	"color": "#46d6db",
-	"name": "60 min",
-	"user_time_zone": "Asia/Calcutta",
-	"subscriber_id": 4991310645690368,
-	"source_type": "WEB",
-	"contact_ids": [4991310645690368],
-	"company_ids": [],
-	"deal_ids": [],
-	"event_ids": [],
-	"subscribers": [],
-	"companies": [],
-	"deals": [],
-	"owner": {
-		"id": 5676618345349120,
-		"email": "samplecontact@gmail.com",
-		"name": "sample"
-	},
-	"entiy_group_name": "event"
-}]
-```
-
-### 9.2 Get events related to contact:
-
-- Retrieves the events related to contact sorted by date.
-
-###### Required parameters
-``contact_id``  - Contact ID
- 
-###### Endpoint
-
-POST dev/api/panel/dev/api/calendar/event/contact/{contact_id}/events
-
-###### Example request
-```sh
-curl -i -X POST \
    -H "Accept:application/json" \
-   -H "Authorization:xxxxxxxxxxxxxx" \
-   -H "Content-Type:application/json" \
-   -d \
-   '{
-   }' \
-   'https://app.engagebay.com/dev/api/calendar/event/contact/5134228568145920/events'
+   -d "{}" \
+ 'https://app.engagebay.com/dev/api/panel/contactlist/add-subscriber/sample@engagebay.com/12356'
 ```
-###### Example JSON response
-```javascript
-[{
-	"id": 6596436544192512,
-	"owner_id": 5676618345349120,
-	"created_time": 1542265607,
-	"start_time": 1542267000000,
-	"end_time": 1542268799999,
-	"user_data": "{\"firstname\":\"contactfirst\",\"lastname\":\"lastname\",\"email\":\"samplecontact@engagebay.com\"}",
-	"color": "#7ae7bf",
-	"name": "30 Minute Meeting",
-	"user_time_zone": "Asia/Calcutta",
-	"subscriber_id": 5134228568145920,
-	"source_type": "WEB",
-	"contact_ids": [5134228568145920],
-	"company_ids": [],
-	"deal_ids": [],
-	"event_ids": [],
-	"subscribers": [],
-	"companies": [],
-	"deals": [],
-	"entiy_group_name": "event"
-}]
-```
-
-### 9.3 Create event:
-
-- Creates an event.
-
-###### Required parameters
-``contact_id``  - Contact ID
- 
-###### Endpoint
-
-POST dev/api/calendar/event/normal
-
-###### Example request
-```sh
-curl -i -X POST \
-   -H "Accept:application/json" \
-   -H "Authorization:xxxxxxxxxxxxx" \
-   -H "Content-Type:application/json" \
-   -d \
-'{
-  "name" : "sampleEvent",
-  "start_time":"1542868560",
-  "end_time":"1542868560",
-  "source_type":"API",
-  "owner_id":"5676618345349120"
-}' \
- 'https://app.engagebay.com/dev/api/calendar/event/normal'
-```
-###### Example JSON response
-```javascript
-{
-	"id": 5270109991993344,
-	"owner_id": 5676618345349120,
-	"created_time": 1542782746,
-	"start_time": 1542868560000,
-	"end_time": 1542868560000,
-	"name": "sampleEvent",
-	"source_type": "API",
-	"contact_ids": [],
-	"entiy_group_name": "event"
-}
-```
-
-### 9.4 Update event:
-
-- Updates an event.
-
-###### Endpoint
-
-PUT dev/api/panel/dev/api/calendar/event/normal
-
-###### Example request
-```sh
-curl -i -X PUT \
-   -H "Accept:application/json" \
-   -H "Authorization:xxxxxxxxx" \
-   -H "Content-Type:application/json" \
-   -d \
-'{
-  "id" :"5270109991993344",
-  "name" : "sampleEvent",
-  "start_time":"1542868560",
-  "end_time":"1542868560",
-  "source_type":"API",
-  "owner_id":"5676618345349120",
-  "created_time":"1542782746"
-}' \
- 'https://app.engagebay.com/dev/api/calendar/event/normal'
-```
-###### Example JSON response
-```javascript
-{
-	"id": 5270109991993344,
-	"owner_id": 5676618345349120,
-	"created_time": 1542782746,
-	"start_time": 1542868560000,
-	"end_time": 1542868560000,
-	"name": "sampleEventtest",
-	"source_type": "API",
-	"contact_ids": [],
-	"entiy_group_name": "event"
-}
-```
-
-### 10.1 Get all the tracks:
-
-- Gets all the tracks.
-
-###### Endpoint
-
-GET dev/api/panel/dev/api/panel/tracks
-
-###### Example request
-```sh
-curl -i -X GET \
-   -H "Accept:application/json" \
-   -H "Authorization:xxxxxxxxxxxxxxxx" \
- 'https://app.engagebay.com/dev/api/panel/tracks'
-```
-###### Example JSON response
-```javascript
-[{
-	"id": 5697266736168960,
-	"name": "Default",
-	"milestones": [{
-		"labelName": "New",
-		"labelActualName": "New_Actual",
-		"isWon": false,
-		"isLost": false,
-		"color": "#e2e0e0",
-		"probability": 0.1
-	}, {
-		"labelName": "Prospect",
-		"labelActualName": "Prospect_Actual",
-		"isWon": false,
-		"isLost": false,
-		"color": "#c5dec3",
-		"probability": 0.2
-	}, {
-		"labelName": "Proposal",
-		"labelActualName": "Proposal_Actual",
-		"isWon": false,
-		"isLost": false,
-		"color": "#c9dde4",
-		"probability": 0.3
-	}, {
-		"labelName": "Won",
-		"labelActualName": "Won_Actual",
-		"isWon": false,
-		"isLost": false,
-		"color": "#a6dca2",
-		"probability": 1.0
-	}, {
-		"labelName": "Lost",
-		"labelActualName": "Lost_Actual",
-		"isWon": false,
-		"isLost": false,
-		"color": "#e4b5b6",
-		"probability": 0.0
-	}],
-	"isDefault": true,
-	"created_time": 1531995775,
-	"updated_time": 1540792886
-}]
-```
-
-
-### 10.2 Create track:
-
-- Creates a track.
-
-###### Endpoint
-
-POST dev/api/panel/dev/api/panel/tracks/track
-
-###### Example request
-```sh
-curl -i -X POST \
-   -H "Accept:application/json" \
-   -H "Authorization:xxxxxxxxxxxxxx" \
-   -H "Content-Type:application/json" \
-   -d \
-'{
-  "name" : "sampletrack",
-  "milestones" : [{"labelName": "New", "labelActualName": "New_Actual", "probability": "0.1", "color": "#e2e0e0"}]
-}' \
- 'https://app.engagebay.com/dev/api/panel/tracks/track'
-```
-###### Example JSON response
-```javascript
-[{
-	"id": 5697266736168960,
-	"name": "sampletrack",
-	"milestones": [{
-		"labelName": "New",
-		"labelActualName": "New_Actual",
-		"isWon": false,
-		"isLost": false,
-		"color": "#e2e0e0",
-		"probability": 0.1
-	}],
-	"isDefault": false,
-    "created_time": 1542786809
-}]
-```
-
-### 10.3 Update track:
-
-- Updates a track.
-
-###### Endpoint
-
-PUT dev/api/panel/dev/api/panel/tracks/track
-
-###### Example request
-```sh
-curl -i -X PUT \
-   -H "Accept:application/json" \
-   -H "Authorization:xxxxxxxxxxxx" \
-   -H "Content-Type:application/json" \
-   -d \
-'{
-  "id": "5729175541383168",
-  "name" : "sample track update",
-  "milestones" : [{"labelName": "New", "labelActualName": "New_Actual", "probability": "0.1", "color": "#e2e0e0"}],
-  "created_time":"1542786809"
-}' \
- 'https://app.engagebay.com/dev/api/panel/tracks/track'
-```
-###### Example JSON response
-```javascript
-{
-	"id": 5729175541383168,
-	"name": "sample track update",
-	"milestones": [{
-		"labelName": "New",
-		"labelActualName": "New_Actual",
-		"isWon": false,
-		"isLost": false,
-		"color": "#e2e0e0",
-		"probability": 0.1
-	}],
-	"isDefault": false,
-	"created_time": 1542786809,
-	"updated_time": 1542788052
-}
-```
-### 10.4 Get track by ID:
-
-- Get track by ID.
-
-###### Endpoint
-GET dev/api/panel/tracks/{id}
-
-###### Example request
-```sh
-curl -i -X GET \
-   -H "Accept:application/json" \
-   -H "Authorization:xxxxxxxxxxxxxx" \
- 'https://app.engagebay.com/dev/api/panel/tracks/5676424065187840'
-```
-#### Example JSON response
-
-```javascript
-{
-	"id": 5676424065187840,
-	"name": "Default",
-	"milestones": [{
-		"labelName": "New",
-		"labelActualName": "New_Actual",
-		"isWon": false,
-		"isLost": false,
-		"color": "#e2e0e0",
-		"probability": 0.1
-	}, {
-		"labelName": "Prospect",
-		"labelActualName": "Prospect_Actual",
-		"isWon": false,
-		"isLost": false,
-		"color": "#c5dec3",
-		"probability": 0.2
-	}, {
-		"labelName": "Proposal",
-		"labelActualName": "Proposal_Actual",
-		"isWon": false,
-		"isLost": false,
-		"color": "#c9dde4",
-		"probability": 0.3
-	}, {
-		"labelName": "Won",
-		"labelActualName": "Won_Actual",
-		"isWon": false,
-		"isLost": false,
-		"color": "#a6dca2",
-		"probability": 1.0
-	}, {
-		"labelName": "Lost",
-		"labelActualName": "Lost_Actual",
-		"isWon": false,
-		"isLost": false,
-		"color": "#e4b5b6",
-		"probability": 0.0
-	}],
-	"isDefault": true,
-	"created_time": 1542604315
-}
-```
-### 10.5 Delete track by ID:
-- Delete track by ID.
-
-###### Endpoint
-DELETE dev/api/panel/tracks/{id}
-
-###### Example request
-```sh
-curl -i -X DELETE \
-   -H "Accept:application/json" \
-   -H "Authorization:xxxxxxxxxxxxxxxx" \
- 'https://app.engagebay.com/dev/api/panel/tracks/5676424065187840'
-```
-
-
-
 
 ### 11.1 Get list of owners:
 
