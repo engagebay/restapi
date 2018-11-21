@@ -58,7 +58,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [2 Get deal by its ID](#32-get-deal-by-its-id-)
 * [3 Create deal](#33-create-a-deal)
 * [4 Delete deal](#34-delete-deal-)
-* [5 Create deal to a contact using emailID](#35-create-deal-to-a-contact-using-emailid)
+* [5 Create deal to a contact using email ID](#35-create-deal-to-a-contact-using-email-id)
 
   
 
@@ -1192,7 +1192,7 @@ curl -i -X POST \
 'https://app.engagebay.com/dev/api/panel/deals/1' 
 ```
 
-### 3.5 Create deal to a contact using emailID:
+### 3.5 Create deal to a contact using email ID:
 
 - Create deal to contact using contact email Id.
 
