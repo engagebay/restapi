@@ -92,6 +92,12 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [3 Create event](#93-create-event)
 * [4 Update event](#94-update-event)
 
+**[Tracks](#101-get-list-of-tracks)**
+
+* [1 Get all the tracks](#101-get-all-the-tracks)
+* [3 Create track](#102-create-track)
+* [4 Update track](#103-update-track)
+
 
 
 ### 1.1 Listing contacts: 
@@ -1306,8 +1312,9 @@ curl -i -X GET \
 ]
 ```
 ### 5.2 Add contact to a form:
+
 - Add contact to a form
-- 
+
 ###### Endpoint
 POST dev/api/panel/subscribers/add-subscriber-to-form/{subscriber-email}/{formId}
 
@@ -1595,5 +1602,149 @@ curl -i -X PUT \
 	"source_type": "API",
 	"contact_ids": [],
 	"entiy_group_name": "event"
+}
+```
+
+### 10.1 Get all the tracks:
+
+- Gets all the tracks.
+
+###### Endpoint
+
+GET dev/api/panel/dev/api/panel/tracks
+
+###### Example request
+```sh
+curl -i -X GET \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxxxxxxx" \
+ 'https://app.engagebay.com/dev/api/panel/tracks'
+```
+###### Example JSON response
+```javascript
+[{
+	"id": 5697266736168960,
+	"name": "Default",
+	"milestones": [{
+		"labelName": "New",
+		"labelActualName": "New_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#e2e0e0",
+		"probability": 0.1
+	}, {
+		"labelName": "Prospect",
+		"labelActualName": "Prospect_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#c5dec3",
+		"probability": 0.2
+	}, {
+		"labelName": "Proposal",
+		"labelActualName": "Proposal_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#c9dde4",
+		"probability": 0.3
+	}, {
+		"labelName": "Won",
+		"labelActualName": "Won_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#a6dca2",
+		"probability": 1.0
+	}, {
+		"labelName": "Lost",
+		"labelActualName": "Lost_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#e4b5b6",
+		"probability": 0.0
+	}],
+	"isDefault": true,
+	"created_time": 1531995775,
+	"updated_time": 1540792886
+}]
+```
+
+
+### 10.2 Create track:
+
+- Creates a track.
+
+###### Endpoint
+
+POST dev/api/panel/dev/api/panel/tracks/track
+
+###### Example request
+```sh
+curl -i -X POST \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxxxxx" \
+   -H "Content-Type:application/json" \
+   -d \
+'{
+  "name" : "sampletrack",
+  "milestones" : [{"labelName": "New", "labelActualName": "New_Actual", "probability": "0.1", "color": "#e2e0e0"}]
+}' \
+ 'https://app.engagebay.com/dev/api/panel/tracks/track'
+```
+###### Example JSON response
+```javascript
+[{
+	"id": 5697266736168960,
+	"name": "sampletrack",
+	"milestones": [{
+		"labelName": "New",
+		"labelActualName": "New_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#e2e0e0",
+		"probability": 0.1
+	}],
+	"isDefault": false,
+    "created_time": 1542786809
+}]
+```
+
+### 10.3 Update track:
+
+- Updates a track.
+
+###### Endpoint
+
+PUT dev/api/panel/dev/api/panel/tracks/track
+
+###### Example request
+```sh
+curl -i -X PUT \
+   -H "Accept:application/json" \
+   -H "Authorization:xxxxxxxxxxxx" \
+   -H "Content-Type:application/json" \
+   -d \
+'{
+  "id": "5729175541383168",
+  "name" : "sample track update",
+  "milestones" : [{"labelName": "New", "labelActualName": "New_Actual", "probability": "0.1", "color": "#e2e0e0"}],
+  "created_time":"1542786809"
+}' \
+ 'https://app.engagebay.com/dev/api/panel/tracks/track'
+```
+###### Example JSON response
+```javascript
+{
+	"id": 5729175541383168,
+	"name": "sample track update",
+	"milestones": [{
+		"labelName": "New",
+		"labelActualName": "New_Actual",
+		"isWon": false,
+		"isLost": false,
+		"color": "#e2e0e0",
+		"probability": 0.1
+	}],
+	"isDefault": false,
+	"created_time": 1542786809,
+	"updated_time": 1542788052
 }
 ```
