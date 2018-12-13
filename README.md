@@ -1377,7 +1377,7 @@ Updates the deal with a given track id and milestone name.
 
 ###### Endpoint
 PUT dev/api/panel/deals/change-track
-######  Acceptable request representation:
+######  Example JSON response:
 ```javascript
 {
 	"id": 5192239399567360,
