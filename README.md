@@ -1170,7 +1170,8 @@ curl  -i -X POST\
 		"id": 5154169597984768,
 		"email": "sample@engagebay.com",
 		"name": "sample"
-	}]
+	}
+}]
 ```
 ### 3.2 Get deal by its ID : 
 Gets the deal with the given ID.
@@ -1203,6 +1204,7 @@ curl -i -X GET \
 		"id": 5154169597984768,
 		"email": "harry123@yopmail.com",
 		"name": "checkharry"
+	}
 }
 ```
 
