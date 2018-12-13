@@ -63,6 +63,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [4 Delete deal](#34-delete-deal-)
 * [5 Create deal to a contact using email ID](#35-create-deal-to-a-contact-using-email-id)
 * [6 Search deals](#36-search-deals)
+* [7 Update deal track](#37-update-deal-track)
 
 **[Tracks](#41-get-list-of-tracks)**
 
@@ -1367,6 +1368,65 @@ curl -i -X GET \
 	"probability": 0.1,
 	"updated_time": 1542697277,
 }]
+```
+
+### 3.7 Update deal track: 
+Updates the deal with a given track id and milestone name.
+
+###### Endpoint
+PUT dev/api/panel/deals/change-track
+######  Acceptable request representation:
+```javascript
+{
+	"id": 5192239399567360,
+	"name": "Latest Deal 4",
+	"name_sort": "Latest Deal 4",
+	"amount": 3000.0,
+	"closed_date": 1545436800,
+	"track_id": 5697266736168960,
+	"contact_ids": [],
+	"company_ids": [],
+	"deal_ids": [],
+	"entiy_group_name": "deal",
+	"milestoneLabelName": "New",
+	"milestoneActualName": "New_Actual",
+	"tags": [{
+		"tag": "combine tag3",
+		"assigned_time": 1544706319
+	}],
+	"properties": [{
+		"name": "Mobile",
+		"value": "",
+		"field_type": "NUMBER",
+		"is_searchable": true,
+		"type": "CUSTOM"
+	}],
+	"owner_id": 5676618345349120,
+	"created_time": 1544188022,
+	"probability": 0.1,
+	"updated_time": 1544711756,
+	"owner": {
+		"id": 5676618345349120,
+		"email": "sahith@engagebay.com",
+		"name": "sahith"
+	},
+	"currency_type": "USD-$",
+	"subscribers": [],
+	"companies": []
+}
+```
+###### Example request
+```sh
+curl -i -X PUT \ 
+-H "Authorization : xxxxxxxxx" \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+	"id": 5141586283331584,
+	"milestoneLabelName" : "New",
+	"track_id" : "234412341234"
+} ' \
+'https://app.engagebay.com/dev/api/panel/deals/change-track'
 ```
 
 
