@@ -1304,7 +1304,7 @@ curl -i -X POST \
 
 ###### Endpoint
 
-POST dev/api/panel/create-deal/{email}
+POST dev/api/panel/deals/create-deal/{email}
 
 ###### Example request
 ```sh
@@ -1322,7 +1322,7 @@ curl -i -X POST \
 		"tags": [],
 		"properties": []
 	}' \
- 'https://app.engagebay.com/dev/api/panel/create-deal/test@engagebay.com'
+ 'https://app.engagebay.com/dev/api/panel/deals/create-deal/test@engagebay.com'
 ```
 
 ###### Example JSON response
