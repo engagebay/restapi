@@ -1316,7 +1316,7 @@ curl -i -X POST \
 		"name": "sample deal",
 		"name_sort": "sample deal",
 		"amount": 100,
-	        "track_id":"5697266736168960",
+	        "track_name":"Default",
 	        "milestoneActualName" :"New_Actual",
 	        "milestoneLabelName":"New",
 		"tags": [],
