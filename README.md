@@ -26,7 +26,7 @@ All API calls require ```Authorization``` header. You should pass REST API Key a
 You can find your API Key in the EngageBay Account Admin Settings -> API -> API Key.
 
 ###### End Points
-All API requests should be made to: https://app.engagebay.com/dev/
+All API requests should be made to: https://app.engagebay.com/
 
 Note: All data is case-sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered two different words.
 
@@ -1280,7 +1280,7 @@ curl -i -X POST \
    -H "Accept:application/json" \
    -H "Authorization:xxxxxxxxxxxx" \
    -H "Content-Type:application/json" \
- 'https://app.engagebay.com/dev/api/panel/dev/api/panel/create-deal/test@engagebay.com'
+ 'https://app.engagebay.com/dev/api/panel/create-deal/test@engagebay.com'
 ```
 #### 
 ```javascript
@@ -1438,7 +1438,7 @@ curl -i -X PUT \
 
 ###### Endpoint
 
-GET dev/api/panel/dev/api/panel/tracks
+GET dev/api/panel/tracks
 
 ###### Example request
 ```sh
@@ -1501,7 +1501,7 @@ curl -i -X GET \
 
 ###### Endpoint
 
-POST dev/api/panel/dev/api/panel/tracks/track
+POST dev/api/panel/tracks/track
 
 ###### Example request
 ```sh
@@ -1540,7 +1540,7 @@ curl -i -X POST \
 
 ###### Endpoint
 
-PUT dev/api/panel/dev/api/panel/tracks/track
+PUT dev/api/panel/tracks/track
 
 ###### Example request
 ```sh
@@ -1661,14 +1661,14 @@ curl -i -X DELETE \
  
 ###### Endpoint
 
-GET dev/api/panel/dev/api/calendar/event/list?start_time=xxxxx&end_time=xxxxx&source_type=API
+GET dev/api/calendar/event/list?start_time=xxxxx&end_time=xxxxx&source_type=API
 
 ###### Example request
 ```sh
 curl -i -X GET \
    -H "Accept:application/json" \
    -H "Authorization:xxxxxxx" \
- 'https://app.engagebay.com/dev/api/panel/dev/api/calendar/event/list?start_time=1542220200000&end_time=1542824999999&source_type=API'
+ 'https://app.engagebay.com/dev/api/calendar/event/list?start_time=1542220200000&end_time=1542824999999&source_type=API'
 ```
 ###### Example JSON response
 ```javascript
@@ -1709,7 +1709,7 @@ curl -i -X GET \
  
 ###### Endpoint
 
-POST dev/api/panel/dev/api/calendar/event/contact/{contact_id}/events
+POST dev/api/panel/calendar/event/contact/{contact_id}/events
 
 ###### Example request
 ```sh
@@ -1795,7 +1795,7 @@ curl -i -X POST \
 
 ###### Endpoint
 
-PUT dev/api/panel/dev/api/calendar/event/normal
+PUT dev/api/calendar/event/normal
 
 ###### Example request
 ```sh
@@ -2100,7 +2100,7 @@ curl -i -X DELETE \
  
 ###### Endpoint
 
-POST dev/api/panel/dev/api/panel/notes
+POST dev/api/panel/notes
 
 ###### Example request
 ```sh
