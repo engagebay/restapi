@@ -1248,6 +1248,38 @@ curl -i -X POST \
 }' \
 'https://app.engagebay.com/dev/api/panel/deals/deal'
 ```
+###### Example JSON response
+#### 
+```javascript
+{
+	"id": 5088020441071616,
+	"name": "sample deal",
+	"name_sort": "sample deal",
+	"amount": 100.0,
+	"track_id": 5697266736168960,
+	"contact_ids": [],
+	"company_ids": [],
+	"deal_ids": [],
+	"entiy_group_name": "deal",
+	"milestoneLabelName": "New",
+	"milestoneActualName": "New_Actual",
+	"tags": [],
+	"properties": [],
+	"created_time": 1546938598,
+	"probability": 0.1,
+	"owner": {
+		"id": 5676618345349120,
+		"email": "sahith@engagebay.com",
+		"name": "sahith",
+		"profile_img_url": "https://s3.amazonaws.com/ebuploads2/uploads/1544714031211-sample_png_360p_480x360.png"
+	},
+	"currency_type": "USD-$",
+	"subscribers": [],
+	"companies": []
+}
+```
+
+
 ### 3.4 Delete deal: 
 - Deletes the deal based on the id specified in the url.
 
@@ -1280,8 +1312,20 @@ curl -i -X POST \
    -H "Accept:application/json" \
    -H "Authorization:xxxxxxxxxxxx" \
    -H "Content-Type:application/json" \
+   -d '{
+		"name": "sample deal",
+		"name_sort": "sample deal",
+		"amount": 100,
+	        "track_id":"5697266736168960",
+	        "milestoneActualName" :"New_Actual",
+	        "milestoneLabelName":"New",
+		"tags": [],
+		"properties": []
+	} \
  'https://app.engagebay.com/dev/api/panel/create-deal/test@engagebay.com'
 ```
+
+###### Example JSON response
 #### 
 ```javascript
 {
