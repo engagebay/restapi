@@ -1222,7 +1222,7 @@ POST dev/api/panel/deals/deal
 {
 	"name": "sample deal",
 	"amount": 100,
-    "track_id":"Default",
+    "track_name":"Default",
     "milestoneLabelName":"New"
 }
 ```
@@ -1235,7 +1235,7 @@ curl -i -X POST \
 -d '{
 	"name": "sample deal",
 	"amount": 100,
-    "track_id":"Default",
+    "track_name":"Default",
     "milestoneLabelName":"New"
 }' \
 'https://app.engagebay.com/dev/api/panel/deals/deal'
