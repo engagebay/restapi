@@ -1321,7 +1321,7 @@ curl -i -X POST \
 	        "milestoneLabelName":"New",
 		"tags": [],
 		"properties": []
-	} \
+	}' \
  'https://app.engagebay.com/dev/api/panel/create-deal/test@engagebay.com'
 ```
 
