@@ -1221,13 +1221,9 @@ POST dev/api/panel/deals/deal
 ```
 {
 	"name": "sample deal",
-	"name_sort": "sample deal",
 	"amount": 100,
-        "track_id":"5697266736168960",
-        "milestoneActualName" :"New_Actual",
-        "milestoneLabelName":"New",
-	"tags": [],
-	"properties": []
+    "track_id":"Default",
+    "milestoneLabelName":"New"
 }
 ```
 ###### Example request
@@ -1238,13 +1234,9 @@ curl -i -X POST \
 -H "Content-Type: application/json" \
 -d '{
 	"name": "sample deal",
-	"name_sort": "sample deal",
 	"amount": 100,
-        "track_id":"5697266736168960",
-        "milestoneActualName" :"New_Actual",
-        "milestoneLabelName":"New",
-	"tags": [],
-	"properties": []
+    "track_id":"Default",
+    "milestoneLabelName":"New"
 }' \
 'https://app.engagebay.com/dev/api/panel/deals/deal'
 ```
@@ -1314,13 +1306,9 @@ curl -i -X POST \
    -H "Content-Type:application/json" \
    -d '{
 		"name": "sample deal",
-		"name_sort": "sample deal",
 		"amount": 100,
-	        "track_name":"Default",
-	        "milestoneActualName" :"New_Actual",
-	        "milestoneLabelName":"New",
-		"tags": [],
-		"properties": []
+	     "track_name":"Default",
+	    "milestoneLabelName":"New"
 	}' \
  'https://app.engagebay.com/dev/api/panel/deals/create-deal/test@engagebay.com'
 ```
