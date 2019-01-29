@@ -2200,14 +2200,14 @@ curl -i -X GET \
 POST dev/api/panel/subscribers/add-subscriber-to-form/{subscriber-email}/{formId}
 
 ###### Example request
+
 ```sh
-curl https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-form/sample@engagebay.com/1234  \
-   -H "Authorization:xxxxxxxxxxx" \
+curl -i -X POST \
+    -H "Authorization:xxxxxxxxxxx" \
    -H "Accept:application/json" \
    -H Content-Type: application/json; charset=utf-8" \
-   -v -u sample@engagebay.com:123456 
+ 'https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-form/sample@engagebay.com/1234'
 ```
-
 ### 9.1 Add contact to a sequence:
 
 - Add contact to a sequence
@@ -2217,11 +2217,11 @@ POST dev/api/panel/subscribers/add-subscriber-to-sequence/{subscriber-email}{seq
 
 ###### Example request
 ```sh
-curl https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-sequence/sample@engagebay.com/1234  \
-   -H "Authorization:xxxxxxxxxxx" \
+curl -i -X POST \
+    -H "Authorization:xxxxxxxxxxx" \
    -H "Accept:application/json" \
    -H Content-Type: application/json; charset=utf-8" \
-   -v -u sample@engagebay.com:123456 
+ 	'https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-sequence/sample@engagebay.com/1234'
 ```
 
 ### 10.1 List of lists:
