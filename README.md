@@ -2205,7 +2205,8 @@ POST dev/api/panel/subscribers/add-subscriber-to-form/{subscriber-email}/{formId
 curl -i -X POST \
     -H "Authorization:xxxxxxxxxxx" \
    -H "Accept:application/json" \
-   -H Content-Type: application/json; charset=utf-8" \
+   -H "Content-Type: application/json; charset=utf-8" \
+   -d "{}" \
  'https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-form/sample@engagebay.com/1234'
 ```
 ### 9.1 Add contact to a sequence:
@@ -2216,11 +2217,13 @@ curl -i -X POST \
 POST dev/api/panel/subscribers/add-subscriber-to-sequence/{subscriber-email}{sequenceId}
 
 ###### Example request
+
 ```sh
 curl -i -X POST \
     -H "Authorization:xxxxxxxxxxx" \
    -H "Accept:application/json" \
-   -H Content-Type: application/json; charset=utf-8" \
+   -H "Content-Type: application/json; charset=utf-8" \
+   -d "{}" \
  	'https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-sequence/sample@engagebay.com/1234'
 ```
 
