@@ -122,14 +122,14 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [1 Get list of owners](#111-get-list-of-owners)
 
 
-**[CustomFields](#121-get-list-of-owners)**
+**[CustomFields](#121-get-list-of-custom-fields)**
 
-* [1 Get list of custom fields](#121-get-list-of-customfields)
-* [2 Create a custom field](#122-create-customfield)
-* [3 Delete a custom field](#123-delete-customfield)
+* [1 Get list of custom fields](#121-get-list-of-custom-fields)
+* [2 Create a custom field](#122-create-a-custom-field)
+* [3 Delete a custom field](#123-delete-a-custom-field)
 
-**[User Profile](#131-get-user-profile)**
-* [1 Get user profile](#131-get-user-profile)
+**[User Profile](#131-get-user-profile-)**
+* [1 Get user profile](#131-get-user-profile-)
 
 
 
