@@ -16,6 +16,8 @@ API is in active development. Currently it allows you to access:
 - Forms
 - Sequences
 - Owners
+- Custom Fields
+- User Profile
 
 ### Authentication
 This is an HTTPS-only API.
@@ -118,6 +120,16 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 **[Owners](#111-get-list-of-owners)**
 
 * [1 Get list of owners](#111-get-list-of-owners)
+
+
+**[CustomFields](#121-get-list-of-owners)**
+
+* [1 Get list of custom fields](#121-get-list-of-customfields)
+* [2 Create a custom field](#122-create-customfield)
+* [3 Delete a custom field](#123-delete-customfield)
+
+**[User Profile](#131-get-user-profile)**
+* [1 Get user profile](#131-get-user-profile)
 
 
 
@@ -2317,4 +2329,146 @@ curl -i -X GET \
 	"signupSource": "DEFAULT",
 	"domainId": 5641864006860800
 }]
+```
+### 12.1 Get list of custom fields:
+
+- Get list of custom fields.
+
+###### Endpoint
+GET /dev/api/panel/customfields/list/{type}
+###### Required parameters
+``type`` - custom field type [CONTACT,DEAL,COMPANY,TICKET].
+###### Example request
+```sh
+curl -i -X GET \
+-H "Authorization : xxxxxxxxx" \
+-H "Accept : application/json" \
+'https://app.engagebay.com/dev/api/panel/customfields/list/CONTACT'
+```
+###### Example JSON response
+```javascript
+[{
+	"id": 5718248825815040,
+	"field_type": "TEXT",
+	"version": "v2",
+	"field_label": "Sample Field",
+	"field_label_case_sensitive": "Sample Field",
+	"saveSilent": false,
+	"field_description": "Sample Test Field",
+	"field_data": "",
+	"is_required": false,
+	"is_searchable": true,
+	"showInFilter": false,
+	"created_time": 1540904183,
+	"updated_time": 1549442098,
+	"scope": "CONTACT",
+	"position": 0,
+	"field_name": "Sample_Field"
+}]
+```
+
+### 12.2 Create a custom field: 
+- Accepts custom field JSON as data in Post request to the URL specified below. The call returns the custom field JSON with id field generated when a new custom field is created. If Post data includes valid custom field id, the respective custom field is updated with the data sent in the request.
+- Don't pass null value.
+
+###### Required parameters
+``scope`` - custom field type must be one of (CONTACT/DEAL/COMPANY/TICKET)
+``field_label`` - custom field name.
+``field_description`` - custom field description.
+``field_type`` - custom field type type must be one of the (TEXT/TEXTAREA/DATE/CHECKBOX/LIST/NUMBER/MULTICHECKBOX)
+
+###### Optional parameters
+``is_required`` - To be filled while creating or updating true/false
+``is_searchable`` - use  while searching  true/false
+
+###### Endpoint
+POST dev/api/panel/customfields/
+
+###### Acceptable request representation
+```
+{
+  "field_label" : "Test field",
+  "scope" : "CONTACT",
+  "field_description" : "This is Test Field",
+  "field_type" : "TEXTAREA",
+  "is_required" : "true",
+  "is_searchable" : "true"
+}
+```
+###### Example request
+```sh
+curl -i -X POST \
+   -H "Accept:application/json" \
+   -H "Content-Type:application/json" \
+   -H "Authorization:p5nlcfg7m89a8lb9gf1p1nf6bd" \
+   -d \
+'{
+  "field_label" : "Test field",
+  "scope" : "CONTACT",
+  "field_description" : "This is Test Field",
+  "field_type" : "TEXTAREA",
+  "is_required" : "true",
+  "is_searchable" : "true"
+}' \
+ 'https://app.engagebay.com/dev/api/panel/customfields/'
+```
+###### Example JSON response
+#### 
+```javascript
+{
+	"id": 6117160669675520,
+	"field_type": "TEXTAREA",
+	"version": "v2",
+	"field_label": "Test field",
+	"field_label_case_sensitive": "test field",
+	"saveSilent": false,
+	"field_description": "This is Test Field",
+	"is_required": true,
+	"is_searchable": true,
+	"showInFilter": false,
+	"created_time": 1551444903,
+	"updated_time": 1551444903,
+	"scope": "CONTACT",
+	"position": 11
+}
+```
+### 12.3 Delete a custom field : 
+
+- Delete a custom field
+
+###### Required parameters
+``scope``  - scope must be one of (CONTACT/DEAL/COMPANY/TICKET)
+``custom-field-id``  - Id of the custom field
+
+###### Endpoint
+DELETE  dev/api/panel/customfields/{scope}/{custom-field-id}
+
+###### Example request
+```sh
+curl -i -X DELETE \
+   -H "Accept:application/json" \
+   -H "Authorization:p5nlcfg7m89a8lb9gf1p1nf6bd" \
+ 'https://app.engagebay.com/dev/api/panel/customfields/CONTACT/5718248825815040'
+```
+
+### 13.1 Get User Profile : 
+
+- Get User Profile
+
+###### Endpoint
+GET  /dev/api/panel/users/profile/user-info
+
+###### Example request
+```sh
+curl -i -X GET \
+   -H "Authorization:p5nlcfg7m89a8lb9gf1p1nf6bd" \
+ 'https://app-dot-alpha-dot-accountbox-154605.appspot.com/dev/api/panel/users/profile/user-info'
+```
+###### Example JSON response
+#### 
+```javascript
+{
+	"name": "test",
+	"email": "test@engagebay.com"
+}
 ```
