@@ -69,7 +69,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 
 **[Tracks](#41-get-list-of-tracks)**
 
-* [1 Get all the tracks](#41-get-all-the-tracks)
+* [1 Get all tracks](#41-get-all-tracks)
 * [3 Create track](#42-create-track)
 * [4 Update track](#43-update-track)
 * [5 Get track by ID](#44-get-track-by-id)
@@ -1476,7 +1476,7 @@ curl -i -X PUT \
 ```
 
 
-### 4.1 Get all the tracks:
+### 4.1 Get all tracks:
 
 - Gets all the tracks.
 
