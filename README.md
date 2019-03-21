@@ -1232,8 +1232,8 @@ POST dev/api/panel/deals/deal
 ###### Acceptable request representation
 ```
 {
-	"name": "sample deal",
-	"amount": 100,
+    "name": "sample deal",
+    "amount": 100,
     "track_name":"Default",
     "milestoneLabelName":"New"
 }
