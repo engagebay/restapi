@@ -50,10 +50,10 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 
 **[Company APIs](#21-creating-a-company)**
 
-* [1 Creating a company](#21-creating-a-company-)
-* [2 Updating a company](#22-updating-a-company-)
+* [1 Creating a company](#21-creating-a-company)
+* [2 Updating a company](#22-updating-a-company)
 * [3 Get list of companies](#23-get-list-of-companies-)
-* [4 Get company by id](#24-get-company-by-id-)
+* [4 Get company by id](#24-get-company-by-id)
 * [5 Delete single company](#25-delete-single-company-)
 * [6 Search companies](#26-search-companies)
 
