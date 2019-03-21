@@ -149,8 +149,8 @@ POST dev/api/panel/subscribers
 ###### Example request
 ```sh
 curl -i -X POST \
--H "Authorization : xxxxxxxxx" \
--H "Accept : application/json"  \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json"  \
 -d "{}" \
 'https://app.engagebay.com/dev/api/panel/subscribers'
 ```
@@ -314,8 +314,8 @@ GET /dev/api/panel/subscribers/{id}
 ###### Example request
 ```sh
 curl -i -X GET \
--H "Authorization : xxxxxxxxx" \
--H "Accept : application/json" \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
 'https://app.engagebay.com/dev/api/panel/subscribers/1'
 ```
 ###### Example JSON response
@@ -438,8 +438,8 @@ POST dev/api/panel/subscribers/subscriber
 ###### Example request
 ```sh
 curl -i -X POST \ 
--H "Authorization : xxxxxxxxx" \
--H "Accept : application/json" \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -d '{
 	"score" : 10,
@@ -472,23 +472,24 @@ curl -i -X POST \
 }' \
 'https://app.engagebay.com/dev/api/panel/subscribers/subscriber'
 ```
-### 1.4 Updating a contact: 
-- Updates the information for a single contact.
+### 1.4 Update properties of a contact by ID (partial update): 
+- Updates the properties for a single contact.
 
 We can update the required property fields of the contact using this call. It is used to add a new property or update the existing property. It accepts property object of the contact with a valid parameter in it. Send the ContactId of the contact to identify it. This will not affect other fields.
 
+Using this API you can not delete properties.If subtype is same for phone,website or email then value can be overridden. Lead score, star value and tags can not be updated using this API.
+
 ###### Endpoint
-PUT dev/api/panel/subscribers/subscriber
+PUT dev/api/panel/subscribers/update-partial
 
 ###### Optional parameters
-- ``first_name``- Updated first name for the contact.
 - ``properties`` - Updated custom fields for your contact as object of key/value pairs.
 
 ###### Acceptable request representation
 ```sh
 curl -i -X PUT  \
--H "Authorization : xxxxxxxxx" \
--H "Accept : application/json" \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -d '{
     "id": 6218728647688192,
@@ -512,7 +513,7 @@ curl -i -X PUT  \
 		"type": "SYSTEM"
 	}]
 }' \
-'https://app.engagebay.com/dev/api/panel/subscribers/subscriber'
+'https://app.engagebay.com/dev/api/panel/subscribers/update-partial'
 ```
 ### 1.5 Delete single contact: 
 - Delete the single contact from account
@@ -537,8 +538,8 @@ POST dev/api/panel/subscribers/email/tags/add
 ```sh
 curl -i -X POST \
 -H "Accept: application/json" \
--H "Authorization : xxxxxxxxx" \
--H "Content-Type :application/x-www-form-urlencoded" \
+-H "Authorization: xxxxxxxxx" \
+-H "Content-Type:application/x-www-form-urlencoded" \
 -d 'email=samson@engagebay.com&tags=["testsample"]' \
 'https://app.engagebay.com/dev/api/panel/subscribers/email/tags/add'
 ```
@@ -554,8 +555,8 @@ POST dev/api/panel/subscribers/email/tags/delete
 ```sh
 curl -i -X POST \
 -H "Accept: application/json"
--H "Authorization : xxxxxxxxx" \
--H "Content-Type :application/x-www-form-urlencoded" \
+-H "Authorization: xxxxxxxxx" \
+-H "Content-Type:application/x-www-form-urlencoded" \
 -d 'email=sample@engagebay.com&tags=["sampletest"]' \
 'https://app.engagebay.com/dev/api/contacts/email/tags/delete '
 ```
@@ -570,9 +571,9 @@ POST dev/api/panel/subscribers/get-tags/{subscriber-email}
 ###### Example request
 ```sh
 curl -i -X POST \
--H "Authorization : xxxxxxxxx" \
+-H "Authorization: xxxxxxxxx" \
 -H "Accept: application/json" \
--H "Content-Type :application/x-www-form-urlencoded" \
+-H "Content-Type:application/x-www-form-urlencoded" \
 -d "{}" \
 'https://app.engagebay.com/dev/api/panel/subscribers/get-tags/{subscriber-email}' 
 ```
@@ -598,9 +599,9 @@ POST dev/api/panel/subscribers/add-score
 ###### Example request
 ```sh
 curl -i -X POST \
--H "Authorization : xxxxxxxxx" \
+-H "Authorization: xxxxxxxxx" \
 -H "Accept: application/json" \
--H "Content-Type :application/x-www-form-urlencoded" \
+-H "Content-Type:application/x-www-form-urlencoded" \
 -d 'email=samson@walt.ltd&score=100' \
 'https://app.engagebay.com/dev/api/panel/subscribers/add-score'
 ```
@@ -809,8 +810,8 @@ POST dev/api/panel/companies/company
 ###### Example request
 ```sh
 curl -i -X POST \
--H "Authorization : xxxxxxxxx" \
--H "Accept : application/json" \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -d '{
 	"name": "www.engagebay.com",
@@ -886,8 +887,8 @@ PUT dev/api/panel/companies/company
 ###### Example request
 ```sh
 curl -i -X PUT \ 
--H "Authorization : xxxxxxxxx" \
--H "Accept : application/json" \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -d '{
 	"id": 5141586283331584,
@@ -933,7 +934,7 @@ POST dev/api/panel/companies
 ###### Example request
 ```sh
 curl -i -X POST \
--H "Authorization : xxxxxxxxx" \
+-H "Authorization: xxxxxxxxx" \
 -H "Accept: application/json" \
 -d "{}" \
 'https://app.engagebay.com/dev/api/panel/companies'
@@ -1028,7 +1029,7 @@ GET dev/api/panel/companies/{id}
 ###### Example request
 ```sh
 curl -i -X GET \
--H "Authorization : xxxxxxxxx" \
+-H "Authorization: xxxxxxxxx" \
 -H "Accept :application/json" 
 'https://app.engagebay.com/dev/api/panel/companies/{id}'
 ```
@@ -1085,7 +1086,7 @@ DELETE dev/api/panel/companies/{id}
 ###### Example request
 ```sh
 curl -i -X DELETE  \
--H "Authorization : xxxxxxxxx" \
+-H "Authorization: xxxxxxxxx" \
 'https://app.engagebay.com/dev/api/panel/companies/{id}' 
 ```
 
@@ -1161,7 +1162,7 @@ POST dev/api/panel/deals
 ###### Example request
 ```sh
 curl  -i -X POST\
--H "Authorization : xxxxxxxxx" \
+-H "Authorization: xxxxxxxxx" \
 -H  "Accept:application/json" \
 -d "{}" \
 'https://app.engagebay.com/dev/api/panel/deals'
@@ -1241,8 +1242,8 @@ POST dev/api/panel/deals/deal
 ###### Example request
 ```sh
 curl -i -X POST \ 
--H "Authorization : xxxxxxxxx" \
--H "Accept : application/json" \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -d '{
     "name": "sample deal",
@@ -1293,7 +1294,7 @@ POST dev/api/panel/deals/{id}
 ###### Example request
 ```sh
 curl -i -X POST \
--H "Authorization : xxxxxxxxx" \
+-H "Authorization: xxxxxxxxx" \
 -d "{}" \
 'https://app.engagebay.com/dev/api/panel/deals/1' 
 ```
@@ -1464,8 +1465,8 @@ PUT dev/api/panel/deals/change-track
 ###### Example request
 ```sh
 curl -i -X PUT \ 
--H "Authorization : xxxxxxxxx" \
--H "Accept : application/json" \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -d '{
 	"id": 5141586283331584,
@@ -1972,8 +1973,8 @@ GET dev/api/panel/tasks/{id}
 ###### Example request
 ```sh
 curl https://app.engagebay.com/dev/api/panel/tasks/1234 \
--H "Authorization : xxxxxxxxx" \
--H  "Accept : application/json" -v -u {email}:{API Key}
+-H "Authorization: xxxxxxxxx" \
+-H  "Accept: application/json" -v -u {email}:{API Key}
 ```
 
 ###### Example JSON response
@@ -2341,8 +2342,8 @@ GET /dev/api/panel/customfields/list/{type}
 ###### Example request
 ```sh
 curl -i -X GET \
--H "Authorization : xxxxxxxxx" \
--H "Accept : application/json" \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
 'https://app.engagebay.com/dev/api/panel/customfields/list/CONTACT'
 ```
 ###### Example JSON response
