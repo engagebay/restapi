@@ -1999,7 +1999,7 @@ curl https://app.engagebay.com/dev/api/panel/tasks/1234 \
 	}
 }
 ```
-### 6.3 Create a task: 
+### 6.3 Create task: 
 - Creates a task 
 
 ###### Endpoint
