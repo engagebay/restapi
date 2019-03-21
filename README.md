@@ -38,7 +38,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [1 Listing contacts](#11-listing-contacts)
 * [2 Get contact by ID](#12-get-contact-by-id)
 * [3 Creating a contact](#13-creating-a-contact)
-* [4 Updating contact](#14-updating-contact)
+* [4 Updating a contact](#14-updating-a-contact)
 * [5 Delete single contact](#15-delete-single-contact)
 * [6 Adding tags to a contact based on email](#16-adding-tags-to-a-contact-based-on-email-address)
 * [7 Delete tags to a contact based on email](#17-delete-tags-to-a-contact-based-on-email)
@@ -472,7 +472,7 @@ curl -i -X POST \
 }' \
 'https://app.engagebay.com/dev/api/panel/subscribers/subscriber'
 ```
-### 1.4 Updating contact: 
+### 1.4 Updating a contact: 
 - Updates the information for a single contact.
 
 We can update the required property fields of the contact using this call. It is used to add a new property or update the existing property. It accepts property object of the contact with a valid parameter in it. Send the ContactId of the contact to identify it. This will not affect other fields.
