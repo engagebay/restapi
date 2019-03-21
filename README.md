@@ -38,7 +38,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [1 Listing contacts](#11-listing-contacts)
 * [2 Get contact by ID](#12-get-contact-by-id)
 * [3 Creating a contact](#13-creating-a-contact)
-* [4 Updating a contact](#14-update-properties-of-a-contact-by-ID-(partial-update))
+* [4 Updating a contact](#14-update-properties-of-a-contact-by-id-partial-update)
 * [5 Delete single contact](#15-delete-single-contact)
 * [6 Adding tags to a contact based on email address](#16-adding-tags-to-a-contact-based-on-email-address)
 * [7 Delete tags to a contact based on email address](#17-delete-tags-to-a-contact-based-on-email-address)
