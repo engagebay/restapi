@@ -37,9 +37,9 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 **[Contacts](#1-contacts---companies-api)**
 * [1 Listing contacts](#11-listing-contacts)
 * [2 Get contact by ID](#12-get-contact-by-id)
-* [3 Creating a contact](#13-creating-a-contact-)
-* [4 Updating contact](#14-updating-contact-)
-* [5 Delete single contact](#15-delete-single-contact-)
+* [3 Creating a contact](#13-creating-a-contact)
+* [4 Updating contact](#14-updating-contact)
+* [5 Delete single contact](#15-delete-single-contact)
 * [6 Adding tags to a contact based on email](#16-adding-tags-to-a-contact-based-on-email-address)
 * [7 Delete tags to a contact based on email](#17-delete-tags-to-a-contact-based-on-email)
 * [8 List tags for a contact](#18-list-tags-for-a-contact)
@@ -52,9 +52,9 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 
 * [1 Creating a company](#21-creating-a-company)
 * [2 Updating a company](#22-updating-a-company)
-* [3 Get list of companies](#23-get-list-of-companies-)
-* [4 Get company by id](#24-get-company-by-id-)
-* [5 Delete single company](#25-delete-single-company-)
+* [3 Get list of companies](#23-get-list-of-companies)
+* [4 Get company by id](#24-get-company-by-id)
+* [5 Delete single company](#25-delete-single-company)
 * [6 Search companies](#26-search-companies)
 
 **[Deals](#31-listing-deals)**
@@ -393,7 +393,7 @@ curl -i -X GET \
 	"score": 5
 }]
 ```
-### 1.3 Creating a contact :  
+### 1.3 Creating a contact:  
 
 Accepts contact JSON as post data along with the credentials of domain User (User name and API Key).
 - Each field is case sensitive.
@@ -472,7 +472,7 @@ curl -i -X POST \
 }' \
 'https://app.engagebay.com/dev/api/panel/subscribers/subscriber'
 ```
-### 1.4 Updating contact : 
+### 1.4 Updating contact: 
 - Updates the information for a single contact.
 
 We can update the required property fields of the contact using this call. It is used to add a new property or update the existing property. It accepts property object of the contact with a valid parameter in it. Send the ContactId of the contact to identify it. This will not affect other fields.
@@ -514,7 +514,7 @@ curl -i -X PUT  \
 }' \
 'https://app.engagebay.com/dev/api/panel/subscribers/subscriber'
 ```
-### 1.5 Delete single contact : 
+### 1.5 Delete single contact: 
 - Delete the single contact from account
 ###### Endpoint
 DELETE dev/api/panel/subscribers/{contact-id}
@@ -922,7 +922,7 @@ curl -i -X PUT \
 } ' \
 'https://app.engagebay.com/dev/api/panel/companies/company'
 ```
-### 2.3 Get list of companies : 
+### 2.3 Get list of companies: 
 - Get list of companies
 
 Fetches the list of companies. Page_size, sort_key and cursor should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded). Paging can be applied using the page_size and cursor form parameters. Cursor for the next page will be in the last company of the list. If there is no cursor, it means that it is the end of the list.
@@ -1019,7 +1019,7 @@ curl -i -X POST \
 	"companyIds": []
 }]
 ```
-### 2.4 Get company by ID : 
+### 2.4 Get company by ID: 
 - Returns company object which is associated with given company id
 
 ###### Endpoint
