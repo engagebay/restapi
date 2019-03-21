@@ -41,7 +41,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [4 Updating contact](#14-updating-contact-)
 * [5 Delete single contact](#15-delete-single-contact-)
 * [6 Adding tags to a contact based on email](#16-adding-tags-to-a-contact-based-on-email-address)
-* [7 Delete tags to a contact based on email](#17-delete-tags-to-a-contact-based-on-email-address)
+* [7 Delete tags to a contact based on email](#17-delete-tags-to-a-contact-based-on-email)
 * [8 List tags for a contact](#18-list-tags-for-a-contact-)
 * [9 Add score to a contact using email ID](#19-add-score-to-a-contact-using-email-id-)
 * [10 Search contacts](#110-search-contacts)
