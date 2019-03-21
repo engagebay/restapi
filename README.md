@@ -1245,8 +1245,8 @@ curl -i -X POST \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
-	"name": "sample deal",
-	"amount": 100,
+    "name": "sample deal",
+    "amount": 100,
     "track_name":"Default",
     "milestoneLabelName":"New"
 }' \
