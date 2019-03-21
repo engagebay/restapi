@@ -2061,7 +2061,7 @@ curl -i -X POST \
 ```
 
 ### 6.4 Update task: 
-- Update a task based on its ID
+- Updates task based on its ID
 
 ###### Endpoint
 PUT dev/api/panel/tasks
