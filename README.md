@@ -59,9 +59,9 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 
 **[Deals](#31-listing-deals)**
 
-* [1 Listing deals](#31-listing-deals-)
-* [2 Get deal by its ID](#32-get-deal-by-its-id-)
-* [3 Create deal](#33-create-a-deal)
+* [1 Listing deals](#31-listing-deals)
+* [2 Get deal by its ID](#32-get-deal-by-its-id)
+* [3 Create a deal](#33-create-a-deal)
 * [4 Delete deal](#34-delete-deal-)
 * [5 Create deal to a contact using email ID](#35-create-deal-to-a-contact-using-email-id)
 * [6 Search deals](#36-search-deals)
@@ -1147,7 +1147,7 @@ curl -i -X GET \
 }]
 ```
 
-### 3.1 Listing deals : 
+### 3.1 Listing deals: 
 Returns list of all "Deals" in the domain in JSON format, which are ordered by created time. Paging can be applied using the page_size and cursor query parameters. Count of the deals will be in the first deal and the cursor for the next page will be in the last deal of the list. If there is no cursor, it means that it is the end of the list.
 
 ###### Endpoint
@@ -1185,7 +1185,7 @@ curl  -i -X POST\
 	}
 }]
 ```
-### 3.2 Get deal by its ID : 
+### 3.2 Get deal by its ID: 
 Gets the deal with the given ID.
 
 ###### Endpoint
@@ -1232,7 +1232,7 @@ POST dev/api/panel/deals/deal
 ###### Acceptable request representation
 ```
 {
-	"name": "sample deal",
+"name": "sample deal",
 	"amount": 100,
     "track_name":"Default",
     "milestoneLabelName":"New"
