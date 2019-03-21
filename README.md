@@ -40,10 +40,10 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 * [3 Creating a contact](#13-creating-a-contact)
 * [4 Updating a contact](#14-updating-a-contact)
 * [5 Delete single contact](#15-delete-single-contact)
-* [6 Adding tags to a contact based on email](#16-adding-tags-to-a-contact-based-on-email-address)
-* [7 Delete tags to a contact based on email](#17-delete-tags-to-a-contact-based-on-email)
+* [6 Adding tags to a contact based on email address](#16-adding-tags-to-a-contact-based-on-email-address)
+* [7 Delete tags to a contact based on email address](#17-delete-tags-to-a-contact-based-on-email-address)
 * [8 List tags for a contact](#18-list-tags-for-a-contact)
-* [9 Add score to a contact using email ID](#19-add-score-to-a-contact-using-email-address)
+* [9 Add score to a contact using email address](#19-add-score-to-a-contact-using-email-address)
 * [10 Search contacts](#110-search-contacts)
 * [11 Delete tags value by ID](#111-delete-tags-value-by-id)
 * [12 Change contact owner](#112-change-contact-owner)
@@ -542,7 +542,7 @@ curl -i -X POST \
 -d 'email=samson@engagebay.com&tags=["testsample"]' \
 'https://app.engagebay.com/dev/api/panel/subscribers/email/tags/add'
 ```
-### 1.7 Delete tags to a contact based on email: 
+### 1.7 Delete tags to a contact based on email address: 
 Searches for the contact based on the given email address and searches for the given tag in the contact's tag list. If there is a match, then it deletes that tag. You can delete multiple tags. Tags should be sent as an array. Email address (email) and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded)
 ###### Endpoint
 POST dev/api/panel/subscribers/email/tags/delete
