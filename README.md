@@ -32,6 +32,10 @@ All API requests should be made to: https://app.engagebay.com/
 
 Note: All data is case-sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered two different words.
 
+All custom fields should have field_type property while doing API call. You can find/create custom fields in EngageBay account Admin Settings -> Custom Fields ->Contact/Deal/Company. 
+Supporting field_types are TEXT, DATE, LIST, CHECKBOX, TEXTAREA, NUMBER, FORMULA, MULTICHECKBOX, URL, CURRENCY, PHONE.
+
+
 ### Getting Started
 
 **[Contacts](#1-contacts---companies-api)**
@@ -409,30 +413,23 @@ POST dev/api/panel/subscribers/subscriber
 	"score" : 10,
 	"properties": [{
 		"name": "name",
-		"value": "sample",
-		"field_type": "TEXT",
-		"is_searchable": false,
 		"type": "SYSTEM"
 	},{
 		"name": "email",
 		"value": "samplecontact@engagebay.com",
-		"field_type": "TEXT",
-		"is_searchable": false,
 		"type": "SYSTEM"
 	}, {
 		"name": "phone",
 		"value": "+91 9999999999",
-		"field_type": "TEXT",
-		"is_searchable": false,
 		"type": "SYSTEM"
 	}, {
 		"name": "custom",
 		"value": "cutom",
+		"type": "CUSTOM",
 		"field_type": "TEXT",
-		"is_searchable": true,
-		"type": "CUSTOM"
+		"is_searchable": true
 	}],
-	"tags" : [{"tag": "sample"}]
+	"tags" : ["sample", "sample1]
 }
 ```
 ###### Example request
