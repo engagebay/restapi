@@ -36,6 +36,9 @@ All custom fields should have field_type property while doing API call. You can 
 
 Supporting field_types are TEXT, DATE, LIST, CHECKBOX, TEXTAREA, NUMBER, FORMULA, MULTICHECKBOX, URL, CURRENCY, PHONE.
 
+DATE values should be like API key user selected date format. You can find the date format Preferences -> Dateformat
+Ex: DD/MM/YYYY -> 31/07/2019 12:00:00 Date will be saved with selected user timezone.
+
 
 ### Getting Started
 
@@ -428,6 +431,12 @@ POST dev/api/panel/subscribers/subscriber
 		"value": "cutom",
 		"type": "CUSTOM",
 		"field_type": "TEXT",
+		"is_searchable": true
+	}, {
+		"name": "custom field name 2",
+		"value": "11/14/1988 03:31:11",
+		"type": "CUSTOM",
+		"field_type": "DATE",
 		"is_searchable": true
 	}],
 	"tags" : ["sample", "sample1"]
