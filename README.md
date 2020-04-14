@@ -2620,8 +2620,8 @@ POST dev/api/panel/tickets/ticket
     "requester_email": "ross@gmail.com,
     "subject":"Test not working ??",
     "group_id": "6467327394578432"
-    html_body: "Hello I am testing your docs and find that Test is not working. Please help me"
-    group_id: "6467327394578432"
+    "html_body: "Hello I am testing your docs and find that Test is not working. Please help me"
+    "assignee_id": "5358693205934080" // Owner ID of the ticket (Optional)
 }
 ```
 ###### Example request
