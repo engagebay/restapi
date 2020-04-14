@@ -18,6 +18,7 @@ API is in active development. Currently it allows you to access:
 - Owners
 - Custom Fields
 - User Profile
+- Tickets
 
 ### Authentication
 This is an HTTPS-only API.
@@ -138,6 +139,13 @@ Ex: DD/MM/YYYY -> 31/07/2019 12:00:00 Date will be saved with selected user time
 
 **[User Profile](#131-get-user-profile-)**
 * [1 Get user profile](#131-get-user-profile-)
+
+**[Tickets](#141-get-list-of-tickets)**
+
+* [1 Listing tickets](#141-get-list-of-tickets)
+* [2 Listing tickets by filter](#142-get-list-of-tickets-by-filter)
+* [3 Create a ticket](#143-create-a-ticket)
+* [4 Delete a ticket](#144-delete-a-ticket)
 
 
 
@@ -2480,3 +2488,198 @@ curl -i -X GET \
 	"email": "test@engagebay.com"
 }
 ```
+
+### 14.1 Get list of tickets:
+
+- Get list of tickets.
+
+###### Endpoint
+POST dev/api/panel/tickets
+
+###### Optional parameters
+- ``page_size `` - Page size for paginated results.
+- ``sort_key`` - Sort order for results.
+- ``cursor`` - To get next set of resultset. You will get it in the last record of previous resultset.
+
+###### Example request
+```sh
+curl -i -X POST \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json"  \
+-d "{}" \
+'https://app.engagebay.com/dev/api/panel/tickets'
+```
+
+###### Example JSON response
+```javascript
+[
+    {
+        "id": 1,
+        "requester_name": "peter",
+        "requester_email": "peter@engagebay.com",
+        "subscriber_id": 6179255348101120,
+        "subject": "Ticket test subject",
+        "source": "DASHBOARD",
+        "created_by": "USER",
+        "status": 1,
+        "priority": 0,
+        "type": 0,
+        "assigned_to": "GROUP",
+        "group_id": 6467327394578432,
+        "created_time": 1586862421,
+        "is_spam": false,
+        "updated_time": 1586862427,
+        "public_notes_count": 1,
+        "private_notes_count": 0,
+        "tags": [],
+        "reopens_count": 0,
+        "automationStatus": [],
+        "html_body": "",
+        "last_note_id": 6480521534111744,
+        "subscriber": {
+            "id": 6179255348101120,
+            "email": "peter@engagebay.com",
+            "name": "peter"
+        },
+        "properties": []
+    }
+]
+```
+
+### 14.2 Get list of tickets by filter:
+
+- Get list of tickets by filter.
+
+###### Endpoint
+POST dev/api/panel/tickets
+
+###### Optional parameters
+- ``filter_id `` - Filter Id for selected view results.
+- ``page_size `` - Page size for paginated results.
+- ``sort_key`` - Sort order for results.
+- ``cursor`` - To get next set of resultset. You will get it in the last record of previous resultset.
+
+###### Example request
+```sh
+curl -i -X POST \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json"  \
+-d "{filter_id: 6748802371289088}" \
+'https://app.engagebay.com/dev/api/panel/tickets'
+```
+
+###### Example JSON response
+```javascript
+[
+    {
+        "id": 1,
+        "requester_name": "peter",
+        "requester_email": "peter@engagebay.com",
+        "subscriber_id": 6179255348101120,
+        "subject": "Ticket test subject",
+        "source": "DASHBOARD",
+        "created_by": "USER",
+        "status": 1,
+        "priority": 0,
+        "type": 0,
+        "assigned_to": "GROUP",
+        "group_id": 6467327394578432,
+        "created_time": 1586862421,
+        "is_spam": false,
+        "updated_time": 1586862427,
+        "public_notes_count": 1,
+        "private_notes_count": 0,
+        "tags": [],
+        "reopens_count": 0,
+        "automationStatus": [],
+        "html_body": "",
+        "last_note_id": 6480521534111744,
+        "subscriber": {
+            "id": 6179255348101120,
+            "email": "peter@engagebay.com",
+            "name": "peter"
+        },
+        "properties": []
+    }
+]
+```
+
+### 14.3 Create a ticket: 
+- Accepts ticket JSON as data in Post request to the URL specified below. The call returns the ticket JSON with id field generated when a new ticket is created.  
+- Each field is case sensitive.
+- Don't pass null value.
+- If you don't know the value of field then don't pass that field at all or pass empty data for the field.
+
+###### Endpoint
+POST dev/api/panel/tickets/ticket
+
+###### Acceptable request representation
+```
+{
+    "requester_name": "Sample Contact",
+    "requester_email": "ross@gmail.com,
+    "subject":"Test not working ??",
+    "group_id": "6467327394578432"
+    html_body: "Hello I am testing your docs and find that Test is not working. Please help me"
+    group_id: "6467327394578432"
+}
+```
+###### Example request
+```sh
+curl -i -X POST \ 
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "requester_name": "Sample Contact",
+    "requester_email": "ross@gmail.com",
+    "subject":"Test not working ??",
+    "group_id": "6467327394578432",
+    html_body: "Hello I am testing your docs and find that Test is not working. Please help me"
+}' \
+'https://app.engagebay.com/dev/api/panel/tickets/ticket'
+```
+###### Example JSON response
+#### 
+```javascript
+{
+    "id": 4,
+    "requester_name": "Sample Contact",
+    "requester_email": "ross@gmail.com",
+    "subscriber_id": 5776834092335104,
+    "subject": "Test not working ??",
+    "source": "DASHBOARD",
+    "created_by": "USER",
+    "status": 1,
+    "priority": 2,
+    "type": 3,
+    "assigned_to": "GROUP",
+    "group_id": 6467327394578432,
+    "created_time": 1586867348,
+    "is_spam": false,
+    "updated_time": 1586867348,
+    "public_notes_count": 1,
+    "private_notes_count": 0,
+    "tags": [],
+    "reopens_count": 0,
+    "automationStatus": [],
+    "html_body": "",
+    "references": [],
+    "properties": []
+}
+```
+
+### 14.4 Delete a ticket: 
+- Deletes the ticket based on the id specified in the url.
+
+###### Endpoint
+DELETE dev/api/panel/tickets/{id}
+
+###### Example request
+```sh
+curl -i -X DELETE \
+-H "Authorization: xxxxxxxxx" \
+-d "{}" \
+'https://app.engagebay.com/dev/api/panel/tickets/1' 
+```
+
