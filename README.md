@@ -4,6 +4,8 @@ EngageBay REST API
 
 ### Overview
 
+EngageBay API is structured around REST, HTTPS, and JSON/XML. API endpoint URLs are organized around resources below listed. It uses HTTP methods for indicating the action to take on a resource, and HTTP status codes for expressing error states. Resources are represented in JSON
+
 API is in active development. Currently it allows you to access:
 
 - Contacts
@@ -21,25 +23,51 @@ API is in active development. Currently it allows you to access:
 - Tickets
 
 ### Authentication
-This is an HTTPS-only API.
+This is an HTTPS-only API. All requests to the API are authenticated by providing your REST API Key as a header value. 
 
-All API calls require ```Authorization``` header. You should pass REST API Key as a header value.
+The REST API key should be provided as an HTTP header named ```Authorization```.
 
 ###### API Key
-You can find your API Key in the EngageBay Account Admin Settings -> API -> API Key.
+You can find your API Key in the EngageBay Account Admin Settings -> API -> REST API Key.
 
 ###### End Points
 All API requests should be made to: https://app.engagebay.com/
 
 Note: All data is case-sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered two different words.
 
+###### Custom Fields
 All custom fields should have field_type property while doing API call. You can find/create custom fields in EngageBay account Admin Settings -> Custom Fields ->Contact/Deal/Company. 
 
 Supporting field_types are TEXT, DATE, LIST, CHECKBOX, TEXTAREA, NUMBER, FORMULA, MULTICHECKBOX, URL, CURRENCY, PHONE.
 
+###### Date Format
 DATE values should be like API key user selected date format. You can find the date format Preferences -> Dateformat
 Ex: DD/MM/YYYY -> 31/07/2019 12:00:00 Date will be saved with selected user timezone.
 
+###### Errors
+The API uses HTTP status codes to indicate an error has occurred while processing a request. There are four main error status codes used by the API:
+
+| Code  | Description |
+| ------------- | ------------- |
+| 400  | The request could not be processed, usually due to a missing or invalid parameter. |
+| 401  | The request could not be authenticated or the authenticated user is not authorized to access the requested endpoint.  |
+| 404  | The requested endpoint does not exist.  |
+| 429  | The user has sent too many requests in a given amount of time ("limit rate") - contact EngageBay support for more details.  |
+
+Here is an example: 
+401 Unauthorized
+```
+{
+  "error": "UnAuthenticated User",
+  "status": "401"
+}
+```
+400 Bad Request
+```
+{
+"error": "Invalid input. Please provide all the required fields."
+}
+```
 
 ### Getting Started
 
@@ -152,7 +180,7 @@ Ex: DD/MM/YYYY -> 31/07/2019 12:00:00 Date will be saved with selected user time
 ### 1.1 Listing contacts: 
 - Returns a list of your contacts
 
-For the Response in JSON format, add the header 'Accept' as application/json. By default, the response will be in XML format. Paging can be applied using the page_size and cursor query parameters. Count of the contacts will be in the first contact and Cursor for the next page will be in the last contact of the list. If there is no cursor, it means that it is the end of list.
+For the Response in JSON format, add the header 'Accept' as application/json. By default, the response will be in XML format. Paging can be applied using the page_size and cursor query parameters. Cursor for the next page will be in the last contact of the list. If there is no cursor, it means that it is the end of list.
 
 ###### Endpoint
 POST dev/api/panel/subscribers
@@ -178,22 +206,12 @@ curl -i -X POST \
 	"id": 4997280348241920,
 	"owner_id": 6192449487634432,
 	"name": "Test Contact",
-	"firstname": "Test Contact",
-	"lastname": "1",
-	"fullname": "Test Contact 1",
-	"name_sort": "test contact",
 	"email": "testcontact@gmail.com",
+	"score": 5
 	"created_time": 1535538585,
 	"updated_time": 0,
 	"status": "CONFIRMED",
-	"sources": [{
-		"type": "DEFAULT",
-		"subscribed_on": 1535538585,
-		"status": "ACTIVE",
-		"custom": 0
-	}],
 	"companyIds": [5278755324952576],
-	"contactIds": [],
 	"properties": [{
 		"name": "name",
 		"value": "Test Contact",
@@ -218,108 +236,57 @@ curl -i -X POST \
 		"field_type": "TEXT",
 		"is_searchable": false,
 		"type": "SYSTEM"
-	}, {
-		"name": "country",
-		"value": "United States",
-		"field_type": "TEXT",
-		"is_searchable": false,
-		"type": "SYSTEM"
 	}],
 	"listIds": [],
-	"owner": {
-		"id": 6192449487634432,
-		"email": "test@test.com",
-		"name": "test"
-	},
-	"entiy_group_name": "subscriber",
 	"tags": [{
 		"tag": "United States",
 		"assigned_time": 1535538585
 	}],
-	"broadcastIds": [],
-	"openedLinks": [],
-	"emailProperties": [],
-	"unsubscribeList": [],
-	"emailBounceStatus": [],
-	"importedEntity": false,
-	"forceCreate": false,
-	"forceUpdate": false,
-	"score": 5
+	"emailBounceStatus": []
 },{
-	"cursor": "Cl0KFgoMY3JlYXRlZF90aW1lEgYI2IWV3AUSP2oRYWNjb3VudGJveC0xNTQ2MDVyFwsSClN1YnNjcmliZXIYgICAgIDAowgMogEQNTYyOTQ5OTUzNDIxMzEyMBgAIAE",
-	"id": 4659730278514688,
+	"id": 4997280348241920,
 	"owner_id": 6192449487634432,
-	"name": "Test contact 2",
-	"firstname": "Test contact",
-	"lastname": "2",
-	"fullname": "Test contact 2",
-	"name_sort": "test",
-	"email": "test@engagebay.com",
-	"created_time": 1535460056,
-	"updated_time": 1535529626,
-	"status": "UNCONFIRMED",
-	"sources": [{
-		"type": "DEFAULT",
-		"subscribed_on": 1535460056,
-		"status": "ACTIVE",
-		"custom": 0
-	}],
-	"companyIds": [],
-	"contactIds": [],
+	"name": "Test Contact 2",
+	"email": "testcontact2@gmail.com",
+	"score": 5
+	"created_time": 1535538585,
+	"updated_time": 0,
+	"status": "CONFIRMED",
+	"companyIds": [5278755324952576],
 	"properties": [{
 		"name": "name",
-		"value": "test contact",
+		"value": "Test Contact 2",
 		"field_type": "TEXT",
 		"is_searchable": false,
 		"type": "SYSTEM"
 	}, {
 		"name": "last_name",
-		"value": "2",
+		"value": "1",
 		"field_type": "TEXT",
 		"is_searchable": false,
 		"type": "SYSTEM"
 	}, {
 		"name": "email",
-		"value": "test@engagebay.com",
+		"value": "testcontact2@gmail.com",
 		"field_type": "TEXT",
 		"is_searchable": false,
 		"type": "SYSTEM"
 	}, {
 		"name": "phone",
-		"value": "",
-		"field_type": "TEXT",
-		"is_searchable": false,
-		"type": "SYSTEM"
-	}, {
-		"name": "country",
-		"value": "",
+		"value": "+91 9999999999",
 		"field_type": "TEXT",
 		"is_searchable": false,
 		"type": "SYSTEM"
 	}],
 	"listIds": [],
-	"owner": {
-		"id": 6192449487634432,
-		"email": "test@test.com",
-		"name": "test"
-	},
-	"entiy_group_name": "subscriber",
-	"tags": [],
-	"broadcastIds": [6084697348112384],
-	"openedLinks": [],
-	"emailProperties": [{
-		"emailDbId": 6119881720201216,
-		"entityId": 6084697348112384,
-		"sentAt": 1535529626,
-		"status": "SENT_6084697348112384"
+	"tags": [{
+		"tag": "United States",
+		"assigned_time": 1535538585
 	}],
-	"unsubscribeList": [],
 	"emailBounceStatus": [],
-	"importedEntity": false,
-	"forceCreate": false,
-	"forceUpdate": false,
-	"score": 5
-}]
+	"cursor": "Cl0KFgoMY3JlYXRlZF90aW1lEgYI2IWV3AUSP2oRYWNjb3VudGJveC0xNTQ2MDVyFwsSClN1YnNjcmliZXIYgICAgIDAowgMogEQNTYyOTQ5OTUzNDIxMzEyMBgAIAE",
+}
+]
 ```
 ### 1.2 Get contact by ID
 Returns data for a single contact
@@ -1164,7 +1131,7 @@ curl -i -X GET \
 ```
 
 ### 3.1 Listing deals: 
-Returns list of all "Deals" in the domain in JSON format, which are ordered by created time. Paging can be applied using the page_size and cursor query parameters. Count of the deals will be in the first deal and the cursor for the next page will be in the last deal of the list. If there is no cursor, it means that it is the end of the list.
+Returns list of all "Deals" in the domain in JSON format, which are ordered by created time. Paging can be applied using the page_size and cursor query parameters. Cursor for the next page will be in the last deal of the list. If there is no cursor, it means that it is the end of the list.
 
 ###### Endpoint
 POST dev/api/panel/deals
