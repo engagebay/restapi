@@ -774,7 +774,7 @@ curl -i -X GET \
 ### 1.12 Adding tags to a contact by ID: 
 Searches for the contact based on the given contact ID and adds the given tags to the contact. You can add multiple tags. Tags should be sent as an array. tags (tags) array should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded).Tag name should start with an alphabet and cannot contain special characters other than underscore and space.
 ###### Endpoint
-POST dev/api/panel/subscribers/{contactId}/tags/add
+POST dev/api/panel/subscribers/contact/tags/add/{contactId}
 ###### Required parameters
 ``contactId`` - ID of the contact
 ``tags`` -  Tags to be added to the contact
@@ -786,7 +786,7 @@ curl -i -X POST \
 -H "Authorization: xxxxxxxxx" \
 -H "Content-Type:application/x-www-form-urlencoded" \
 -d 'tags=["testsample"]' \
-"https://app.engagebay.com/dev/api/panel/subscribers/xxxxxx/tags/add"
+"https://app.engagebay.com/dev/api/panel/subscribers/contact/tags/add/{contactId}"
 ```
 
 ### 1.13 Delete tags value by ID:
