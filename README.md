@@ -77,13 +77,16 @@ Here is an example:
 * [3 Creating a contact](#13-creating-a-contact)
 * [4 Updating a contact](#14-update-properties-of-a-contact-by-id-partial-update)
 * [5 Delete single contact](#15-delete-single-contact)
-* [6 Adding tags to a contact based on email address](#16-adding-tags-to-a-contact-based-on-email-address)
-* [7 Delete tags to a contact based on email address](#17-delete-tags-to-a-contact-based-on-email-address)
-* [8 List tags for a contact](#18-list-tags-for-a-contact)
-* [9 Add score to a contact using email address](#19-add-score-to-a-contact-using-email-address)
-* [10 Search contacts](#110-search-contacts)
-* [11 Delete tags value by ID](#111-delete-tags-value-by-id)
-* [12 Change contact owner](#112-change-contact-owner)
+* [6 Get contact based on email address](#115-get-contact-based-on-email-address)
+* [7 Adding tags to a contact based on email address](#16-adding-tags-to-a-contact-based-on-email-address)
+* [8 Delete tags to a contact based on email address](#17-delete-tags-to-a-contact-based-on-email-address)
+* [9 List tags for a contact based on email address](#18-list-tags-for-a-contact-based-on-email-address)
+* [10 Add score to a contact using email address](#19-add-score-to-a-contact-using-email-address)
+* [11 Search contacts](#110-search-contacts)
+* [12 List tags for a contact by ID](#111-list-tags-for-a-contact-by-id)
+* [13 Adding tags to a contact by ID](#112-adding-tags-to-a-contact-by-id)
+* [14 Delete tags value by ID](#113-delete-tags-value-by-id)
+* [15 Change contact owner](#114-change-contact-owner)
 
 **[Company APIs](#21-creating-a-company)**
 
@@ -507,6 +510,94 @@ DELETE dev/api/panel/subscribers/{contact-id}
 curl -i -X DELETE \
 "https://app.engagebay.com/dev/api/panel/subscribers/{contact-id}"
 ```
+### 1.15 Get contact based on email address: 
+Returns data for a single contact by contact email
+###### Endpoint
+GET /dev/api/panel/subscribers/contact-by-email/{email}
+###### Required parameters
+``email`` - Email address of the contact.
+###### Example request
+```sh
+curl -i -X GET \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+"https://app.engagebay.com/dev/api/panel/subscribers/contact-by-email/{email}"
+```
+###### Example JSON response
+```javascript
+[{
+	"id": 4997280348241920,
+	"owner_id": 6192449487634432,
+	"name": "Test Contact",
+	"firstname": "Test Contact",
+	"lastname": "1",
+	"fullname": "Test Contact 1",
+	"name_sort": "test contact",
+	"email": "testcontact@gmail.com",
+	"created_time": 1535538585,
+	"updated_time": 0,
+	"status": "CONFIRMED",
+	"sources": [{
+		"type": "DEFAULT",
+		"subscribed_on": 1535538585,
+		"status": "ACTIVE",
+		"custom": 0
+	}],
+	"companyIds": [5278755324952576],
+	"contactIds": [],
+	"properties": [{
+		"name": "name",
+		"value": "Test Contact",
+		"field_type": "TEXT",
+		"is_searchable": false,
+		"type": "SYSTEM"
+	}, {
+		"name": "last_name",
+		"value": "1",
+		"field_type": "TEXT",
+		"is_searchable": false,
+		"type": "SYSTEM"
+	}, {
+		"name": "email",
+		"value": "testcontact@gmail.com",
+		"field_type": "TEXT",
+		"is_searchable": false,
+		"type": "SYSTEM"
+	}, {
+		"name": "phone",
+		"value": "+91 9999999999",
+		"field_type": "TEXT",
+		"is_searchable": false,
+		"type": "SYSTEM"
+	}, {
+		"name": "country",
+		"value": "United States",
+		"field_type": "TEXT",
+		"is_searchable": false,
+		"type": "SYSTEM"
+	}],
+	"listIds": [],
+	"owner": {
+		"id": 6192449487634432,
+		"email": "test@test.com",
+		"name": "test"
+	},
+	"entiy_group_name": "subscriber",
+	"tags": [{
+		"tag": "United States",
+		"assigned_time": 1535538585
+	}],
+	"broadcastIds": [],
+	"openedLinks": [],
+	"emailProperties": [],
+	"unsubscribeList": [],
+	"emailBounceStatus": [],
+	"importedEntity": false,
+	"forceCreate": false,
+	"forceUpdate": false,
+	"score": 5
+}]
+```
 
 ### 1.6 Adding tags to a contact based on email address: 
 Searches for the contact based on the given email address and adds the given tags to the contact. You can add multiple tags. Tags should be sent as an array. Email address (email) and tags (tags) array should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded).Tag name should start with an alphabet and cannot contain special characters other than underscore and space.
@@ -543,7 +634,7 @@ curl -i -X POST \
 "https://app.engagebay.com/dev/api/contacts/email/tags/delete "
 ```
 
-### 1.8 List tags for a contact: 
+### 1.8 List tags for a contact based on email address: 
 Lists all the tags for a contact
 ###### Endpoint
 POST dev/api/panel/subscribers/get-tags/{subscriber-email}
@@ -652,7 +743,53 @@ curl -i -X GET \
 	"score": 20
 }]
 ```
-### 1.11 Delete tags value by ID:
+
+### 1.11 List tags for a contact by ID: 
+Lists all the tags for a contact by contact ID
+###### Endpoint
+GET dev/api/panel/subscribers/get-tags-by-id/{contactId}
+###### Required parameters
+``contactId`` - ID of the contact
+
+###### Example request
+```sh
+curl -i -X GET \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+-H "Content-Type:application/x-www-form-urlencoded" \
+-d "{}" \
+"https://app.engagebay.com/dev/api/panel/subscribers/get-tags-by-id/{contactId}"
+```
+###### Example JSON response
+```
+[{
+	"tag": "sampletag1",
+	"assigned_time": 1535709035
+},{
+	"tag": "sampletag2",
+	"assigned_time": 1535709035
+}]
+```
+
+### 1.12 Adding tags to a contact by ID: 
+Searches for the contact based on the given contact ID and adds the given tags to the contact. You can add multiple tags. Tags should be sent as an array. tags (tags) array should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded).Tag name should start with an alphabet and cannot contain special characters other than underscore and space.
+###### Endpoint
+POST dev/api/panel/subscribers/{contactId}/tags/add
+###### Required parameters
+``contactId`` - ID of the contact
+``tags`` -  Tags to be added to the contact
+
+###### Example request
+```sh
+curl -i -X POST \
+-H "Accept: application/json" \
+-H "Authorization: xxxxxxxxx" \
+-H "Content-Type:application/x-www-form-urlencoded" \
+-d 'tags=["testsample"]' \
+"https://app.engagebay.com/dev/api/panel/subscribers/xxxxxx/tags/add"
+```
+
+### 1.13 Delete tags value by ID:
 
 - Delete tag values by contact id.
 
@@ -676,7 +813,7 @@ curl -i -X POST \
  "https://app.engagebay.com/dev/api/panel/subscribers/contact/tags/delete"
 ```
 
-### 1.12 Change contact owner:
+### 1.14 Change contact owner:
 
 - Change contact owner using owner email and contact Id.
 
