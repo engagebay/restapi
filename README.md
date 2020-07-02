@@ -196,7 +196,7 @@ curl -i -X POST \
 -H "Authorization: xxxxxxxxx" \
 -H "Accept: application/json"  \
 -d "{}" \
-'https://app.engagebay.com/dev/api/panel/subscribers'
+"https://app.engagebay.com/dev/api/panel/subscribers"
 ```
 
 ###### Example JSON response
@@ -299,7 +299,7 @@ GET /dev/api/panel/subscribers/{id}
 curl -i -X GET \
 -H "Authorization: xxxxxxxxx" \
 -H "Accept: application/json" \
-'https://app.engagebay.com/dev/api/panel/subscribers/1'
+"https://app.engagebay.com/dev/api/panel/subscribers/1"
 ```
 ###### Example JSON response
 ```javascript
@@ -452,7 +452,7 @@ curl -i -X POST \
 	}],
 	"tags" : [{"tag": "sample"}]
 }' \
-'https://app.engagebay.com/dev/api/panel/subscribers/subscriber'
+"https://app.engagebay.com/dev/api/panel/subscribers/subscriber"
 ```
 ### 1.4 Update properties of a contact by ID (partial update): 
 - Updates the properties for a single contact.
@@ -495,7 +495,7 @@ curl -i -X PUT  \
 		"type": "SYSTEM"
 	}]
 }' \
-'https://app.engagebay.com/dev/api/panel/subscribers/update-partial'
+"https://app.engagebay.com/dev/api/panel/subscribers/update-partial"
 ```
 ### 1.5 Delete single contact: 
 - Delete the single contact from account
@@ -505,7 +505,7 @@ DELETE dev/api/panel/subscribers/{contact-id}
 ###### Example Request
 ```sh
 curl -i -X DELETE \
-'https://app.engagebay.com/dev/api/panel/subscribers/{contact-id}'
+"https://app.engagebay.com/dev/api/panel/subscribers/{contact-id}"
 ```
 
 ### 1.6 Adding tags to a contact based on email address: 
@@ -523,7 +523,7 @@ curl -i -X POST \
 -H "Authorization: xxxxxxxxx" \
 -H "Content-Type:application/x-www-form-urlencoded" \
 -d 'email=samson@engagebay.com&tags=["testsample"]' \
-'https://app.engagebay.com/dev/api/panel/subscribers/email/tags/add'
+"https://app.engagebay.com/dev/api/panel/subscribers/email/tags/add"
 ```
 ### 1.7 Delete tags to a contact based on email address: 
 Searches for the contact based on the given email address and searches for the given tag in the contact's tag list. If there is a match, then it deletes that tag. You can delete multiple tags. Tags should be sent as an array. Email address (email) and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded)
@@ -540,7 +540,7 @@ curl -i -X POST \
 -H "Authorization: xxxxxxxxx" \
 -H "Content-Type:application/x-www-form-urlencoded" \
 -d 'email=sample@engagebay.com&tags=["sampletest"]' \
-'https://app.engagebay.com/dev/api/contacts/email/tags/delete '
+"https://app.engagebay.com/dev/api/contacts/email/tags/delete "
 ```
 
 ### 1.8 List tags for a contact: 
@@ -557,7 +557,7 @@ curl -i -X POST \
 -H "Accept: application/json" \
 -H "Content-Type:application/x-www-form-urlencoded" \
 -d "{}" \
-'https://app.engagebay.com/dev/api/panel/subscribers/get-tags/{subscriber-email}' 
+"https://app.engagebay.com/dev/api/panel/subscribers/get-tags/{subscriber-email}"
 ```
 ###### Example JSON response
 ```
@@ -585,7 +585,7 @@ curl -i -X POST \
 -H "Accept: application/json" \
 -H "Content-Type:application/x-www-form-urlencoded" \
 -d 'email=samson@walt.ltd&score=100' \
-'https://app.engagebay.com/dev/api/panel/subscribers/add-score'
+"https://app.engagebay.com/dev/api/panel/subscribers/add-score"
 ```
 
 ### 1.10 Search contacts:
@@ -605,7 +605,7 @@ GET dev/api/search?q=searchtext&type=Subscriber
 curl -i -X GET \
    -H "Accept:application/json" \
    -H "Authorization:xxxxxxxxxxx" \
- 'https://app.engagebay.com/dev/api/search?q=test&type=Subscriber'
+ "https://app.engagebay.com/dev/api/search?q=test&type=Subscriber"
 ```
 ###### Example JSON response
 ```javascript
@@ -673,7 +673,7 @@ curl -i -X POST \
    -H "Content-Type:application/x-www-form-urlencoded" \
    -d "contactId=5015780936646656" \
    -d "tags=[\"testtag\"]" \
- 'https://app.engagebay.com/dev/api/panel/subscribers/contact/tags/delete'
+ "https://app.engagebay.com/dev/api/panel/subscribers/contact/tags/delete"
 ```
 
 ### 1.12 Change contact owner:
@@ -695,7 +695,7 @@ curl -i -X POST \
    -H "Accept:application/json" \
    -H "Authorization:p5nlcfg7m89a8lb9gf1p1nf6bd" \
    -H "Content-Type:application/json" \
- 'https://app.engagebay.com/dev/api/panel/subscribers/update-owner-by-email?subscriberId=5015780936646656&ownerEmail=test@engagebay.com'
+ "https://app.engagebay.com/dev/api/panel/subscribers/update-owner-by-email?subscriberId=5015780936646656&ownerEmail=test@engagebay.com"
 ```
 #### 
 ```javascript
@@ -825,7 +825,7 @@ curl -i -X POST \
 	"entiy_group_name": "company",
 	"companyIds": []
 } ' \
-'https://app.engagebay.com/dev/api/panel/companies/company'
+"https://app.engagebay.com/dev/api/panel/companies/company"
 ```
 ### 2.2 Updating a company: 
 We can update required property fields of the company using this call. It is used to add a new property or update the existing property. It accepts property object of company with valid parameter in it. Send the Company-Id of the company to identify it. This will not affect other fields.
@@ -903,7 +903,7 @@ curl -i -X PUT \
 	"entiy_group_name": "company",
 	"companyIds": []
 } ' \
-'https://app.engagebay.com/dev/api/panel/companies/company'
+"https://app.engagebay.com/dev/api/panel/companies/company"
 ```
 ### 2.3 Get list of companies: 
 - Get list of companies
@@ -919,7 +919,7 @@ curl -i -X POST \
 -H "Authorization: xxxxxxxxx" \
 -H "Accept: application/json" \
 -d "{}" \
-'https://app.engagebay.com/dev/api/panel/companies'
+"https://app.engagebay.com/dev/api/panel/companies"
 ```
 
 ###### Example JSON response
@@ -1013,7 +1013,7 @@ GET dev/api/panel/companies/{id}
 curl -i -X GET \
 -H "Authorization: xxxxxxxxx" \
 -H "Accept :application/json" 
-'https://app.engagebay.com/dev/api/panel/companies/{id}'
+"https://app.engagebay.com/dev/api/panel/companies/{id}"
 ```
 
 ###### Example JSON response
@@ -1069,7 +1069,7 @@ DELETE dev/api/panel/companies/{id}
 ```sh
 curl -i -X DELETE  \
 -H "Authorization: xxxxxxxxx" \
-'https://app.engagebay.com/dev/api/panel/companies/{id}' 
+"https://app.engagebay.com/dev/api/panel/companies/{id}"
 ```
 
 ### 2.6 Search companies:
@@ -1089,7 +1089,7 @@ GET dev/api/search?q=searchtext&type=Company
 curl -i -X GET \
    -H "Accept:application/json" \
    -H "Authorization:xxxxxxxxxxx" \
- 'https://app.engagebay.com/dev/api/search?q=samplecompany&type=Company'
+ "https://app.engagebay.com/dev/api/search?q=samplecompany&type=Company"
 ```
 ###### Example JSON response
 ```javascript
@@ -1147,7 +1147,7 @@ curl  -i -X POST\
 -H "Authorization: xxxxxxxxx" \
 -H  "Accept:application/json" \
 -d "{}" \
-'https://app.engagebay.com/dev/api/panel/deals'
+"https://app.engagebay.com/dev/api/panel/deals"
 ```
 ######  Example JSON response
 ```
@@ -1180,7 +1180,7 @@ curl -i -X GET \
  -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
  -H "Accept:application/json" \
  -H "Content-Type:application/x-www-form-urlencoded" \
-'https://app.engagebay.com/dev/api/panel/deals/1234'
+"https://app.engagebay.com/dev/api/panel/deals/1234"
 ```
 
 ######  Example JSON response
@@ -1233,7 +1233,7 @@ curl -i -X POST \
     "track_name":"Default",
     "milestoneLabelName":"New"
 }' \
-'https://app.engagebay.com/dev/api/panel/deals/deal'
+"https://app.engagebay.com/dev/api/panel/deals/deal"
 ```
 ###### Example JSON response
 #### 
@@ -1278,7 +1278,7 @@ POST dev/api/panel/deals/{id}
 curl -i -X POST \
 -H "Authorization: xxxxxxxxx" \
 -d "{}" \
-'https://app.engagebay.com/dev/api/panel/deals/1' 
+"https://app.engagebay.com/dev/api/panel/deals/1" 
 ```
 
 ### 3.5 Create deal to a contact using email address:
@@ -1305,7 +1305,7 @@ curl -i -X POST \
 	     "track_name":"Default",
 	    "milestoneLabelName":"New"
 	}' \
- 'https://app.engagebay.com/dev/api/panel/deals/create-deal/test@engagebay.com'
+ "https://app.engagebay.com/dev/api/panel/deals/create-deal/test@engagebay.com"
 ```
 
 ###### Example JSON response
@@ -1357,7 +1357,7 @@ GET dev/api/search?q=sampledeal&type=Deal
 curl -i -X GET \
    -H "Accept:application/json" \
    -H "Authorization:xxxxxxxxxxx" \
- 'https://app.engagebay.com/dev/api/search?q=sampledeal&type=Deal'
+ "https://app.engagebay.com/dev/api/search?q=sampledeal&type=Deal"
 ```
 ###### Example JSON response
 ```javascript
@@ -1455,7 +1455,7 @@ curl -i -X PUT \
 	"milestoneLabelName" : "New",
 	"track_id" : "234412341234"
 } ' \
-'https://app.engagebay.com/dev/api/panel/deals/change-track'
+"https://app.engagebay.com/dev/api/panel/deals/change-track"
 ```
 
 
@@ -1472,7 +1472,7 @@ GET dev/api/panel/tracks
 curl -i -X GET \
    -H "Accept:application/json" \
    -H "Authorization:xxxxxxxxxxxxxxxx" \
- 'https://app.engagebay.com/dev/api/panel/tracks'
+ "https://app.engagebay.com/dev/api/panel/tracks"
 ```
 ###### Example JSON response
 ```javascript
@@ -1541,7 +1541,7 @@ curl -i -X POST \
   "name" : "sampletrack",
   "milestones" : [{"labelName": "New", "labelActualName": "New_Actual", "probability": "0.1", "color": "#e2e0e0"}]
 }' \
- 'https://app.engagebay.com/dev/api/panel/tracks/track'
+ "https://app.engagebay.com/dev/api/panel/tracks/track"
 ```
 ###### Example JSON response
 ```javascript
@@ -1582,7 +1582,7 @@ curl -i -X PUT \
   "milestones" : [{"labelName": "New", "labelActualName": "New_Actual", "probability": "0.1", "color": "#e2e0e0"}],
   "created_time":"1542786809"
 }' \
- 'https://app.engagebay.com/dev/api/panel/tracks/track'
+ "https://app.engagebay.com/dev/api/panel/tracks/track"
 ```
 ###### Example JSON response
 ```javascript
@@ -1614,7 +1614,7 @@ GET dev/api/panel/tracks/{id}
 curl -i -X GET \
    -H "Accept:application/json" \
    -H "Authorization:xxxxxxxxxxxxxx" \
- 'https://app.engagebay.com/dev/api/panel/tracks/5676424065187840'
+ "https://app.engagebay.com/dev/api/panel/tracks/5676424065187840"
 ```
 #### Example JSON response
 
@@ -1673,7 +1673,7 @@ DELETE dev/api/panel/tracks/{id}
 curl -i -X DELETE \
    -H "Accept:application/json" \
    -H "Authorization:xxxxxxxxxxxxxxxx" \
- 'https://app.engagebay.com/dev/api/panel/tracks/5676424065187840'
+ "https://app.engagebay.com/dev/api/panel/tracks/5676424065187840"
 ```
 
 
@@ -1695,7 +1695,7 @@ GET dev/api/calendar/event/list?start_time=xxxxx&end_time=xxxxx&source_type=API
 curl -i -X GET \
    -H "Accept:application/json" \
    -H "Authorization:xxxxxxx" \
- 'https://app.engagebay.com/dev/api/calendar/event/list?start_time=1542220200000&end_time=1542824999999&source_type=API'
+ "https://app.engagebay.com/dev/api/calendar/event/list?start_time=1542220200000&end_time=1542824999999&source_type=API"
 ```
 ###### Example JSON response
 ```javascript
@@ -1747,7 +1747,7 @@ curl -i -X POST \
    -d \
    '{
    }' \
-   'https://app.engagebay.com/dev/api/calendar/event/contact/5134228568145920/events'
+   "https://app.engagebay.com/dev/api/calendar/event/contact/5134228568145920/events"
 ```
 ###### Example JSON response
 ```javascript
@@ -1799,7 +1799,7 @@ curl -i -X POST \
   "source_type":"API",
   "owner_id":"5676618345349120"
 }' \
- 'https://app.engagebay.com/dev/api/calendar/event/normal'
+ "https://app.engagebay.com/dev/api/calendar/event/normal"
 ```
 ###### Example JSON response
 ```javascript
@@ -1840,7 +1840,7 @@ curl -i -X PUT \
   "owner_id":"5676618345349120",
   "created_time":"1542782746"
 }' \
- 'https://app.engagebay.com/dev/api/calendar/event/normal'
+ "https://app.engagebay.com/dev/api/calendar/event/normal"
 ```
 ###### Example JSON response
 ```javascript
@@ -1883,7 +1883,7 @@ curl -i -X POST \
    -d "taskType=ALL" \
    -d "page_size=10" \
    -d "sort_key=created_time" \
- 'https://app.engagebay.com/dev/api/panel/tasks'
+ "https://app.engagebay.com/dev/api/panel/tasks"
 ```
 
 ###### Example JSON response
@@ -1921,7 +1921,7 @@ curl -i -X GET \
    -H "Authorization:xxxxxxxxxxxxxx" \
    -H "Accept:application/json" \
    -H "Content-Type:application/x-www-form-urlencoded" \
- 'https://app.engagebay.com/dev/api/panel/tasks/5695756786728960'
+ "https://app.engagebay.com/dev/api/panel/tasks/5695756786728960"
 ```
 
 ###### Example JSON response
@@ -2014,7 +2014,7 @@ curl -i -X POST \
 	"companies": [],
 	"deals": []
 }' \
- 'https://app.engagebay.com/dev/api/panel/tasks'
+ "https://app.engagebay.com/dev/api/panel/tasks"
 ```
 
 ###### Example JSON response
@@ -2100,7 +2100,7 @@ curl -i -X PUT \
 	"companies": [],
 	"deals": []
 }' \
- 'https://app.engagebay.com/dev/api/panel/tasks'
+ "https://app.engagebay.com/dev/api/panel/tasks"
 ```
 ### 6.5 Delete a task based on ID: 
 
@@ -2114,7 +2114,7 @@ DELETE dev/api/panel/tasks/{id}
 curl -i -X DELETE \
    -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
    -H "Accept:application/json" \
- 'https://app.engagebay.com/dev/api/panel/tasks/5147920286351360'
+ "https://app.engagebay.com/dev/api/panel/tasks/5147920286351360"
 ```
 
 ### 7.1 Create a note:
@@ -2138,7 +2138,7 @@ curl -i -X POST \
    -d "{}"\
 '{"subject": "Engagebay Note", "content": "Engagebay note", "parentId": "5359259403419648"}
 ' \
- 'https://app.engagebay.com/dev/api/panel/notes'
+ "https://app.engagebay.com/dev/api/panel/notes"
 ```
 ###### Example JSON response
 ```javascript
@@ -2164,7 +2164,7 @@ GET dev/api/panel/forms
 curl -i -X GET \
    -H "Authorization:xxxxxxxxxxx" \
    -H "Accept:application/json" \
- 'https://app.engagebay.com/dev/api/panel/forms'
+ "https://app.engagebay.com/dev/api/panel/forms"
 ```
 
 ###### Example JSON response
@@ -2203,7 +2203,7 @@ curl -i -X POST \
    -H "Authorization:xxxxxxxxxxxxxxxx" \
    -d \
 '{}' \
- 'https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-form/sample@engagebay.com/5178895036841984'
+ "https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-form/sample@engagebay.com/5178895036841984"
 ```
 ### 9.1 Add contact to a sequence:
 
@@ -2220,7 +2220,7 @@ curl -i -X POST \
    -H "Accept:application/json" \
    -H "Content-Type: application/json; charset=utf-8" \
    -d "{}" \
- 	'https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-sequence/sample@engagebay.com/1234'
+ 	"https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-sequence/sample@engagebay.com/1234"
 ```
 
 ### 10.1 List of lists:
@@ -2234,7 +2234,7 @@ GET dev/api/panel/contactlist
 curl -i -X GET \
    -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
    -H "Accept:application/json" \
- 'https://app.engagebay.com/dev/api/panel/contactlist'
+ "https://app.engagebay.com/dev/api/panel/contactlist"
 ```
 ###### Example JSON response
 ```javascript
@@ -2267,7 +2267,7 @@ curl -i -X POST \
    -H "Authorization:xxxxxxx" \
    -H "Accept:application/json" \
    -d "{}" \
- 'https://app.engagebay.com/dev/api/panel/contactlist/add-subscriber/sample@engagebay.com/12356'
+ "https://app.engagebay.com/dev/api/panel/contactlist/add-subscriber/sample@engagebay.com/12356"
 ```
 
 ### 11.1 Get list of owners:
@@ -2283,7 +2283,7 @@ GET dev/api/panel/users
 curl -i -X GET \
    -H "Accept:application/json" \
    -H "Authorization:xxxxxxxxxx" \
- 'https://app.engagebay.com/dev/api/panel/users'
+ "https://app.engagebay.com/dev/api/panel/users"
 ```
 ###### Example JSON response
 ```javascript
@@ -2326,7 +2326,7 @@ GET /dev/api/panel/customfields/list/{type}
 curl -i -X GET \
 -H "Authorization: xxxxxxxxx" \
 -H "Accept: application/json" \
-'https://app.engagebay.com/dev/api/panel/customfields/list/CONTACT'
+"https://app.engagebay.com/dev/api/panel/customfields/list/CONTACT"
 ```
 ###### Example JSON response
 ```javascript
@@ -2393,7 +2393,7 @@ curl -i -X POST \
   "is_required" : "true",
   "is_searchable" : "true"
 }' \
- 'https://app.engagebay.com/dev/api/panel/customfields/'
+ "https://app.engagebay.com/dev/api/panel/customfields/"
 ```
 ###### Example JSON response
 #### 
@@ -2431,7 +2431,7 @@ DELETE  dev/api/panel/customfields/{scope}/{custom-field-id}
 curl -i -X DELETE \
    -H "Accept:application/json" \
    -H "Authorization:p5nlcfg7m89a8lb9gf1p1nf6bd" \
- 'https://app.engagebay.com/dev/api/panel/customfields/CONTACT/5718248825815040'
+ "https://app.engagebay.com/dev/api/panel/customfields/CONTACT/5718248825815040"
 ```
 
 ### 13.1 Get User Profile : 
@@ -2445,7 +2445,7 @@ GET  /dev/api/panel/users/profile/user-info
 ```sh
 curl -i -X GET \
    -H "Authorization:p5nlcfg7m89a8lb9gf1p1nf6bd" \
- 'https://app.engagebay.com/dev/api/panel/users/profile/user-info'
+ "https://app.engagebay.com/dev/api/panel/users/profile/user-info"
 ```
 ###### Example JSON response
 #### 
@@ -2474,7 +2474,7 @@ curl -i -X POST \
 -H "Authorization: xxxxxxxxx" \
 -H "Accept: application/json"  \
 -d "{}" \
-'https://app.engagebay.com/dev/api/panel/tickets'
+"https://app.engagebay.com/dev/api/panel/tickets"
 ```
 
 ###### Example JSON response
@@ -2532,7 +2532,7 @@ curl -i -X POST \
 -H "Authorization: xxxxxxxxx" \
 -H "Accept: application/json"  \
 -d "{filter_id: 6748802371289088}" \
-'https://app.engagebay.com/dev/api/panel/tickets'
+"https://app.engagebay.com/dev/api/panel/tickets"
 ```
 
 ###### Example JSON response
@@ -2604,7 +2604,7 @@ curl -i -X POST \
     "group_id": "6467327394578432",
     html_body: "Hello I am testing your docs and find that Test is not working. Please help me"
 }' \
-'https://app.engagebay.com/dev/api/panel/tickets/ticket'
+"https://app.engagebay.com/dev/api/panel/tickets/ticket"
 ```
 ###### Example JSON response
 #### 
@@ -2647,6 +2647,6 @@ DELETE dev/api/panel/tickets/{id}
 curl -i -X DELETE \
 -H "Authorization: xxxxxxxxx" \
 -d "{}" \
-'https://app.engagebay.com/dev/api/panel/tickets/1' 
+"https://app.engagebay.com/dev/api/panel/tickets/1"
 ```
 
