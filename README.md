@@ -182,7 +182,7 @@ Here is an example:
 **[Tags](#151-list-of-tags)**
 
 * [1 List of Tags](#151-list-of-tags)
-* [2 Add Tags](#152-add-tag)
+* [2 Add Tag](#152-add-tag)
 
 
 ### 1.1 Listing contacts: 
