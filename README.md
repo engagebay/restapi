@@ -21,6 +21,7 @@ API is in active development. Currently it allows you to access:
 - Custom Fields
 - User Profile
 - Tickets
+- Tags
 
 ### Authentication
 This is an HTTPS-only API. All requests to the API are authenticated by providing your REST API Key as a header value. 
@@ -178,6 +179,10 @@ Here is an example:
 * [3 Create a ticket](#143-create-a-ticket)
 * [4 Delete a ticket](#144-delete-a-ticket)
 
+**[Tags](#151-list-of-tags)**
+
+* [1 List of Tags](#151-list-of-tags)
+* [2 Add Tags](#152-add-tag)
 
 
 ### 1.1 Listing contacts: 
@@ -2786,4 +2791,45 @@ curl -i -X DELETE \
 -d "{}" \
 "https://app.engagebay.com/dev/api/panel/tickets/1"
 ```
+
+### 15.1 List of Tags:
+- Get all tags in the account 
+
+###### Endpoint
+GET dev/api/panel/tags
+
+###### Example request
+```sh
+curl -i -X GET \
+   -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
+   -H "Accept:application/json" \
+ "https://app.engagebay.com/dev/api/panel/tags"
+```
+###### Example JSON response
+```javascript
+[{
+	"tag": "Test",
+	"created_time": 1589903603
+}, {
+	"tag": "Test2",
+	"created_time": 1591590201
+}]
+```
+
+### 15.2 Add tag:
+
+- Add new tag to the account. It wont add duplicates if already exists.
+ 
+###### Endpoint
+POST dev/api/panel/tags
+
+###### Example request
+```sh
+curl -i -X POST \
+   -H "Authorization:xxxxxxx" \
+   -H "Accept:application/json" \
+   -d "{}" \
+ "https://app.engagebay.com/dev/api/panel/tags"
+```
+
 
