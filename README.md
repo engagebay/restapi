@@ -203,7 +203,7 @@ POST dev/api/panel/subscribers
 curl -i -X POST \
 -H "Authorization: xxxxxxxxx" \
 -H "Accept: application/json"  \
--d "{}" \
+-d "page_size=10&sort_key=-created_time" \
 "https://app.engagebay.com/dev/api/panel/subscribers"
 ```
 
