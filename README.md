@@ -1319,7 +1319,7 @@ GET dev/api/panel/deals/{id}
 ###### Example request
 ```sh
 curl -i -X GET \
- -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
+ -H "Authorization:xxxxxxxx" \
  -H "Accept:application/json" \
  -H "Content-Type:application/x-www-form-urlencoded" \
 "https://app.engagebay.com/dev/api/panel/deals/1234"
@@ -2254,7 +2254,7 @@ DELETE dev/api/panel/tasks/{id}
 ###### Example request
 ```sh
 curl -i -X DELETE \
-   -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
+   -H "Authorization:xxxxxxxx" \
    -H "Accept:application/json" \
  "https://app.engagebay.com/dev/api/panel/tasks/5147920286351360"
 ```
@@ -2374,7 +2374,7 @@ GET dev/api/panel/contactlist
 ###### Example request
 ```sh
 curl -i -X GET \
-   -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
+   -H "Authorization:xxxxxxxx" \
    -H "Accept:application/json" \
  "https://app.engagebay.com/dev/api/panel/contactlist"
 ```
@@ -2801,7 +2801,7 @@ GET dev/api/panel/tags
 ###### Example request
 ```sh
 curl -i -X GET \
-   -H "Authorization:e4au70gjkttb7kh7i5h1q3qb4u" \
+   -H "Authorization:xxxxxxxx" \
    -H "Accept:application/json" \
  "https://app.engagebay.com/dev/api/panel/tags"
 ```
@@ -2828,7 +2828,9 @@ POST dev/api/panel/tags
 curl -i -X POST \
    -H "Authorization:xxxxxxx" \
    -H "Accept:application/json" \
-   -d "{}" \
+   -d '{
+   		"tag": "Google"
+   	}' \
  "https://app.engagebay.com/dev/api/panel/tags"
 ```
 
