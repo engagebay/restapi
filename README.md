@@ -195,7 +195,7 @@ POST dev/api/panel/subscribers
 
 ###### Optional parameters
 - ``page_size `` - Page size for paginated results.
-- ``sort_key`` - Sort order for results.
+- ``sort_key`` - Sort order for results. Set it to created_time/updated_time to sort list in ascending order. Prepened - to sort in descending.
 - ``cursor`` - To get next set of resultset. You will get it in the last record of previous resultset.
 
 ###### Example request
@@ -1280,7 +1280,7 @@ POST dev/api/panel/deals
 
 ###### Optional Parameters
 ```page_size``` : Pagesize for paginated results.
-```sort_key``` :  Sort order for results.
+```sort_key``` :  Sort order for results. Set it to created_time/updated_time to sort list in ascending order. Prepened - to sort in descending.
 ```cursor``` : To get next set of resultset. It will be provided in the last record of previous resultset.
 
 ###### Example request
@@ -2012,7 +2012,7 @@ POST dev/api/panel/tasks
 
 ###### Optional parameters
 - ``page_size `` - Pagesize for paginated results.
-- ``sort_key`` - Sort order for results.
+- ``sort_key`` - Sort order for results. Set it to created_time/updated_time to sort list in ascending order. Prepened - to sort in descending.
 - ``cursor`` - To get next set of resultset. You will get this in the last record of previous resultset.
 
 ###### Example request
@@ -2607,7 +2607,7 @@ POST dev/api/panel/tickets
 
 ###### Optional parameters
 - ``page_size `` - Page size for paginated results.
-- ``sort_key`` - Sort order for results.
+- ``sort_key`` - Sort order for results. Set it to created_time/updated_time to sort list in ascending order. Prepened - to sort in descending.
 - ``cursor`` - To get next set of resultset. You will get it in the last record of previous resultset.
 
 ###### Example request
