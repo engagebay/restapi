@@ -2829,7 +2829,7 @@ curl -i -X POST \
    -H "Authorization:xxxxxxx" \
    -H "Accept:application/json" \
    -d '{
-   		"tag": "Google"
+      "tag": "Google"
    	}' \
  "https://app.engagebay.com/dev/api/panel/tags"
 ```
