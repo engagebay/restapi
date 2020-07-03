@@ -195,7 +195,7 @@ POST dev/api/panel/subscribers
 
 ###### Optional parameters
 - ``page_size `` - Page size for paginated results.
-- ``sort_key`` - Sort order for results. Set it to created_time/updated_time to sort list in ascending order. Prepened - to sort in descending.
+- ``sort_key`` - Sort order for results. Set it to created_time/updated_time to sort list in ascending order. 		Prepened - to sort in descending.
 - ``cursor`` - To get next set of resultset. You will get it in the last record of previous resultset.
 
 ###### Example request
