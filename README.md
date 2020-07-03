@@ -35,16 +35,16 @@ All API requests should be made to: https://app.engagebay.com/
 
 Note: All data is case-sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered two different words.
 
-###### Custom Fields
+### Custom Fields
 All custom fields should have field_type property while doing API call. You can find/create custom fields in EngageBay account Admin Settings -> Custom Fields ->Contact/Deal/Company. 
 
 Supporting field_types are TEXT, DATE, LIST, CHECKBOX, TEXTAREA, NUMBER, FORMULA, MULTICHECKBOX, URL, CURRENCY, PHONE.
 
-###### Date Format
+### Date Format
 DATE values should be like API key user selected date format. You can find the date format Preferences -> Dateformat
 Ex: DD/MM/YYYY -> 31/07/2019 12:00:00 Date will be saved with selected user timezone.
 
-###### Errors
+### Errors
 The API uses HTTP status codes to indicate an error has occurred while processing a request. There are four main error status codes used by the API:
 
 | Code  | Description |
