@@ -1279,9 +1279,9 @@ Returns list of all "Deals" in the domain in JSON format, which are ordered by c
 POST dev/api/panel/deals
 
 ###### Optional Parameters
-```page_size``` : Pagesize for paginated results.
-```sort_key``` :  Sort order for results. Set it to created_time/updated_time to sort list in ascending order. Prepened - to sort in descending.
-```cursor``` : To get next set of resultset. It will be provided in the last record of previous resultset.
+- ```page_size``` : Pagesize for paginated results.
+- ```sort_key``` :  Sort order for results. Set it to created_time/updated_time to sort list in ascending order. Prepened - to sort in descending.
+- ```cursor``` : To get next set of resultset. It will be provided in the last record of previous resultset.
 
 ###### Example request
 ```sh
