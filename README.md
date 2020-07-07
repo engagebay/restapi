@@ -92,7 +92,7 @@ Here is an example:
 **[Company APIs](#21-creating-a-company)**
 
 * [1 Creating a company](#21-creating-a-company)
-* [2 Updating a company](#22-updating-a-company)
+* [2 Updating a company](#22-update-properties-of-a-company-by-id-partial-update)
 * [3 Get list of companies](#23-get-list-of-companies)
 * [4 Get company by id](#24-get-company-by-id)
 * [5 Delete single company](#25-delete-single-company)
@@ -969,45 +969,20 @@ curl -i -X POST \
 } ' \
 "https://app.engagebay.com/dev/api/panel/companies/company"
 ```
-### 2.2 Updating a company: 
+
+### 2.2 Update properties of a company by ID (partial update): 
+- Updates the properties for a single company.
+
 We can update required property fields of the company using this call. It is used to add a new property or update the existing property. It accepts property object of company with valid parameter in it. Send the Company-Id of the company to identify it. This will not affect other fields.
 
+Using this API you can not delete properties.If subtype is same for phone or email then value can be overridden.
+
 ###### Endpoint
-PUT dev/api/panel/companies/company
-######  Acceptable request representation:
-```javascript
-{
-	"id": 5141586283331584,
-	"name": "www.engagebay.com",
-	"name_sort": "www.engagebay.com",
-	"url": "www.engagebay.com",
-	"created_time": 1535620529,
-	"updated_time": 0,
-	"properties": [{
-		"name": "url",
-		"value": "www.engagebay.com",
-		"field_type": "TEXT",
-		"is_searchable": false,
-		"type": "SYSTEM"
-	}, {
-		"name": "name",
-		"value": "www.engagebay.com",
-		"field_type": "TEXT",
-		"is_searchable": false,
-		"type": "SYSTEM"
-	}, {
-		"name": "email",
-		"value": "",
-		"field_type": "TEXT",
-		"is_searchable": false,
-		"type": "SYSTEM"
-	}],
-	"tags": [],
-	"contactIds": [],
-	"entiy_group_name": "company",
-	"companyIds": []
-}
-```
+PUT dev/api/panel/companies/update-partial
+
+###### Optional parameters
+- ``properties`` - Updated custom fields for your company as object of key/value pairs.
+
 ###### Example request
 ```sh
 curl -i -X PUT \ 
@@ -1016,19 +991,14 @@ curl -i -X PUT \
 -H "Content-Type: application/json" \
 -d '{
 	"id": 5141586283331584,
-	"name": "www.engagebay.com",
-	"name_sort": "www.engagebay.com",
-	"url": "www.engagebay.com",
-	"created_time": 1535620529,
-	"updated_time": 0,
 	"properties": [{
-		"name": "url",
-		"value": "www.engagebay.com",
+		"name": "name",
+		"value": "EngageBay",
 		"field_type": "TEXT",
 		"is_searchable": false,
 		"type": "SYSTEM"
 	}, {
-		"name": "name",
+		"name": "url",
 		"value": "www.engagebay.com",
 		"field_type": "TEXT",
 		"is_searchable": false,
@@ -1040,12 +1010,9 @@ curl -i -X PUT \
 		"is_searchable": false,
 		"type": "SYSTEM"
 	}],
-	"tags": [],
-	"contactIds": [],
-	"entiy_group_name": "company",
-	"companyIds": []
+	"tags": []
 } ' \
-"https://app.engagebay.com/dev/api/panel/companies/company"
+"https://app.engagebay.com/dev/api/panel/companies/update-partial"
 ```
 ### 2.3 Get list of companies: 
 - Get list of companies
@@ -1282,13 +1249,14 @@ POST dev/api/panel/deals
 - ```page_size``` : Pagesize for paginated results.
 - ```sort_key``` :  Sort order for results. Set it to created_time/updated_time to sort list in ascending order. Prepened - to sort in descending.
 - ```cursor``` : To get next set of resultset. It will be provided in the last record of previous resultset.
+- ```track_id``` : Track ID to list results on specific Track. If No track specified Defaul track results will return. You can find Track ID in Account Settings -> Deal Tracks
 
 ###### Example request
 ```sh
 curl  -i -X POST\
 -H "Authorization: xxxxxxxxx" \
 -H  "Accept:application/json" \
--d "{}" \
+-d "page_size=10&track_id=xxxxx" \
 "https://app.engagebay.com/dev/api/panel/deals"
 ```
 ######  Example JSON response
