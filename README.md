@@ -1,3 +1,5 @@
+[![N|Solid](https://cdn5.engagebay.com/logo.svg)](https://www.engagebay.com/)
+
 EngageBay REST API
 =================
 [EngageBay](https://www.engagebay.com/) is a simple, affordable all-in-one marketing and sales software built for growing businesses. Get the power of an enterprise software at a fraction of the cost.
@@ -36,10 +38,155 @@ All API requests should be made to: https://app.engagebay.com/
 
 Note: All data is case-sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered two different words.
 
+### System Fields
+- Contact
+
+Allowed variable names and associations in ```properties``` list of contact entity
+
+| Variable  | Mapped to | Sub Type | Data Type |
+| ------------- | ------------- | ------------- | ------------- |
+| name  | First Name | - |  String | 
+| last_name  | Last Name  | - | String | 
+| email  | Email | primary, secondary | String | 
+| role  | Role | - | String | 
+| phone  | Phone Number | work, home, mobile, home_fax, work_fax, other | String | 
+| website  | Website | url, skype, twitter, linkedin, facebook, xing, feed, google-plus, flickr, github, youtube | String | 
+| address  | Address | - | JSON String (Ex: {"address": "EngageBay Inc, 255 Verano Way", "city":"Mountain House", "state":"CA", "country": "USA", "zip": "95391"}) | 
+
+
+Allowed variable names and associations in contact entity
+
+| Variable  | Mapped to | Sub Type | Data Type |
+| ------------- | ------------- | ------------- | ------------- |
+| tags  | Tags | - |  Array Ex: [{tag: "Tag1"}] | 
+| score  | Score  | - | Number | 
+| owner_id  | Owner of the Contact | - | Number (User Id) | 
+
+
+- Company
+
+Allowed variable names and associations in ```properties``` list of company entity
+
+| Variable  | Mapped to | Sub Type | Data Type |
+| ------------- | ------------- | ------------- | ------------- |
+| name  | Company Name | - |  String | 
+| url  | Company Domain (URL)  | - | String | 
+| email  | Company Email | - | String | 
+| phone  | Phone Number | work, home, mobile, home_fax, work_fax, other | String | 
+| website  | Website | url, skype, twitter, linkedin, facebook, xing, feed, google-plus, flickr, github, youtube | String | 
+| address  | Address | - | JSON String (Ex: {"address": "EngageBay Inc, 255 Verano Way", "city":"Mountain House", "state":"CA", "country": "USA", "zip": "95391"}) | 
+
+
+Allowed variable names and associations in company entity
+
+| Variable  | Mapped to | Sub Type | Data Type |
+| ------------- | ------------- | ------------- | ------------- |
+| tags  | Tags | - |  Array Ex: [{tag: "Tag1"}] | 
+| score  | Score  | - | Number | 
+| owner_id  | Owner of the Contact | - | Number (User Id) | 
+
+
+- Deal
+
+Allowed variable names and associations in deal entity
+
+| Variable  | Mapped to | Data Type |
+| ------------- | ------------- | ------------- |
+| name  | Deal Name | String |
+| unique_id  | Deal ID |  Number |
+| description  | Description | String |
+| track_id  | Deal Track |  Number |
+| amount  | Amount | Number |
+| currency_type  | Currency Name | Currency Code (Ex: USD-$) |
+| closed_date  | Close Date | Date (Should be in user selected format) |
+| tags  | Tags |  Array Ex: [{tag: "Tag1"}] |
+| owner_id  | Owner of the Contact | Number (User Id) | 
+
+- Ticket
+
+Allowed variable names and associations in ticket entity
+
+| Variable  | Mapped to | Data Type |
+| ------------- | ------------- | ------------- |
+| subject  | Ticket Subject | String |
+| type  | Ticket Type |  Number |
+| priority  | Ticket Priority | Number |
+| status  | Ticket Status |  Number |
+| group_id  | Group ID | Number |
+| assignee_id  | User ID | Number |
+| html_body  | Ticket Body Message | String |
+| tags  | Tags |  Array Ex: [{tag: "Tag1"}] |
+
+
 ### Custom Fields
 All custom fields should have field_type property while doing API call. You can find/create custom fields in EngageBay account Admin Settings -> Custom Fields ->Contact/Deal/Company. 
 
 Supporting field_types are TEXT, DATE, LIST, CHECKBOX, TEXTAREA, NUMBER, FORMULA, MULTICHECKBOX, URL, CURRENCY, PHONE.
+
+Note: There will be subtypes for custom fields. User should specify the above mentioned subtype for those respective properties only.
+
+| Field Type  | Data Type | 
+| ------------- | ------------- | 
+| TEXT  | String | 
+| DATE  | DATE (DD/MM/YYYY - Should be user selected format) |  
+| LIST  | String |
+| CHECKBOX  | Boolean |
+| TEXTAREA  | String |
+| NUMBER  | Number |
+| CURRENCY  | Mathematical Expression witn field names |
+| MULTICHECKBOX  | String |
+| URL  | String |
+| PHONE  | String |
+
+Here is an example properties JSON with all custom field types: 
+```
+"properties": [{
+		"name": "Number Field",
+		"value": "1",
+		"field_type": "NUMBER",
+		"type": "CUSTOM"
+	}, {
+		"name": "Dropdown Field",
+		"value": "option_value",
+		"field_type": "LIST",
+		"type": "CUSTOM"
+	}, {
+		"name": "Text Field",
+		"value": "Text Value",
+		"field_type": "TEXT",
+		"type": "CUSTOM"
+	}, {
+		"name": "DATE",
+		"value": "22/07/2020",
+		"field_type": "DATE",
+		"type": "CUSTOM"
+	}, {
+		"name": "Checkbox Field",
+		"value": "true",
+		"field_type": "CHECKBOX",
+		"type": "CUSTOM"
+	}, {
+		"name": "Textarea Field",
+		"value": "Textarea Content Places Here",
+		"field_type": "TEXTAREA",
+		"type": "CUSTOM"
+	}, {
+		"name": "Phone Number Field",
+		"value": "(040)-2963213",
+		"field_type": "PHONE",
+		"type": "CUSTOM"
+	}, {
+		"name": "Website Field",
+		"value": "https://developers.google.com",
+		"field_type": "URL",
+		"type": "CUSTOM"
+	}, {
+		"name": "Multiple Checkbox Field",
+		"value": "box1,box2",
+		"field_type": "MULTICHECKBOX",
+		"type": "CUSTOM"
+	}]
+```
 
 ### Date Format
 DATE values should be like API key user selected date format. You can find the date format Preferences -> Dateformat
@@ -2766,7 +2913,7 @@ curl -i -X DELETE \
 ###### Endpoint
 GET dev/api/panel/tags
 
-###### Example request
+###### Example request 
 ```sh
 curl -i -X GET \
    -H "Authorization:xxxxxxxx" \
