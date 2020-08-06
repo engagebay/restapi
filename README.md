@@ -41,7 +41,7 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 ### System Fields
 - Contact
 
-Allowed variable names and associations in ```properties``` list of contact entity
+Following are the variable names and associations allowed in ```properties``` list of contact entity
 
 | Variable  | Mapped to | Sub Type | Data Type |
 | ------------- | ------------- | ------------- | ------------- |
@@ -54,7 +54,7 @@ Allowed variable names and associations in ```properties``` list of contact enti
 | address  | Address | - | JSON String (Ex: {"address": "EngageBay Inc, 255 Verano Way", "city":"Mountain House", "state":"CA", "country": "USA", "zip": "95391"}) | 
 
 
-Allowed variable names and associations in contact entity
+Following are the variable names and associations allowed in contact entity
 
 | Variable  | Mapped to | Sub Type | Data Type |
 | ------------- | ------------- | ------------- | ------------- |
@@ -65,7 +65,7 @@ Allowed variable names and associations in contact entity
 
 - Company
 
-Allowed variable names and associations in ```properties``` list of company entity
+Following are the variable names and associations allowed in ```properties``` list of company entity
 
 | Variable  | Mapped to | Sub Type | Data Type |
 | ------------- | ------------- | ------------- | ------------- |
@@ -77,7 +77,7 @@ Allowed variable names and associations in ```properties``` list of company enti
 | address  | Address | - | JSON String (Ex: {"address": "EngageBay Inc, 255 Verano Way", "city":"Mountain House", "state":"CA", "country": "USA", "zip": "95391"}) | 
 
 
-Allowed variable names and associations in company entity
+Following are the variable names and associations allowed in company entity
 
 | Variable  | Mapped to | Sub Type | Data Type |
 | ------------- | ------------- | ------------- | ------------- |
@@ -88,7 +88,7 @@ Allowed variable names and associations in company entity
 
 - Deal
 
-Allowed variable names and associations in deal entity
+Following are the variable names and associations allowed in deal entity
 
 | Variable  | Mapped to | Data Type |
 | ------------- | ------------- | ------------- |
@@ -104,7 +104,7 @@ Allowed variable names and associations in deal entity
 
 - Ticket
 
-Allowed variable names and associations in ticket entity
+Following are the variable names and associations allowed in ticket entity
 
 | Variable  | Mapped to | Data Type |
 | ------------- | ------------- | ------------- |
@@ -119,11 +119,11 @@ Allowed variable names and associations in ticket entity
 
 
 ### Custom Fields
-All custom fields should have field_type property while doing API call. You can find/create custom fields in EngageBay account Admin Settings -> Custom Fields ->Contact/Deal/Company. 
+While requesting an API call, all custom fields should have field_type property. You can find/create custom fields in your EngageBay account Admin Settings -> Custom Fields ->Contact/Deal/Company. 
 
 Supporting field_types are TEXT, DATE, LIST, CHECKBOX, TEXTAREA, NUMBER, FORMULA, MULTICHECKBOX, URL, CURRENCY, PHONE.
 
-Note: There will be subtypes for custom fields. User should specify the above mentioned subtype for those respective properties only.
+Note: Custom fields will have subtypes. Only the above mentioned subtype for those respective properties should be specified by the user.
 
 | Field Type  | Data Type | 
 | ------------- | ------------- | 
@@ -138,7 +138,7 @@ Note: There will be subtypes for custom fields. User should specify the above me
 | URL  | String |
 | PHONE  | String |
 
-Here is an example properties JSON with all custom field types: 
+Below is an example properties JSON with all custom field types:
 ```
 "properties": [{
 		"name": "Number Field",
@@ -189,11 +189,10 @@ Here is an example properties JSON with all custom field types:
 ```
 
 ### Date Format
-DATE values should be like API key user selected date format. You can find the date format Preferences -> Dateformat
-Ex: DD/MM/YYYY -> 31/07/2019 12:00:00 Date will be saved with selected user timezone.
+Values for DATE should be like the date format selected by API key user. You can find the date format here - Preferences -> Dateformat Ex: DD/MM/YYYY -> 31/07/2019 12:00:00 Date will be saved in the timezone selected by user.
 
 ### Errors
-The API uses HTTP status codes to indicate an error has occurred while processing a request. There are four main error status codes used by the API:
+HTTP status codes are used by the API to indicate that an error has occurred while processing a request. There are four main error status codes used by the API:
 
 | Code  | Description |
 | ------------- | ------------- |
