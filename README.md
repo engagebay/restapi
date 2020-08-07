@@ -933,13 +933,13 @@ POST dev/api/panel/subscribers/contact/tags/add2/{contactId}
 ###### Example request
 ```sh
 curl -i -X POST \
-	 -H "Accept:application/json" \
-	 -H "Authorization:xxxxxxxxxx" \
-	 -H "Content-Type:application/json" \
-	 -d '[
-		{"tag" : "sample1"},
-		{"tag" : "sample2"} 
-		]' \
+     -H "Accept:application/json" \
+     -H "Authorization:xxxxxxxxxx" \
+     -H "Content-Type:application/json" \
+     -d '[
+	     {"tag" : "sample1"},
+	     {"tag" : "sample2"} 
+	     ]' \
 "https://app.engagebay.com/dev/api/panel/subscribers/contact/tags/add2/{contactId}"
 ```
 
