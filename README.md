@@ -925,7 +925,7 @@ curl -i -X GET \
 ### 1.12 Adding tags to a contact by ID: 
 Searches for the contact based on the given contact ID and adds the given tags to the contact. You can add multiple tags. Tags should be sent as an array. tags (tags) array should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded).Tag name should start with an alphabet and cannot contain special characters other than underscore and space.
 ###### Endpoint
-POST dev/api/panel/subscribers/contact/tags/add/{contactId}
+POST dev/api/panel/subscribers/contact/tags/add2/{contactId}
 ###### Required parameters
 ``contactId`` - ID of the contact
 ``tags`` -  Tags to be added to the contact
@@ -933,11 +933,14 @@ POST dev/api/panel/subscribers/contact/tags/add/{contactId}
 ###### Example request
 ```sh
 curl -i -X POST \
--H "Accept: application/json" \
--H "Authorization: xxxxxxxxx" \
--H "Content-Type:application/x-www-form-urlencoded" \
--d 'tags=["testsample"]' \
-"https://app.engagebay.com/dev/api/panel/subscribers/contact/tags/add/{contactId}"
+-H "Accept:application/json" \
+-H "Authorization:xxxxxxxxxx" \
+-H "Content-Type:application/json" \
+-d '[
+	 {"tag" : "sample1"},
+	 {"tag" : "sample2"} 
+	]' \
+"https://app.engagebay.com/dev/api/panel/subscribers/contact/tags/add2/{contactId}"
 ```
 
 ### 1.13 Delete tags value by ID:
@@ -951,17 +954,19 @@ curl -i -X POST \
 
 ###### Endpoint
 
-POST dev/api/panel/subscribers/contact/tags/delete
+POST dev/api/panel/subscribers/contact/tags/delete/{contactId}
 
 ###### Example request
 ```sh
 curl -i -X POST \
    -H "Accept:application/json" \
    -H "Authorization:xxxxxxxxxx" \
-   -H "Content-Type:application/x-www-form-urlencoded" \
-   -d "contactId=5015780936646656" \
-   -d "tags=[\"testtag\"]" \
- "https://app.engagebay.com/dev/api/panel/subscribers/contact/tags/delete"
+   -H "Content-Type:application/json" \
+   -d '[
+   		{"tag" : "sample1"},
+   		{"tag" : "sample2"} 
+   		]' \
+ "https://app.engagebay.com/dev/api/panel/subscribers/contact/tags/delete/{contactId}"
 ```
 
 ### 1.14 Change contact owner:
