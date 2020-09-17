@@ -234,7 +234,7 @@ Here is an example:
 * [13 Adding tags to a contact by ID](#112-adding-tags-to-a-contact-by-id)
 * [14 Delete tags value by ID](#113-delete-tags-value-by-id)
 * [15 Change contact owner](#114-change-contact-owner)
-* [16 Creating a batch of contacts](#116-creating-a-batch-of-contact)
+* [16 Creating a batch of contacts](#116-creating-a-batch-of-contacts)
 
 **[Company APIs](#21-creating-a-company)**
 
