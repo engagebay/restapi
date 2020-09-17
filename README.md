@@ -234,6 +234,7 @@ Here is an example:
 * [13 Adding tags to a contact by ID](#112-adding-tags-to-a-contact-by-id)
 * [14 Delete tags value by ID](#113-delete-tags-value-by-id)
 * [15 Change contact owner](#114-change-contact-owner)
+* [16 Creating a batch of contacts](#116-creating-a-batch-of-contact)
 
 **[Company APIs](#21-creating-a-company)**
 
@@ -1038,8 +1039,70 @@ curl -i -X POST \
 	"score": 20
 }
 ```
+### 1.16 Creating a batch of contacts:  
+This endpoint is used to create a group of contacts. Performance is best when batch size is limited to 100 contacts or fewer. Accepts JSON with aray of contacts and callback url to notify after completed. callbackURL field is optional here.
 
+Note: Changes made through this endpoint are processed asynchronously, so can take several minutes for changes to be applied to contact records. callbackURL used to know contacts sync completed with success and failed records count. The batch size should not exceed 100 contacts per request.
 
+When using this endpoint, please keep in mind that, in each contact JSON 
+- Each field is case sensitive.
+- Please don't pass null value.
+- If you don't know value of field then either don't pass that field or pass empty data to a field.
+
+###### Endpoint
+POST dev/api/panel/subscribers/subscriber-batch
+
+###### Example request
+```sh
+curl -i -X POST \ 
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{
+  "callbackURL": "https://domainname.com/notify-me",
+  "contacts": [
+    {
+      "score": 1,
+      "properties": [
+        {
+          "name": "name",
+          "value": "name1"
+        },
+        {
+          "name": "email",
+          "value": "name1@domain.com"
+        }
+      ],
+      "tags": [
+        "sample",
+        "sample1"
+      ]
+    },
+    {
+     "score": 2,
+      "properties": [
+        {
+          "name": "name",
+          "value": "name2"
+        },
+        {
+          "name": "email",
+          "value": "name2@domain.com"
+        }
+      ],
+      "tags": [
+        "sample",
+        "sample1"
+      ]
+    }
+  ]
+}' \
+"https://app.engagebay.com/dev/api/panel/subscribers/subscriber-batch"
+```
+###### Example JSON response
+```
+{"status":"success"}
+```
 
 
 ### 2.1 Creating a company: 
