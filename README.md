@@ -1046,7 +1046,7 @@ Note: Changes made through this endpoint are processed asynchronously, so can ta
 
 The batch size should not exceed 100 contacts per request. Multiple bacth requests won't support. It throws an error, if already running batch request. 
 
-When using this endpoint, please keep in mind that, in each contact JSON 
+When using this endpoint, please keep in mind that in each contact JSON 
 - Each field is case sensitive.
 - Please don't pass null value.
 - If you don't know value of field then either don't pass that field or pass empty data to a field.
