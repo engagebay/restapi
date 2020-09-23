@@ -137,7 +137,7 @@ Note: Custom fields will have subtypes. Only the above mentioned subtype for tho
 | MULTICHECKBOX  | String |
 | URL  | String |
 | PHONE  | String |
-| FILE  | String |
+| FILE  | String array |
 
 Below is an example properties JSON with all custom field types:
 ```
