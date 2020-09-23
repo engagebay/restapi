@@ -137,6 +137,7 @@ Note: Custom fields will have subtypes. Only the above mentioned subtype for tho
 | MULTICHECKBOX  | String |
 | URL  | String |
 | PHONE  | String |
+| FILE  | String |
 
 Below is an example properties JSON with all custom field types:
 ```
@@ -184,6 +185,11 @@ Below is an example properties JSON with all custom field types:
 		"name": "Multiple Checkbox Field",
 		"value": "box1,box2",
 		"field_type": "MULTICHECKBOX",
+		"type": "CUSTOM"
+	}, {
+		"name": "Files",
+		"value": "[\"https://drive.google.com/files/test.csv\",\"https://drive.google.com/files/test2.csv\"]",
+		"field_type": "FILE",
 		"type": "CUSTOM"
 	}]
 ```
