@@ -121,7 +121,7 @@ Following are the variable names and associations allowed in ticket entity
 ### Custom Fields
 While requesting an API call, all custom fields should have field_type property. You can find/create custom fields in your EngageBay account Admin Settings -> Custom Fields ->Contact/Deal/Company. 
 
-Supporting field_types are TEXT, DATE, LIST, CHECKBOX, TEXTAREA, NUMBER, FORMULA, MULTICHECKBOX, URL, CURRENCY, PHONE.
+Supporting field_types are TEXT, DATE, LIST, CHECKBOX, TEXTAREA, NUMBER, FORMULA, MULTICHECKBOX, URL, CURRENCY, PHONE, FILE.
 
 Note: Custom fields will have subtypes. Only the above mentioned subtype for those respective properties should be specified by the user.
 
