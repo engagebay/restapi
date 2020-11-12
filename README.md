@@ -2920,25 +2920,25 @@ curl -i -X GET \
 ###### Example JSON response
 ```javascript
 {
-		"id": 5,
-		"requester_name": "Jason Bates",
-		"requester_email": "test@engagebay.com",
-		"subscriber_id": 6697436372271104,
-		"subject": "Test not working ??",
-		"status": 1,
-		"priority": 2,
-		"type": 3,
-		"assigned_to": "GROUP",
-		"group_id": 5051874215460864,
-		"created_time": 1604988043,
-		"updated_time": 1604988044,
-		"html_body": "",
-		"references": [
-		  "<20201110060044.1.A19365DDE1FA9367@test.engagebayservice.com>",
-		  "<20201110060043.1.E9A4FE223CB884D2@test.engagebayservice.com>"
-		],
-		"properties": [],
-		"forceUpdate": false
+	"id": 5,
+	"requester_name": "Jason Bates",
+	"requester_email": "test@engagebay.com",
+	"subscriber_id": 6697436372271104,
+	"subject": "Test not working ??",
+	"status": 1,
+	"priority": 2,
+	"type": 3,
+	"assigned_to": "GROUP",
+	"group_id": 5051874215460864,
+	"created_time": 1604988043,
+	"updated_time": 1604988044,
+	"html_body": "",
+	"references": [
+	  "<20201110060044.1.A19365DDE1FA9367@test.engagebayservice.com>",
+	  "<20201110060043.1.E9A4FE223CB884D2@test.engagebayservice.com>"
+	],
+	"properties": [],
+	"forceUpdate": false
 	}
 ```
 
