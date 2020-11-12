@@ -329,6 +329,7 @@ Here is an example:
 
 * [1 Listing tickets](#141-get-list-of-tickets)
 * [2 Listing tickets by filter](#142-get-list-of-tickets-by-filter)
+* [3 Get ticket by ID](#145-get-ticket-by-id)
 * [3 Create a ticket](#143-create-a-ticket)
 * [4 Delete a ticket](#144-delete-a-ticket)
 
@@ -2903,7 +2904,7 @@ curl -i -X POST \
 ]
 ```
 
-### 1.2 Get ticket by ID
+### 14.5 Get ticket by ID
 Returns data for a single ticket
 ###### Endpoint
 GET /dev/api/panel/tickets/{id}
