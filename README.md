@@ -2903,6 +2903,44 @@ curl -i -X POST \
 ]
 ```
 
+### 1.2 Get ticket by ID
+Returns data for a single ticket
+###### Endpoint
+GET /dev/api/panel/tickets/{id}
+###### Required parameters
+``id`` - Ticket Id.
+###### Example request
+```sh
+curl -i -X GET \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+"https://app.engagebay.com/dev/api/panel/tickets/ticket/{id}"
+```
+###### Example JSON response
+```javascript
+{
+		"id": 5,
+		"requester_name": "Jason Bates",
+		"requester_email": "test@engagebay.com",
+		"subscriber_id": 6697436372271104,
+		"subject": "Test not working ??",
+		"status": 1,
+		"priority": 2,
+		"type": 3,
+		"assigned_to": "GROUP",
+		"group_id": 5051874215460864,
+		"created_time": 1604988043,
+		"updated_time": 1604988044,
+		"html_body": "",
+		"references": [
+		  "<20201110060044.1.A19365DDE1FA9367@test.engagebayservice.com>",
+		  "<20201110060043.1.E9A4FE223CB884D2@test.engagebayservice.com>"
+		],
+		"properties": [],
+		"forceUpdate": false
+	}
+```
+
 ### 14.3 Create a ticket: 
 - Accepts ticket JSON as data in Post request to the URL specified below. The call returns the ticket JSON with id field generated when a new ticket is created.  
 - Each field is case sensitive.
