@@ -2973,7 +2973,7 @@ curl -i -X POST \
     "requester_email": "ross@gmail.com",
     "subject":"Test not working ??",
     "group_id": "6467327394578432",
-    html_body: "Hello I am testing your docs and find that Test is not working. Please help me"
+    "html_body": "Hello I am testing your docs and find that Test is not working. Please help me"
 }' \
 "https://app.engagebay.com/dev/api/panel/tickets/ticket"
 ```
