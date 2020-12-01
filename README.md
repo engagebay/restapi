@@ -2778,6 +2778,7 @@ GET  /dev/api/panel/users/profile/user-info
 ```sh
 curl -i -X GET \
    -H "Authorization:p5nlcfg7m89a8lb9gf1p1nf6bd" \
+   -H "Accept:application/json" \
  "https://app.engagebay.com/dev/api/panel/users/profile/user-info"
 ```
 ###### Example JSON response
