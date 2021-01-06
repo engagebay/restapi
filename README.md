@@ -338,6 +338,14 @@ Here is an example:
 * [1 List of Tags](#151-list-of-tags)
 * [2 Add Tag](#152-add-tag)
 
+**[Products](#161-list-of-products)**
+
+* [1 List of products](#161-list-of-products)
+* [2 Get product by ID](#162-get-product-by-id)
+* [3 Creating a product](#163-creating-a-product)
+* [4 Updating a product](#164-update-a-product-by-id)
+* [5 Delete single product](#165-delete-single-product)
+
 
 ### 1.1 Listing contacts: 
 - Returns a list of your contacts
@@ -3065,3 +3073,162 @@ curl -i -X POST \
 ```
 
 
+### 16.1 Listing products: 
+- Returns a list of your products
+
+For the Response in JSON format, add the header 'Accept' as application/json. By default, the response will be in XML format. Paging can be applied using the page_size and cursor query parameters. Cursor for the next page will be in the last product of the list. If there is no cursor, it means that it is the end of list.
+
+###### Endpoint
+POST dev/api/panel/products
+
+###### Optional parameters
+- ``page_size `` - Page size for paginated results.
+- ``sort_key`` - Sort order for results. Set it to created_time/updated_time to sort list in ascending order. 		Prepened - to sort in descending.
+- ``cursor`` - To get next set of resultset. You will get it in the last record of previous resultset.
+
+###### Example request
+```sh
+curl -i -X POST \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json"  \
+-d "page_size=10&sort_key=-created_time" \
+"https://app.engagebay.com/dev/api/panel/products"
+```
+
+###### Example JSON response
+```javascript
+[
+  {
+	"id": 6372906833543168,
+	"name": "Product Name",
+	"description": "Product Description",
+	"image_url": "https://d2p078bqz5urf7.cloudfront.net/cloud/assets/img/CART.png",
+	"created_time": 1609929740,
+	"updated_time": 1609930080,
+	"owner_id": 6192449487634432,
+	"price": 200,
+	"discount_type": "PERCENTAGE",
+	"discount": 5,
+	"currency": "USD-$",
+	"properties": [],
+	"cursor": "ClIKFgoMY3JlYXRlZF90aW1lEgYIjKjW_wUSNGoJbm9fYXBwX2lkchQLEgdQcm9kdWN0GICAgICAhKkLDKIBEDUwNjY1NDk1ODA3OTE4MDgYACAB"
+	}
+]
+```
+
+### 16.2 Get product by ID
+Returns data for a single product
+###### Endpoint
+GET /dev/api/panel/products/{id}
+###### Required parameters
+``id`` - Product Id.
+###### Example request
+```sh
+curl -i -X GET \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+"https://app.engagebay.com/dev/api/panel/products/<productId>"
+```
+###### Example JSON response
+```javascript
+{
+	"id": 6372906833543168,
+	"name": "Product Name",
+	"description": "Product Description",
+	"image_url": "https://d2p078bqz5urf7.cloudfront.net/cloud/assets/img/CART.png",
+	"created_time": 1609929740,
+	"updated_time": 1609930080,
+	"owner_id": 6192449487634432,
+	"price": 200,
+	"discount_type": "PERCENTAGE",
+	"discount": 5,
+	"currency": "USD-$",
+	"properties": []
+}
+```
+
+### 16.3 Creating a product:  
+
+Accepts product JSON as post data along with the credentials of domain User (User name and API Key).
+- Each field is case sensitive.
+- Please don't pass null value.
+- If you don't know value of field then either don't pass that field or pass empty data to a field.
+
+###### Endpoint
+POST dev/api/panel/products
+
+###### Acceptable request representation:
+```
+{
+	"name": "Product2 Name",
+	"description": "Product2 Description",
+	"image_url": "https://d2p078bqz5urf7.cloudfront.net/cloud/assets/img/CART.png",
+	"owner_id": 6192449487634432,
+	"price": 100,
+	"discount_type": "AMOUNT",
+	"discount": 5,
+	"currency": "USD-$"
+}
+```
+###### Example request
+```sh
+curl -i -X POST \ 
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{
+	"name": "Product2 Name",
+	"description": "Product2 Description",
+	"image_url": "https://d2p078bqz5urf7.cloudfront.net/cloud/assets/img/CART.png",
+	"owner_id": 6192449487634432,
+	"price": 100,
+	"discount_type": "AMOUNT",
+	"discount": 5,
+	"currency": "USD-$"
+}' \
+"https://app.engagebay.com/dev/api/panel/products"
+```
+
+### 16.4 Update a product by ID: 
+- Updates the properties for a single product.
+
+Accepts product JSON as post data along with the credentials of domain User (User name and API Key).
+- Each field is case sensitive.
+- Please don't pass null value.
+- If you don't know value of field then either don't pass that field or pass empty data to a field.
+
+Not: It is entity update. If you miss existing properties, it reset to empty.
+
+###### Endpoint
+PUT dev/api/panel/products
+
+###### Acceptable request representation
+```sh
+curl -i -X PUT  \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "id": 6372906833543168,
+    "name": "Product2 Name",
+	"description": "Product2 Description",
+	"image_url": "https://d2p078bqz5urf7.cloudfront.net/cloud/assets/img/CART.png",
+	"owner_id": 6192449487634432,
+	"price": 150,
+	"discount_type": "AMOUNT",
+	"discount": 10,
+	"currency": "USD-$"
+}' \
+"https://app.engagebay.com/dev/api/panel/products"
+```
+
+### 16.5 Delete single product: 
+- Delete the single product from account
+###### Endpoint
+DELETE dev/api/panel/products/{productId}
+
+###### Example Request
+```sh
+curl -i -X DELETE \
+"https://app.engagebay.com/dev/api/panel/products/{productId}"
+```
