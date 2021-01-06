@@ -24,6 +24,7 @@ API is in active development. Currently it allows you to access:
 - User Profile
 - Tickets
 - Tags
+- Products
 
 ### Authentication
 This is an HTTPS-only API. All requests to the API are authenticated by providing your REST API Key as a header value. 
@@ -3073,7 +3074,7 @@ curl -i -X POST \
 ```
 
 
-### 16.1 Listing products: 
+### 16.1 List of products: 
 - Returns a list of your products
 
 For the Response in JSON format, add the header 'Accept' as application/json. By default, the response will be in XML format. Paging can be applied using the page_size and cursor query parameters. Cursor for the next page will be in the last product of the list. If there is no cursor, it means that it is the end of list.
