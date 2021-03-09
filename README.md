@@ -343,9 +343,12 @@ Here is an example:
 
 * [1 List of products](#161-list-of-products)
 * [2 Get product by ID](#162-get-product-by-id)
+* [6 Get product by Name](#166-get-product-by-name)
 * [3 Creating a product](#163-creating-a-product)
 * [4 Updating a product](#164-update-a-product-by-id)
 * [5 Delete single product](#165-delete-single-product)
+* [7 Add a product to contact](#167-add-a-product-to-contact)
+* [8 Delete a product from contact](#168-delete-a-product-from-contact)
 
 
 ### 1.1 Listing contacts: 
@@ -3148,6 +3151,37 @@ curl -i -X GET \
 }
 ```
 
+### 16.6 Get product by Name
+Returns data for a single product
+###### Endpoint
+GET /dev/api/panel/products/getByName/{productName}
+###### Required parameters
+``productName`` - Product Name.
+###### Example request
+```sh
+curl -i -X GET \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+"https://app.engagebay.com/dev/api/panel/products/getByName/<productName>"
+```
+###### Example JSON response
+```javascript
+{
+	"id": 6372906833543168,
+	"name": "Product Name",
+	"description": "Product Description",
+	"image_url": "https://d2p078bqz5urf7.cloudfront.net/cloud/assets/img/CART.png",
+	"created_time": 1609929740,
+	"updated_time": 1609930080,
+	"owner_id": 6192449487634432,
+	"price": 200,
+	"discount_type": "PERCENTAGE",
+	"discount": 5,
+	"currency": "USD-$",
+	"properties": []
+}
+```
+
 ### 16.3 Creating a product:  
 
 Accepts product JSON as post data along with the credentials of domain User (User name and API Key).
@@ -3223,7 +3257,7 @@ curl -i -X PUT  \
 "https://app.engagebay.com/dev/api/panel/products"
 ```
 
-### 16.5 Delete single product: 
+### 16.6 Delete single product: 
 - Delete the single product from account
 ###### Endpoint
 DELETE dev/api/panel/products/{productId}
@@ -3232,4 +3266,63 @@ DELETE dev/api/panel/products/{productId}
 ```sh
 curl -i -X DELETE \
 "https://app.engagebay.com/dev/api/panel/products/{productId}"
+```
+
+### 16.7 Add a product to contact:  
+
+Add a product to contact with productID. 
+- Each field is case sensitive.
+- Please don't pass null value.
+- If you don't know value of field then either don't pass that field or pass empty data to a field.
+
+###### Endpoint
+POST dev/api/panel/products/add-product-to-contact/{contactId}
+
+###### Required parameters
+``contactId`` - Contact ID.
+``productID`` - Product ID.
+
+###### Acceptable request representation:
+```
+{
+	"productId": "12412123213",
+	"isSubscribed": false,
+	"subscribedOn": "12123213213",
+	"interval": "Monthly"
+}
+```
+###### Example request
+```sh
+curl -i -X POST \ 
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{
+	"productId": "12412123213",
+	"isSubscribed": false,
+	"subscribedOn": "12123213213",
+	"interval": "Monthly"
+}' \
+"https://app.engagebay.com/dev/api/panel/products/add-product-to-contact/{contactId}"
+```
+
+### 16.8 Delete a product from contact:  
+
+Delete a product from contact with productID. 
+- Each field is case sensitive.
+- Please don't pass null value.
+- If you don't know value of field then either don't pass that field or pass empty data to a field.
+
+###### Endpoint
+DELETE dev/api/panel/products/delete-product-to-contact/{contactId}/{productId}
+
+###### Required parameters
+``contactId`` - Contact ID.
+``productID`` - Product ID.
+
+###### Example request
+```sh
+curl -i -X DELETE \ 
+-H "Authorization: xxxxxxxxx" \
+"https://app.engagebay.com/dev/api/panel/products/delete-product-to-contact/{contactId}/{productId}"
 ```
