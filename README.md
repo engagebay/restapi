@@ -855,7 +855,7 @@ curl -i -X POST \
 - Search using keyword.
 
 ###### Required parameters
-``q`` - Search keyword (all contact default fields and searchable custom fields will be searched).
+``q`` - Search keyword (all contact default fields will be searched).
 ``page_size`` - Number of results to fetch
 ``type`` - Should be 'Subscriber' for searching Contacts
 
@@ -1421,7 +1421,7 @@ curl -i -X DELETE  \
 - Search using keyword.
 
 ###### Required parameters
-``q`` - Search keyword (all contact default fields and searchable custom fields will be searched).
+``q`` - Search keyword (all company default fields will be searched).
 ``page_size`` - Number of results to fetch
 ``type`` - Should be 'Company' for searching companies
 
@@ -1690,7 +1690,7 @@ curl -i -X POST \
 - Search using keyword.
 
 ###### Required parameters
-``q`` - Search keyword (all contact default fields and searchable custom fields will be searched).
+``q`` - Search keyword (Deal name,amount fields will be searched).
 ``page_size`` - Number of results to fetch
 ``type`` - Should be 'Deal' for searching deals
 
