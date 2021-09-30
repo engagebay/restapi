@@ -1616,11 +1616,11 @@ curl -i -X POST \
 - Deletes the deal based on the id specified in the url.
 
 ###### Endpoint
-POST dev/api/panel/deals/{id}
+DELETE dev/api/panel/deals/{id}
 
 ###### Example request
 ```sh
-curl -i -X POST \
+curl -i -X DELETE \
 -H "Authorization: xxxxxxxxx" \
 -d "{}" \
 "https://app.engagebay.com/dev/api/panel/deals/1" 
