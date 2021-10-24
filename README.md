@@ -3190,7 +3190,7 @@ Accepts product JSON as post data along with the credentials of domain User (Use
 - If you don't know value of field then either don't pass that field or pass empty data to a field.
 
 ###### Endpoint
-POST dev/api/panel/products
+POST dev/api/panel/products/product
 
 ###### Acceptable request representation:
 ```
@@ -3235,7 +3235,7 @@ Accepts product JSON as post data along with the credentials of domain User (Use
 Not: It is entity update. If you miss existing properties, it reset to empty.
 
 ###### Endpoint
-PUT dev/api/panel/products
+PUT dev/api/panel/products/product
 
 ###### Acceptable request representation
 ```sh
