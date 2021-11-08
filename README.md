@@ -2563,7 +2563,7 @@ POST dev/api/panel/subscribers/add-subscriber-to-sequence/{subscriber-email}{seq
 curl -i -X POST \
     -H "Authorization:xxxxxxxxxxx" \
    -H "Accept:application/json" \
-   -H "Content-Type: application/json; charset=utf-8" \
+   -H "Content-Type: application/x-www-form-urlencoded; charset=utf-8" \
    -d "{}" \
  	"https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-sequence/sample@engagebay.com/1234"
 ```
