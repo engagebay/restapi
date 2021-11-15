@@ -261,6 +261,7 @@ Here is an example:
 * [5 Create deal to a contact using email address](#35-create-deal-to-a-contact-using-email-address)
 * [6 Search deals](#36-search-deals)
 * [7 Update deal track](#37-update-deal-track)
+* [8 Updating a deal](#38-update-properties-of-a-deal-by-id-partial-update)
 
 **[Tracks](#41-get-list-of-tracks)**
 
@@ -1803,6 +1804,37 @@ curl -i -X PUT \
 "https://app.engagebay.com/dev/api/panel/deals/change-track"
 ```
 
+### 3.8 Update properties of a deal by ID (partial update): 
+- Updates the properties for a single deal.
+
+We can update the required property fields of the deal using this call. It is used to add a new property or update the existing property. It accepts property object of the deal with a valid parameter in it. Send the ID of the deal to identify it. This will not affect other fields.
+
+Using this API you can not delete properties.
+
+###### Endpoint
+PUT dev/api/panel/deals/update-partial
+
+###### Optional parameters
+- ``properties`` - Updated custom fields for your deal as object of key/value pairs.
+
+###### Acceptable request representation
+```sh
+curl -i -X PUT  \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "id": 6218728647688192,
+    "properties": [{
+		"name": "custom field 1",
+		"value": "test",
+		"field_type": "TEXT",
+		"is_searchable": false,
+		"type": "SYSTEM"
+	}]
+}' \
+"https://app.engagebay.com/dev/api/panel/deals/update-partial"
+```
 
 ### 4.1 Get all tracks:
 
