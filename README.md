@@ -347,9 +347,10 @@ Here is an example:
 * [6 Get product by Name](#166-get-product-by-name)
 * [3 Creating a product](#163-creating-a-product)
 * [4 Updating a product](#164-update-a-product-by-id)
-* [5 Delete single product](#165-delete-single-product)
-* [7 Add a product to contact](#167-add-a-product-to-contact)
-* [8 Delete a product from contact](#168-delete-a-product-from-contact)
+* [5 Updating a product](#165-update-properties-of-a-product-by-id-partial-update)
+* [7 Delete single product](#167-delete-single-product)
+* [8 Add a product to contact](#168-add-a-product-to-contact)
+* [9 Delete a product from contact](#169-delete-a-product-from-contact)
 
 
 ### 1.1 Listing contacts: 
@@ -3289,7 +3290,47 @@ curl -i -X PUT  \
 "https://app.engagebay.com/dev/api/panel/products"
 ```
 
-### 16.6 Delete single product: 
+### 16.5 Update properties of a product by ID (partial update): 
+- Updates the properties for a single product.
+
+We can update the required property fields of the product using this call. It is used to add a new property or update the existing property. It accepts property object of the product with a valid parameter in it. Send the ProductID of the product to identify it. This will not affect other fields.
+
+Using this API you can not delete properties.If subtype is same for phone,website or email then value can be overridden. Lead score, star value and tags can not be updated using this API.
+
+###### Endpoint
+PUT dev/api/panel/products/update-partial
+
+###### Optional parameters
+- ``properties`` - Updated custom fields for your product as object of key/value pairs.
+
+###### Acceptable request representation
+```sh
+curl -i -X PUT  \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "id": 6218728647688192,
+    "price": "100",
+    "name": "name"
+    "properties": [{
+		"name": "expiry_date",
+		"value": "time_in_millis",
+		"field_type": "DATE",
+		"is_searchable": false,
+		"type": "CUSTOM"
+	}, {
+		"name": "tax",
+		"value": "1.0",
+		"field_type": "TAX",
+		"is_searchable": false,
+		"type": "CUSTOM"
+	}]
+}' \
+"https://app.engagebay.com/dev/api/panel/products/update-partial"
+```
+
+### 16.7 Delete single product: 
 - Delete the single product from account
 ###### Endpoint
 DELETE dev/api/panel/products/{productId}
@@ -3300,7 +3341,7 @@ curl -i -X DELETE \
 "https://app.engagebay.com/dev/api/panel/products/{productId}"
 ```
 
-### 16.7 Add a product to contact:  
+### 16.8 Add a product to contact:  
 
 Add a product to contact with productID. 
 - Each field is case sensitive.
@@ -3338,7 +3379,7 @@ curl -i -X POST \
 "https://app.engagebay.com/dev/api/panel/products/add-product-to-contact/{contactId}"
 ```
 
-### 16.8 Delete a product from contact:  
+### 16.9 Delete a product from contact:  
 
 Delete a product from contact with productID. 
 - Each field is case sensitive.
