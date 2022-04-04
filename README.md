@@ -344,10 +344,10 @@ Here is an example:
 
 * [1 List of products](#161-list-of-products)
 * [2 Get product by ID](#162-get-product-by-id)
-* [6 Get product by Name](#166-get-product-by-name)
 * [3 Creating a product](#163-creating-a-product)
 * [4 Updating a product](#164-update-a-product-by-id)
 * [5 Updating a product](#165-update-properties-of-a-product-by-id-partial-update)
+* [6 Get product by Name](#166-get-product-by-name)
 * [7 Delete single product](#167-delete-single-product)
 * [8 Add a product to contact](#168-add-a-product-to-contact)
 * [9 Delete a product from contact](#169-delete-a-product-from-contact)
@@ -3184,37 +3184,6 @@ curl -i -X GET \
 }
 ```
 
-### 16.6 Get product by Name
-Returns data for a single product
-###### Endpoint
-GET /dev/api/panel/products/getByName/{productName}
-###### Required parameters
-``productName`` - Product Name.
-###### Example request
-```sh
-curl -i -X GET \
--H "Authorization: xxxxxxxxx" \
--H "Accept: application/json" \
-"https://app.engagebay.com/dev/api/panel/products/getByName/<productName>"
-```
-###### Example JSON response
-```javascript
-{
-	"id": 6372906833543168,
-	"name": "Product Name",
-	"description": "Product Description",
-	"image_url": "https://d2p078bqz5urf7.cloudfront.net/cloud/assets/img/CART.png",
-	"created_time": 1609929740,
-	"updated_time": 1609930080,
-	"owner_id": 6192449487634432,
-	"price": 200,
-	"discount_type": "PERCENTAGE",
-	"discount": 5,
-	"currency": "USD-$",
-	"properties": []
-}
-```
-
 ### 16.3 Creating a product:  
 
 Accepts product JSON as post data along with the credentials of domain User (User name and API Key).
@@ -3328,6 +3297,37 @@ curl -i -X PUT  \
 	}]
 }' \
 "https://app.engagebay.com/dev/api/panel/products/update-partial"
+```
+
+### 16.6 Get product by Name
+Returns data for a single product
+###### Endpoint
+GET /dev/api/panel/products/getByName/{productName}
+###### Required parameters
+``productName`` - Product Name.
+###### Example request
+```sh
+curl -i -X GET \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+"https://app.engagebay.com/dev/api/panel/products/getByName/<productName>"
+```
+###### Example JSON response
+```javascript
+{
+	"id": 6372906833543168,
+	"name": "Product Name",
+	"description": "Product Description",
+	"image_url": "https://d2p078bqz5urf7.cloudfront.net/cloud/assets/img/CART.png",
+	"created_time": 1609929740,
+	"updated_time": 1609930080,
+	"owner_id": 6192449487634432,
+	"price": 200,
+	"discount_type": "PERCENTAGE",
+	"discount": 5,
+	"currency": "USD-$",
+	"properties": []
+}
 ```
 
 ### 16.7 Delete single product: 
