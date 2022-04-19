@@ -2066,14 +2066,14 @@ curl -i -X DELETE \
  
 ###### Endpoint
 
-GET dev/api/calendar/event/list?start_time=xxxxx&end_time=xxxxx&source_type=API
+GET dev/api/panel/calendar/event/list?start_time=xxxxx&end_time=xxxxx&source_type=API
 
 ###### Example request
 ```sh
 curl -i -X GET \
    -H "Accept:application/json" \
    -H "Authorization:xxxxxxx" \
- "https://app.engagebay.com/dev/api/calendar/event/list?start_time=1542220200000&end_time=1542824999999&source_type=API"
+ "https://app.engagebay.com/dev/api/panel/calendar/event/list?start_time=1542220200000&end_time=1542824999999&source_type=API"
 ```
 ###### Example JSON response
 ```javascript
@@ -2125,7 +2125,7 @@ curl -i -X POST \
    -d \
    '{
    }' \
-   "https://app.engagebay.com/dev/api/calendar/event/contact/5134228568145920/events"
+   "https://app.engagebay.com/dev/api/panel/calendar/event/contact/5134228568145920/events"
 ```
 ###### Example JSON response
 ```javascript
@@ -2161,7 +2161,7 @@ curl -i -X POST \
  
 ###### Endpoint
 
-POST dev/api/calendar/event/normal
+POST dev/api/panel/calendar/event/normal
 
 ###### Example request
 ```sh
@@ -2177,7 +2177,7 @@ curl -i -X POST \
   "source_type":"API",
   "owner_id":"5676618345349120"
 }' \
- "https://app.engagebay.com/dev/api/calendar/event/normal"
+ "https://app.engagebay.com/dev/api/panel/calendar/event/normal"
 ```
 ###### Example JSON response
 ```javascript
@@ -2200,7 +2200,7 @@ curl -i -X POST \
 
 ###### Endpoint
 
-PUT dev/api/calendar/event/normal
+PUT dev/api/panel/calendar/event/normal
 
 ###### Example request
 ```sh
@@ -2218,7 +2218,7 @@ curl -i -X PUT \
   "owner_id":"5676618345349120",
   "created_time":"1542782746"
 }' \
- "https://app.engagebay.com/dev/api/calendar/event/normal"
+ "https://app.engagebay.com/dev/api/panel/calendar/event/normal"
 ```
 ###### Example JSON response
 ```javascript
