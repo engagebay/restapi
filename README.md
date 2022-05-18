@@ -242,6 +242,8 @@ Here is an example:
 * [14 Delete tags value by ID](#113-delete-tags-value-by-id)
 * [15 Change contact owner](#114-change-contact-owner)
 * [16 Creating a batch of contacts](#116-creating-a-batch-of-contacts)
+* [17 Get contact notes](#117-get-contact-notes)
+* [18 Get contact call logs](#118-get-contact-call-logs)
 
 **[Company APIs](#21-creating-a-company)**
 
@@ -1125,6 +1127,140 @@ curl -i -X POST \
 ###### Example JSON response
 ```
 {"status":"success"}
+```
+
+### 1.17 Get contact notes: 
+This endpoint is used to retrieve notes of contact by contactID. Page_size, sort_key and cursor should be sent as a query parameter. Paging can be applied using the page_size and cursor form parameters. Cursor for the next page will be in the last note of the list. If there is no cursor, it means that it is the end of the list.
+
+###### Endpoint
+GET dev/api/panel/notes/<contactID>
+
+###### Example request
+```sh
+curl -i -X GET \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+-d "{}" \
+"https://app.engagebay.com/dev/api/panel/notes/<contactID>"
+```
+
+###### Example JSON response
+```
+[
+    {
+        "id": 5696837256740864,
+        "parentId": 5106855652098048,
+        "subject": "Test note subject2",
+        "content": "<!DOCTYPE html>\n<html>\n<head>\n</head>\n<body>\n<div>Test note content2</div>\n</body>\n</html>",
+        "force": false,
+        "syncIds": [],
+        "owner_id": 5769015641243648,
+        "type": "PUBLIC",
+        "created_time": 1652857810,
+        "updated_time": 1652857810,
+        "source": "SUBSCRIBER",
+        "createFollowUpTask": false
+    },
+    {
+        "id": 5958896380805120,
+        "parentId": 5106855652098048,
+        "subject": "Test note subject",
+        "content": "<!DOCTYPE html>\n<html>\n<head>\n</head>\n<body>\n<div>Test note content</div>\n</body>\n</html>",
+        "force": false,
+        "syncIds": [],
+        "owner_id": 5769015641243648,
+        "type": "PUBLIC",
+        "created_time": 1652857798,
+        "updated_time": 1652857798,
+        "source": "SUBSCRIBER",
+        "createFollowUpTask": false
+    }
+]
+```
+
+### 1.18 Get contact call logs: 
+This endpoint is used to retrieve call logs of contact by contactID. Contact_id, page_size, sort_key and cursor should be sent as a query parameter. Paging can be applied using the page_size and cursor form parameters. Cursor for the next page will be in the last call log of the list. If there is no cursor, it means that it is the end of the list.
+
+###### Endpoint
+GET dev/api/panel/call-logs?contact_id=<contactID>
+
+###### Example request
+```sh
+curl -i -X GET \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+-d "{}" \
+"https://app.engagebay.com/dev/api/panel/call-logs?contact_id=<contactID>"
+```
+
+###### Example JSON response
+```
+[
+    {
+        "id": 5016633388040192,
+        "created_time": 1613497668,
+        "contact_id": 5106855652098048,
+        "call_id": "CAb740cf69cef35dc2ef9838024e939251",
+        "duration": 0,
+        "status": "NOT_ANSWERED",
+        "status_legacy": "no-answer",
+        "to_number": "+441743562350",
+        "from_number": "+447593532685",
+        "account_id": "AC532b020f926f9a512989da92105ff462",
+        "caller_type": "twilio",
+        "started_at": 1613497666,
+        "recording_url": "https://api.twilio.com/2010-04-01/Accounts/AC532b020f926f9a512989da92105ff462/Recordings/RE75bfd472d35dbafac8c98a8447c4fed0",
+        "isManualEntry": false,
+        "owner_id": 5675802922319872,
+        "notes": [],
+        "note": {
+            "force": false,
+            "syncIds": [],
+            "type": "PUBLIC",
+            "createFollowUpTask": false
+        },
+        "addNote": false,
+        "forceUpdate": false,
+        "sendNotificationsTo": [],
+        "isVoicemail": false,
+        "callType": "INBOUND",
+        "reflectStatus": false,
+        "call_cost": 0,
+        "inActive": false
+    },
+    {
+        "id": 5962822467977216,
+        "created_time": 1613497645,
+        "contact_id": 5106855652098048,
+        "call_id": "CAd335cc0e31d708572d3c9e5b0a1d152e",
+        "duration": 0,
+        "status": "NOT_ANSWERED",
+        "status_legacy": "no-answer",
+        "to_number": "+441743562350",
+        "from_number": "+447593532685",
+        "account_id": "AC532b020f926f9a512989da92105ff462",
+        "caller_type": "twilio",
+        "started_at": 1613497642,
+        "recording_url": "https://api.twilio.com/2010-04-01/Accounts/AC532b020f926f9a512989da92105ff462/Recordings/RE7f36bd88fd1b096750f41aa3de71bcbf",
+        "isManualEntry": false,
+        "owner_id": 5675802922319872,
+        "notes": [],
+        "note": {
+            "force": false,
+            "syncIds": [],
+            "type": "PUBLIC",
+            "createFollowUpTask": false
+        },
+        "addNote": false,
+        "forceUpdate": false,
+        "sendNotificationsTo": [],
+        "isVoicemail": false,
+        "callType": "INBOUND",
+        "reflectStatus": false,
+        "call_cost": 0,
+        "inActive": false
+    }
+]
 ```
 
 
