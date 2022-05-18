@@ -1182,7 +1182,7 @@ curl -i -X GET \
 This endpoint is used to retrieve call logs of contact by contactID. Contact_id, page_size, sort_key and cursor should be sent as a query parameter. Paging can be applied using the page_size and cursor form parameters. Cursor for the next page will be in the last call log of the list. If there is no cursor, it means that it is the end of the list.
 
 ###### Endpoint
-GET dev/api/panel/call-logs?contact_id=<contactID>
+GET dev/api/panel/call-logs?contact_id={contactID}
 
 ###### Example request
 ```sh
