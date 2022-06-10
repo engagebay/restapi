@@ -3660,7 +3660,7 @@ curl -i -X GET \
 ```
 
 ### 17.1.4 Capture an Event
-An event to be created before starting the data capture
+Capture Event log with required meta data to run campaign, Note: An event to be created before starting the data capture, 
 
 ###### Endpoint
 POST https://track.engagebay.com/api/events/track
