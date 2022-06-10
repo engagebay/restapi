@@ -354,11 +354,12 @@ Here is an example:
 * [8 Add a product to contact](#168-add-a-product-to-contact)
 * [9 Delete a product from contact](#169-delete-a-product-from-contact)
 
-**[Web Events](#171-analytics-events)**
+**[Analytics Events](#171-analytics-events)**
 
-* [1. Create / Update an Event](#171-web-event-create)
-* [2. Get list of Events](#172-get-list-of-web-events)
-* [2. Track an Event](#173-web-event-push)
+* [1. Create / Update an Event](#1711-create-or-update-event)
+* [2. List of Events](#1712-list-of-events)
+* [3. Get Event Logs](#1713-get-event-logs)
+* [4. Capture an Event]()
 
 
 ### 1.1 Listing contacts: 
@@ -3658,6 +3659,33 @@ curl -i -X GET \
 }
 ```
 
+### 17.1.4 Capture an Event
+An event to be created before starting the data capture
+
+###### Endpoint
+POST https://track.engagebay.com/api/events/
 
 
+###### Example JSON Payload
+```javascript
+{
+    "eventCode": "price_more_info_click",
+    "metaData": {
+        "id": "myPayload",
+        "data": {
+            "price": 1234454
+        }
+    },
+    "emailId" : "customer.email@domain.com"
+}
+```
+###### Payload Information
+``eventCode``* - Generated code at the time of creating event
 
+``metadata``* -  JSON Object
+
+``emailId`` - Email Id to identify the contact in engagebay
+
+``visitorId`` -generated Engagebay Visitor Id  from the website 
+
+Either email Id or Visitor Id should send along with the request
