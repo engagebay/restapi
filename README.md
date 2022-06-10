@@ -3541,3 +3541,8 @@ curl -i -X DELETE \
 -H "Authorization: xxxxxxxxx" \
 "https://app.engagebay.com/dev/api/panel/products/delete-product-to-contact/{contactId}/{productId}"
 ```
+
+### 17.1 Analytics Events
+A user action can be recorded from the server using REST API, for Website / Browser based events please see [Web Events](https://github.com/engagebay/tracking_code_api/tree/v1.1#3events)
+
+
