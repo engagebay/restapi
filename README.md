@@ -354,6 +354,12 @@ Here is an example:
 * [8 Add a product to contact](#168-add-a-product-to-contact)
 * [9 Delete a product from contact](#169-delete-a-product-from-contact)
 
+**[Web Events](#170-web-events)**
+
+* [1. Create / Update an Event](#171-web-event-create)
+* [2. Get list of Events](#172-get-list-of-web-events)
+* [2. Track an Event](#173-web-event-push)
+
 
 ### 1.1 Listing contacts: 
 - Returns a list of your contacts
