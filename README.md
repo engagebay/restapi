@@ -354,7 +354,7 @@ Here is an example:
 * [8 Add a product to contact](#168-add-a-product-to-contact)
 * [9 Delete a product from contact](#169-delete-a-product-from-contact)
 
-**[Web Events](#170-web-events)**
+**[Web Events](#171-analytics-events)**
 
 * [1. Create / Update an Event](#171-web-event-create)
 * [2. Get list of Events](#172-get-list-of-web-events)
@@ -3544,5 +3544,120 @@ curl -i -X DELETE \
 
 ### 17.1 Analytics Events
 A user action can be recorded from the server using REST API, for Website / Browser based events please see [Web Events](https://github.com/engagebay/tracking_code_api/tree/v1.1#3events)
+
+
+### 17.1.1 Create or Update Event
+An event to be created before starting the data capture
+
+###### Endpoint
+POST https://track.engagebay.com/api/events/
+
+
+###### Example JSON Payload
+```javascript
+{
+	"eventName": "xxxxx",
+	"eventType": "custom",
+}
+```
+
+### 17.1.2 List of Events
+List of created events
+
+###### Endpoint
+GET https://track.engagebay.com/api/events/
+
+###### Optional query parameters
+``page`` - Page Number (Nubmer start with 0, Default 0 ).
+``pageSize`` - Number of records to be return (Default 100)
+###### Example request
+```sh
+curl -i -X GET \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+"https://track.engagebay.com/api/events/?page=0&pageSize=10"
+```
+###### Example JSON response
+```javascript
+{
+    "totalCount": 2,
+    "page": 0,
+    "pageSize": 10,
+    "data": [
+        {
+            "eventId": 1,
+            "eventName": "xxxxx",
+            "eventShortCode": "xxxx",
+            "domElementSelector": null,
+            "eventAction": null,
+            "eventType": "custom",
+        },
+        {
+            "eventId": 5,
+            "eventName": "Nav Login",
+            "eventShortCode": "nav_login",
+            "domElementSelector": null,
+            "eventAction": null,
+            "eventType": "custom",
+        }
+    ]
+}
+```
+
+
+### 17.1.3 Get Event Logs
+
+###### Endpoint
+GET https://track.engagebay.com/api/events/log/{eventShortCode}
+
+###### Required Path Parameters
+``eventShortCode`` - Generated event short code after create the requiest
+###### Optional query parameters
+``page`` - Page Number (Nubmer start with 0, Default 0 ).
+
+``pageSize`` - Number of records to be return (Default 100)
+
+
+###### Example request
+```sh
+curl -i -X GET \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+"https://track.engagebay.com/api/events/log/nav_login?page=0&pageSize=10"
+```
+###### Example JSON response
+```javascript
+{
+    "totalCount": 2,
+    "page": 0,
+    "pageSize": 10,
+    "data": [
+    {
+        "logId": 32,
+        "eventShortCode": "nav_login",
+        "eventType": "custom",
+        "createdOn": 1654172457848,
+        "metadata": {
+            "link": "nav_login",
+            "pageUrl": "https://www.engagebay.com/",
+            "time": 1654172458221
+        },
+        "visitorId": 77318,
+        "userId": 5769015641243648,
+        "tenantId": 5726607939469312,
+        "status": "A",
+        "pageId": null,
+        "otherInfo": {
+            "fullPageURL": "https://www.engagebay.com/",
+            "contactId": "6363012360306688",
+            "uag": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36",
+            "source": "WEB"
+        }
+    }
+]
+}
+```
+
+
 
 
