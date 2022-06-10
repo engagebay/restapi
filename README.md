@@ -359,7 +359,7 @@ Here is an example:
 * [1. Create / Update an Event](#1711-create-or-update-event)
 * [2. List of Events](#1712-list-of-events)
 * [3. Get Event Logs](#1713-get-event-logs)
-* [4. Capture an Event]()
+* [4. Capture an Event](#1714-capture-an-event)
 
 
 ### 1.1 Listing contacts: 
@@ -3663,7 +3663,7 @@ curl -i -X GET \
 An event to be created before starting the data capture
 
 ###### Endpoint
-POST https://track.engagebay.com/api/events/
+POST https://track.engagebay.com/api/events/track
 
 
 ###### Example JSON Payload
