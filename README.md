@@ -3544,7 +3544,8 @@ Accepts Broadcast JSON as post data along with the credentials of domain User (U
 - Each field is case sensitive.
 - Please don't pass null value.
 - If you don't know value of field then either don't pass that field or pass empty data to a field.
-- From Email Address should be a verified one in From Email address in Account Settings. 
+- From Email Address should be a verified one in From Email address in Account Settings.
+- Template ID would be the ID in the URL when you open the Email template
 
 ###### Endpoint
 POST dev/api/panel/bulk-actions/broadcast
@@ -3568,4 +3569,4 @@ curl -i -X POST \
 	"template_id": 12345678,
 	"from_email": "from@email.com"
 }' \
-"https://app.engagebay.com/dev/api/panel/products"
+"https://app.engagebay.com/dev/api/bulk-actions/broadcast"
