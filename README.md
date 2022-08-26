@@ -354,6 +354,8 @@ Here is an example:
 * [8 Add a product to contact](#168-add-a-product-to-contact)
 * [9 Delete a product from contact](#169-delete-a-product-from-contact)
 
+**[Broadcast](#171-creating-a-broadcast)**
+* [1 Create a Broadcast](#171-creating-a-broadcast)
 
 ### 1.1 Listing contacts: 
 - Returns a list of your contacts
@@ -3535,3 +3537,35 @@ curl -i -X DELETE \
 -H "Authorization: xxxxxxxxx" \
 "https://app.engagebay.com/dev/api/panel/products/delete-product-to-contact/{contactId}/{productId}"
 ```
+
+### 17.1 Creating a Broadcast:
+
+Accepts Broadcast JSON as post data along with the credentials of domain User (User name and API Key).
+- Each field is case sensitive.
+- Please don't pass null value.
+- If you don't know value of field then either don't pass that field or pass empty data to a field.
+- From Email Address should be a verified one in From Email address in Account Settings. 
+
+###### Endpoint
+POST dev/api/panel/bulk-actions/broadcast
+
+###### Acceptable request representation:
+```
+{
+	"emailIds": ["peter@email.com","john@domain.com"],
+	"template_id": 12345678,
+	"from_email": "from@email.com"
+}
+```
+###### Example request
+```sh
+curl -i -X POST \ 
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{
+	"emailIds": ["peter@email.com","john@domain.com"],
+	"template_id": 12345678,
+	"from_email": "from@email.com"
+}' \
+"https://app.engagebay.com/dev/api/panel/products"
