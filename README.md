@@ -254,6 +254,7 @@ Here is an example:
 * [5 Delete single company](#25-delete-single-company)
 * [6 Search companies](#26-search-companies)
 * [7 Add contact to company by contact Id](#27-add-contact-to-company-by-contact-Id)
+  [8 Add contact to company using email address](#27-add-contact-to-company-using-email-address)
 
 **[Deals](#31-listing-deals)**
 
@@ -1620,8 +1621,8 @@ Add contact to company using the contact's Id.
 ###### Endpoint
 POST dev/api/panel/companies/{companyId}/add-contact-by-contactId
 ###### Required parameters
-``CompanyId`` - Company Id 
-``ContactId`` - ContactId of the contact
+``companyId`` - Company Id 
+``contactId`` - ContactId of the contact
 
 ###### Example request
 ```sh
@@ -1633,6 +1634,23 @@ curl -i -X POST \
 "https://app.engagebay.com/dev/api/panel/companies/{companyId}/add-contact-by-contactId"
 ```
 
+### 2.8 Add contact to company using email address: 
+Add contact to company using the contact's email address.
+###### Endpoint
+POST dev/api/panel/companies/{companyId}/add-contact-by-contactEmail
+###### Required parameters
+``companyId`` - Company Id 
+``contactEmail`` - Email Address of the contact
+
+###### Example request
+```sh
+curl -i -X POST \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+-H "Content-Type:application/x-www-form-urlencoded" \
+-d 'companyId=567436789433&contactEmail=samson@walt.ltd' \
+"https://app.engagebay.com/dev/api/panel/companies/{companyId}/add-contact-by-contactEmail"
+```
 ### 3.1 Listing deals: 
 Returns list of all "Deals" in the domain in JSON format, which are ordered by created time. Paging can be applied using the page_size and cursor query parameters. Cursor for the next page will be in the last deal of the list. If there is no cursor, it means that it is the end of the list.
 
