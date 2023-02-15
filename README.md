@@ -253,6 +253,7 @@ Here is an example:
 * [4 Get company by id](#24-get-company-by-id)
 * [5 Delete single company](#25-delete-single-company)
 * [6 Search companies](#26-search-companies)
+* [7 Add contact to company by contact Id](#27-add-contact-to-company-by-contact-Id)
 
 **[Deals](#31-listing-deals)**
 
@@ -1612,6 +1613,24 @@ curl -i -X GET \
 	"forceCreate": false,
 	"companyIds": []
 }]
+```
+	
+### 2.7 Add contact to company by contact Id: 
+Add contact to company using the contact's Id.
+###### Endpoint
+POST dev/api/panel/companies/{companyId}/add-contact-by-contactId
+###### Required parameters
+``CompanyId`` - Company Id 
+``ContactId`` - ContactId of the contact
+
+###### Example request
+```sh
+curl -i -X POST \
+-H "Authorization: xxxxxxxxx" \
+-H "Accept: application/json" \
+-H "Content-Type:application/x-www-form-urlencoded" \
+-d 'companyId=567436789433&contactId=65654657678' \
+"https://app.engagebay.com/dev/api/panel/companies/{companyId}/add-contact-by-contactId"
 ```
 
 ### 3.1 Listing deals: 
