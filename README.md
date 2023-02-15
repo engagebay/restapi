@@ -254,7 +254,7 @@ Here is an example:
 * [5 Delete single company](#25-delete-single-company)
 * [6 Search companies](#26-search-companies)
 * [7 Add contact to company by contact Id](#27-add-contact-to-company-by-contact-Id)
-* [8 Add contact to company using email address](#27-add-contact-to-company-using-email-address)
+* [8 Add contact to company using email address](#28-add-contact-to-company-using-email-address)
 
 **[Deals](#31-listing-deals)**
 
