@@ -1071,7 +1071,7 @@ This endpoint is used to create a group of contacts. Performance is best when ba
 
 Note: Changes made through this endpoint are processed asynchronously, so can take several minutes for changes to be applied to contact records. callback URL used to know contacts sync completed with success and failed records count. 
 
-The batch size should not exceed 100 contacts per request. Multiple bacth requests won't support. It throws an error, if already running batch request. 
+The batch size should not exceed 100 contacts per request. Multiple batch requests won't support. It throws an error, if already running batch request. 
 
 When using this endpoint, please keep in mind that in each contact JSON 
 - Each field is case sensitive.
