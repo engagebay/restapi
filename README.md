@@ -1067,16 +1067,17 @@ curl -i -X POST \
 }
 ```
 ### 1.16 Creating a batch of contacts:  
-This endpoint is used to create a group of contacts. Performance is best when batch size is limited to 100 contacts or fewer. Accepts JSON with array of contacts and callback url to notify after completed. Callback URL field is optional here.
+This endpoint is used to create a group of contacts. Performance is optimal when the batch size is limited to 100 contacts or fewer. It accepts JSON with an array of contacts and a callback URL to notify you after completion. The Callback URL field is optional here.
 
-Note: Changes made through this endpoint are processed asynchronously, so can take several minutes for changes to be applied to contact records. callback URL used to know contacts sync completed with success and failed records count. 
+Note: Please note that changes made through this endpoint are processed asynchronously, so it may take several minutes for the changes to be applied to contact records. The callback URL is used to track the completion of contact synchronization, including successful and failed records.
 
-The batch size should not exceed 100 contacts per request. Multiple batch requests won't support. It throws an error, if already running batch request. 
 
-When using this endpoint, please keep in mind that in each contact JSON 
+Ensure that the batch size does not exceed 100 contacts per request. Multiple batch requests are not supported, and attempting to do so will result in an error if a batch request is already running.
+
+When using this endpoint, please keep in mind the following:
 - Each field is case sensitive.
-- Please don't pass null value.
-- If you don't know value of field then either don't pass that field or pass empty data to a field.
+- Do not pass null values.
+- If you don't have a value for a field, either omit the field or provide empty data.
 
 ###### Endpoint
 POST dev/api/panel/subscribers/subscriber-batch
