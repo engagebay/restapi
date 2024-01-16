@@ -3607,4 +3607,4 @@ curl -i -X POST \
 	"template_id": 12345678,
 	"from_email": "from@email.com"
 }' \
-"https://app.engagebay.com/dev/api/bulk-actions/broadcast"
+"https://app.engagebay.com/dev/api/panel/bulk-actions/broadcast"
