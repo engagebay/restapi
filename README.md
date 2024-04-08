@@ -368,7 +368,7 @@ For the Response in JSON format, add the header 'Accept' as application/json. By
 POST dev/api/panel/subscribers
 
 ###### Optional parameters
-- ``page_size `` - Page size for paginated results.
+- ``page_size `` - Page size for paginated results (Max allowed is 100).
 - ``sort_key`` - Sort order for results. Set it to created_time/updated_time to sort list in ascending order. 		Prepened - to sort in descending.
 - ``cursor`` - To get next set of resultset. You will get it in the last record of previous resultset.
 
@@ -864,7 +864,7 @@ curl -i -X POST \
 
 ###### Required parameters
 ``q`` - Search keyword (all contact default fields will be searched).
-``page_size`` - Number of results to fetch
+``page_size`` - Number of results to fetch  (Max allowed is 100)
 ``type`` - Should be 'Subscriber' for searching Contacts
 
 ###### Endpoint
@@ -1565,7 +1565,7 @@ curl -i -X DELETE  \
 
 ###### Required parameters
 ``q`` - Search keyword (all company default fields will be searched).
-``page_size`` - Number of results to fetch
+``page_size`` - Number of results to fetch  (Max allowed is 100)
 ``type`` - Should be 'Company' for searching companies
 
 ###### Endpoint
@@ -1869,7 +1869,7 @@ curl -i -X POST \
 
 ###### Required parameters
 ``q`` - Search keyword (Deal name,amount fields will be searched).
-``page_size`` - Number of results to fetch
+``page_size`` - Number of results to fetch  (Max allowed is 100)
 ``type`` - Should be 'Deal' for searching deals
 
 ###### Endpoint
