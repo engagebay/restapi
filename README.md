@@ -3457,6 +3457,7 @@ curl -i -X PUT  \
 -d '{
     "id": 6218728647688192,
     "price": "100",
+    "quantity": 1,
     "name": "name"
     "properties": [{
 		"name": "expiry_date",
