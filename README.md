@@ -2,6 +2,9 @@
 
 EngageBay REST API
 =================
+### Note:
+APIs integration is only  available under All-in-one Pro plan.
+
 [EngageBay](https://www.engagebay.com/) is a simple, affordable all-in-one marketing and sales software built for growing businesses. Get the power of an enterprise software at a fraction of the cost.
 
 ### Overview
