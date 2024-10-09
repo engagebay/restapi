@@ -6,7 +6,7 @@ EngageBay REST API
 
 ### Overview
 
-EngageBay API is structured around REST, HTTPS, and JSON/XML. API endpoint URLs are organized around resources below listed. It uses HTTP methods for indicating the action to take on a resource, and HTTP status codes for expressing error states. Resources are represented in JSON
+EngageBay API is structured around REST, HTTPS, and JSON/XML. API endpoint URLs are organized around resources below listed. It uses HTTP methods for indicating the action to take on a resource, and HTTP status codes for expressing error states. Resources are represented in JSON. --
 
 API is in active development. Currently it allows you to access:
 
