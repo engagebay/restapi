@@ -6,7 +6,7 @@ EngageBay REST API
 
 ### Overview
 
-EngageBay API is structured around REST, HTTPS, and JSON/XML. API endpoint URLs are organized around resources below listed. It uses HTTP methods for indicating the action to take on a resource, and HTTP status codes for expressing error states. Resources are represented in JSON
+EngageBay API is structured around REST, HTTPS, and JSON/XML. API endpoint URLs are organized around resources below listed. It uses HTTP methods for indicating the action to take on a resource, and HTTP status codes for expressing error states. Resources are represented in JSON.
 
 API is in active development. Currently it allows you to access:
 
@@ -854,8 +854,7 @@ curl -i -X POST \
 -H "Authorization: xxxxxxxxx" \
 -H "Accept: application/json" \
 -H "Content-Type:application/x-www-form-urlencoded" \
--d 'email=samson@walt.ltd&score=100' \
-"https://app.engagebay.com/dev/api/panel/subscribers/add-score"
+"https://app.engagebay.com/dev/api/panel/subscribers/add-score/{subscriber-email}/{score}"
 ```
 
 ### 1.10 Search contacts:
@@ -1192,10 +1191,10 @@ GET dev/api/panel/call-logs?contact_id={contactID}
 ###### Example request
 ```sh
 curl -i -X GET \
--H "Authorization: xxxxxxxxx" \
+-H "Authorization: ********" \
 -H "Accept: application/json" \
--d "{}" \
-"https://app.engagebay.com/dev/api/panel/call-logs?contact_id=<contactID>"
+-F "contact_id=<contactID>" \
+"https://app.engagebay.com/dev/api/panel/call-logs"
 ```
 
 ###### Example JSON response
@@ -2716,9 +2715,9 @@ GET dev/api/panel/forms
 ###### Example request
 ```sh
 curl -i -X GET \
-   -H "Authorization:xxxxxxxxxxx" \
-   -H "Accept:application/json" \
- "https://app.engagebay.com/dev/api/panel/forms"
+-H "Authorization:xxxxxxxxxxx" \
+-H "Accept:application/json" \
+"https://app.engagebay.com/dev/api/panel/leadgrabbers/"
 ```
 
 ###### Example JSON response
@@ -2818,10 +2817,10 @@ POST dev/api/panel/contactlist/add-subscriber/{subscriber-email}/{listId}
 ###### Example request
 ```sh
 curl -i -X POST \
-   -H "Authorization:xxxxxxx" \
-   -H "Accept:application/json" \
-   -d "{}" \
- "https://app.engagebay.com/dev/api/panel/contactlist/add-subscriber/sample@engagebay.com/12356"
+-H "Authorization:xxxxxxx" \
+-H "Accept:application/json" \
+-H "Content-Type:application/json" 
+"https://app.engagebay.com/dev/api/panel/contactlist/add-subscriber/{subscriber-email}/{listId}"
 ```
 
 ### 11.1 Get list of owners:
@@ -3426,13 +3425,12 @@ curl -i -X PUT  \
     "name": "Product2 Name",
 	"description": "Product2 Description",
 	"image_url": "https://d2p078bqz5urf7.cloudfront.net/cloud/assets/img/CART.png",
-	"owner_id": 6192449487634432,
 	"price": 150,
 	"discount_type": "AMOUNT",
 	"discount": 10,
 	"currency": "USD-$"
 }' \
-"https://app.engagebay.com/dev/api/panel/products"
+"https://app.engagebay.com/dev/api/panel/products/product/{productId}"
 ```
 
 ### 16.5 Update properties of a product by ID (partial update): 
@@ -3515,6 +3513,7 @@ DELETE dev/api/panel/products/{productId}
 ###### Example Request
 ```sh
 curl -i -X DELETE \
+-H "Authorization:xxxxxxx" \
 "https://app.engagebay.com/dev/api/panel/products/{productId}"
 ```
 
