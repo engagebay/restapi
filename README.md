@@ -672,6 +672,14 @@ curl -i -X PUT  \
 	}, {
 		"name": "email",
 		"value": "sarah@engagebay.com",
+		"subtype": "primary"
+		"field_type": "TEXT",
+		"is_searchable": false,
+		"type": "SYSTEM"
+	},  {
+		"name": "email",
+		"value": "sample@engagebay.com",
+		"subtype": "secondary"
 		"field_type": "TEXT",
 		"is_searchable": false,
 		"type": "SYSTEM"
