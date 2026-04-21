@@ -336,8 +336,17 @@ Here is an example:
 * [1 Listing tickets](#141-get-list-of-tickets)
 * [2 Listing tickets by filter](#142-get-list-of-tickets-by-filter)
 * [3 Get ticket by ID](#145-get-ticket-by-id)
-* [3 Create a ticket](#143-create-a-ticket)
-* [4 Delete a ticket](#144-delete-a-ticket)
+* [4 Create a ticket](#143-create-a-ticket)
+* [5 Delete a ticket](#144-delete-a-ticket)
+
+**[Tickets (New Users)](#146-new-users-ticket-fields)**
+
+* [1 ticket fields](#146-new-users-ticket-fields)
+* [2 Listing tickets](#147-new-users---listing-tickets)
+* [3 Listing tickets by filter](#148-new-users---listing-tickets-by-filter)
+* [4 Get ticket by ID](#149-new-users---get-ticket-by-id)
+* [5 Create a ticket](#1410-new-users---create-a-ticket)
+* [6 Delete a ticket](#1411-new-users---delete-a-ticket)
 
 **[Tags](#151-list-of-tags)**
 
@@ -3249,6 +3258,252 @@ curl -i -X DELETE \
 -d "{}" \
 "https://app.engagebay.com/dev/api/panel/tickets/1"
 ```
+
+### 14.6 New users ticket fields
+- Following are the variable names and associations allowed in ticket entity for new users (`TicketPublicViewDTO` / `TicketPublicCreateDTO`).
+
+| Variable  | Mapped to | Data Type |
+| ------------- | ------------- | ------------- |
+| id | Ticket Mongo ID | String |
+| customerId | Customer ID | String |
+| subject | Ticket Subject | String |
+| channelType | Channel Type | Enum |
+| channelId | Channel ID | String |
+| status | Ticket Status | Enum (`TicketStatus`) |
+| teamId | Team ID | String |
+| agentId | Assignee Agent ID | String |
+| tags | Tags | Array<String> |
+| customProperties | Custom properties | Object |
+| createdTime | Created Time | DateTime |
+| updatedTime | Updated Time | DateTime |
+| firstAgentResponseAt | First Agent Response Time | DateTime |
+| lastAgentMessageAt | Last Agent Message Time | DateTime |
+| lastCustomerMessageAt | Last Customer Message Time | DateTime |
+| lastMessageAt | Last Message Time | DateTime |
+| lastMessage | Last Message | String |
+| ccEmailsWithNames | CC list | Array<String> |
+| spam | Spam status | Boolean |
+
+### 14.7 New users - Listing tickets:
+
+- Get list of tickets for new users.
+
+###### Endpoint
+GET /dev/api/support/tickets
+
+###### Required headers
+- ``rest-api-key`` - REST API Key.
+- ``Accept`` - `application/json`
+
+###### Optional parameters
+- ``page`` - Page number (starts from 0).
+- ``size`` - Page size for paginated results.
+- ``sort`` - Sort order for results. Example: `id,desc` or `updatedTime,desc`.
+
+###### Example request
+```sh
+curl -i -X GET \
+-H "rest-api-key: REST API Key" \
+-H "Accept: application/json" \
+"https://backends.engagebay.com/dev/api/support/tickets?page=0&size=20&sort=id,desc"
+```
+
+###### Example JSON response
+```javascript
+{
+  "data": [
+    {
+      "id": "66f4006068faea29901fa64e",
+      "customerId": "66f14bf9ab99de0f5e7f6c72",
+      "subject": "Issue with product delivery",
+      "channelType": "EMAIL",
+      "channelId": "66f14bf9ab88de0f5e7f6c22",
+      "status": "OPEN",
+      "createdTime": "2024-09-25T15:45:00",
+      "updatedTime": "2024-09-26T15:45:00"
+    }
+  ],
+  "links": {
+    "prev": null,
+    "next": "https://backends.engagebay.com/dev/api/support/tickets?page=1&size=20",
+    "total": 1,
+    "currentPage": 0
+  }
+}
+```
+
+### 14.8 New users - Listing tickets by filter:
+
+- Get list of tickets by filter for new users.
+
+###### Endpoint
+GET /dev/api/support/tickets
+
+###### Required headers
+- ``rest-api-key`` - REST API Key.
+- ``Accept`` - `application/json`
+
+###### Optional parameters
+- ``page`` - Page number.
+- ``size`` - Page size.
+- ``sort`` - Use sort as filter order. Example: `updatedTime,desc`.
+
+###### Example request
+```sh
+curl -i -X GET \
+-H "rest-api-key: REST API Key" \
+-H "Accept: application/json" \
+"https://backends.engagebay.com/dev/api/support/tickets?page=0&size=10&sort=updatedTime,desc"
+```
+
+###### Example JSON response
+```javascript
+{
+  "data": [
+    {
+      "id": "66f4006068faea29901fa64e",
+      "customerId": "66f14bf9ab99de0f5e7f6c72",
+      "subject": "Issue with product delivery",
+      "status": "OPEN",
+      "updatedTime": "2024-09-26T15:45:00"
+    }
+  ],
+  "links": {
+    "prev": null,
+    "next": null,
+    "total": 1,
+    "currentPage": 0
+  }
+}
+```
+
+### 14.9 New users - Get ticket by ID
+Returns data for a single ticket for new users.
+
+###### Endpoint
+GET /dev/api/support/tickets/{id}
+
+###### Required parameters
+``id`` - Ticket Mongo Id.
+
+###### Required headers
+- ``rest-api-key`` - REST API Key.
+- ``Accept`` - `application/json`
+
+###### Example request
+```sh
+curl -i -X GET \
+-H "rest-api-key: REST API Key" \
+-H "Accept: application/json" \
+"https://backends.engagebay.com/dev/api/support/tickets/66f4006068faea29901fa64e"
+```
+
+###### Example JSON response
+```javascript
+{
+  "id": "66f4006068faea29901fa64e",
+  "customerId": "66f14bf9ab99de0f5e7f6c72",
+  "subject": "Issue with product delivery",
+  "channelType": "EMAIL",
+  "channelId": "66f14bf9ab88de0f5e7f6c22",
+  "status": "OPEN",
+  "createdTime": "2024-09-25T15:45:00",
+  "updatedTime": "2024-09-26T15:45:00",
+  "tags": [
+    "urgent"
+  ],
+  "customProperties": {
+    "orderNumber": "ORD-1024"
+  }
+}
+```
+
+### 14.10 New users - Create a ticket:
+- Accepts ticket JSON as request body to create a ticket for new users.
+
+###### Endpoint
+POST /dev/api/support/tickets
+
+###### Required headers
+- ``rest-api-key`` - REST API Key.
+- ``Accept`` - `application/json`
+- ``Content-Type`` - `application/json`
+
+###### Acceptable request representation
+```javascript
+{
+  "customerId": "66f14bf9ab99de0f5e7f6c72",
+  "subject": "Issue with product delivery",
+  "channelType": "EMAIL",
+  "channelId": "66f14bf9ab88de0f5e7f6c22",
+  "message": {
+    "format": "TEXT",
+    "fromName": "John Doe",
+    "fromEmail": "john.doe@example.com",
+    "subject": "Issue with product delivery",
+    "bodyText": "My order has not arrived yet.",
+    "bodyHTML": "<p>My order has not arrived yet.</p>"
+  }
+}
+```
+
+###### Example request
+```sh
+curl -i -X POST \
+-H "rest-api-key: REST API Key" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{
+  "customerId": "66f14bf9ab99de0f5e7f6c72",
+  "subject": "Issue with product delivery",
+  "channelType": "EMAIL",
+  "channelId": "66f14bf9ab88de0f5e7f6c22",
+  "message": {
+    "format": "TEXT",
+    "fromName": "John Doe",
+    "fromEmail": "john.doe@example.com",
+    "subject": "Issue with product delivery",
+    "bodyText": "My order has not arrived yet.",
+    "bodyHTML": "<p>My order has not arrived yet.</p>"
+  }
+}' \
+"https://backends.engagebay.com/dev/api/support/tickets"
+```
+
+###### Example JSON response
+```javascript
+{
+  "id": "66f4006068faea29901fa64e",
+  "customerId": "66f14bf9ab99de0f5e7f6c72",
+  "subject": "Issue with product delivery",
+  "channelType": "EMAIL",
+  "channelId": "66f14bf9ab88de0f5e7f6c22",
+  "status": "OPEN",
+  "createdTime": "2024-09-25T15:45:00",
+  "updatedTime": "2024-09-25T15:45:00"
+}
+```
+
+### 14.11 New users - Delete a ticket:
+- Deletes the ticket based on Mongo id for new users.
+
+###### Endpoint
+DELETE /dev/api/support/tickets/{id}
+
+###### Required headers
+- ``rest-api-key`` - REST API Key.
+- ``Accept`` - `application/json`
+
+###### Example request
+```sh
+curl -i -X DELETE \
+-H "rest-api-key: REST API Key" \
+-H "Accept: application/json" \
+"https://backends.engagebay.com/dev/api/support/tickets/66f4006068faea29901fa64e"
+```
+
+###### Success response
+`204 No Content`
 
 ### 15.1 List of Tags:
 - Get all tags in the account 
