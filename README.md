@@ -339,11 +339,11 @@ Here is an example:
 * [4 Create a ticket](#143-create-a-ticket)
 * [5 Delete a ticket](#144-delete-a-ticket)
 
-**[Tickets (New Users)](#146-new-users-ticket-fields)**
+**[Tickets (V2 - New Signups On/After 2026-04-21)](#146-new-users-ticket-fields)**
 
-* [1 ticket fields](#146-new-users-ticket-fields)
-* [2 Listing tickets](#147-new-users---listing-tickets)
-* [3 Listing tickets by filter](#148-new-users---listing-tickets-by-filter)
+* [1 Ticket fields](#146-new-users-ticket-fields)
+* [2 List tickets](#147-new-users---listing-tickets)
+* [3 List tickets by filter](#148-new-users---listing-tickets-by-filter)
 * [4 Get ticket by ID](#149-new-users---get-ticket-by-id)
 * [5 Create a ticket](#1410-new-users---create-a-ticket)
 * [6 Delete a ticket](#1411-new-users---delete-a-ticket)
@@ -3259,8 +3259,11 @@ curl -i -X DELETE \
 "https://app.engagebay.com/dev/api/panel/tickets/1"
 ```
 
-### 14.6 New users ticket fields
-- Following are the variable names and associations allowed in ticket entity for new users (`TicketPublicViewDTO` / `TicketPublicCreateDTO`).
+### 14.6 Ticket fields
+- **Migration rule (Ticket APIs):**
+  - Users signed up on or after `2026-04-21` must use the V2 ticket APIs under `/dev/api/support/tickets`.
+  - Users signed up before `2026-04-21` should continue using the legacy ticket APIs under `/dev/api/panel/tickets`.
+  - Do not mix legacy and V2 ticket endpoints for the same account.
 
 | Variable  | Mapped to | Data Type |
 | ------------- | ------------- | ------------- |
@@ -3284,9 +3287,9 @@ curl -i -X DELETE \
 | ccEmailsWithNames | CC list | Array<String> |
 | spam | Spam status | Boolean |
 
-### 14.7 New users - Listing tickets:
+### 14.7 Listing tickets:
 
-- Get list of tickets for new users.
+- Get list of tickets for new users (signups on/after `2026-04-21`).
 
 ###### Endpoint
 GET /dev/api/support/tickets
@@ -3332,9 +3335,9 @@ curl -i -X GET \
 }
 ```
 
-### 14.8 New users - Listing tickets by filter:
+### 14.8  Listing tickets by filter:
 
-- Get list of tickets by filter for new users.
+- Get list of tickets by filter for new users (signups on/after `2026-04-21`).
 
 ###### Endpoint
 GET /dev/api/support/tickets
@@ -3377,14 +3380,14 @@ curl -i -X GET \
 }
 ```
 
-### 14.9 New users - Get ticket by ID
-Returns data for a single ticket for new users.
+### 14.9 Get ticket by ID
+Returns data for a single ticket for new users (signups on/after `2026-04-21`).
 
 ###### Endpoint
 GET /dev/api/support/tickets/{id}
 
 ###### Required parameters
-``id`` - Ticket Mongo Id.
+``id`` - Ticket Mongo ID.
 
 ###### Required headers
 - ``rest-api-key`` - REST API Key.
@@ -3418,8 +3421,8 @@ curl -i -X GET \
 }
 ```
 
-### 14.10 New users - Create a ticket:
-- Accepts ticket JSON as request body to create a ticket for new users.
+### 14.10 Create a ticket:
+- Accepts ticket JSON as request body to create a ticket for new users (signups on/after `2026-04-21`).
 
 ###### Endpoint
 POST /dev/api/support/tickets
@@ -3484,8 +3487,8 @@ curl -i -X POST \
 }
 ```
 
-### 14.11 New users - Delete a ticket:
-- Deletes the ticket based on Mongo id for new users.
+### 14.11  Delete a ticket:
+- Deletes the ticket based on Mongo ID for new users (signups on/after `2026-04-21`).
 
 ###### Endpoint
 DELETE /dev/api/support/tickets/{id}
