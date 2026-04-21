@@ -1,4 +1,3 @@
-
 [![N|Solid](https://cdn5.engagebay.com/assets/img/engagebay-logo.svg)](https://www.engagebay.com/)
 
 EngageBay REST API
