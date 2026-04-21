@@ -339,14 +339,14 @@ Here is an example:
 * [4 Create a ticket](#143-create-a-ticket)
 * [5 Delete a ticket](#144-delete-a-ticket)
 
-**[Tickets (V2 - New Signups On/After 2026-04-21)](#146-new-users-ticket-fields)**
+**[Tickets (V2 - New Signups On/After 2026-04-21)](#146-ticket-fields)**
 
-* [1 Ticket fields](#146-new-users-ticket-fields)
-* [2 List tickets](#147-new-users---listing-tickets)
-* [3 List tickets by filter](#148-new-users---listing-tickets-by-filter)
-* [4 Get ticket by ID](#149-new-users---get-ticket-by-id)
-* [5 Create a ticket](#1410-new-users---create-a-ticket)
-* [6 Delete a ticket](#1411-new-users---delete-a-ticket)
+* [1 Ticket fields](#146-ticket-fields)
+* [2 List tickets](#147-list-tickets)
+* [3 List tickets by filter](#148-list-tickets-by-filter)
+* [4 Get ticket by ID](#149-get-ticket-by-id)
+* [5 Create a ticket](#1410-create-a-ticket)
+* [6 Delete a ticket](#1411-delete-a-ticket)
 
 **[Tags](#151-list-of-tags)**
 
@@ -3287,7 +3287,7 @@ curl -i -X DELETE \
 | ccEmailsWithNames | CC list | Array<String> |
 | spam | Spam status | Boolean |
 
-### 14.7 Listing tickets:
+### 14.7 List tickets
 
 - Get list of tickets for new users (signups on/after `2026-04-21`).
 
@@ -3335,7 +3335,7 @@ curl -i -X GET \
 }
 ```
 
-### 14.8  Listing tickets by filter:
+### 14.8 List tickets by filter
 
 - Get list of tickets by filter for new users (signups on/after `2026-04-21`).
 
@@ -3421,7 +3421,7 @@ curl -i -X GET \
 }
 ```
 
-### 14.10 Create a ticket:
+### 14.10 Create a ticket
 - Accepts ticket JSON as request body to create a ticket for new users (signups on/after `2026-04-21`).
 
 ###### Endpoint
@@ -3487,7 +3487,7 @@ curl -i -X POST \
 }
 ```
 
-### 14.11  Delete a ticket:
+### 14.11 Delete a ticket
 - Deletes the ticket based on Mongo ID for new users (signups on/after `2026-04-21`).
 
 ###### Endpoint
