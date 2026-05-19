@@ -2304,7 +2304,7 @@ POST dev/api/panel/calendar/event/contact/{contact_id}/events
 curl -i -X POST \
    -H "Accept:application/json" \
    -H "Authorization:xxxxxxxxxxxxxx" \
-   -H "Content-Type:application/json" \
+   -H "Content-Type:application/x-www-form-urlencoded" \
    -d \
    '{
    }' \
@@ -2438,7 +2438,7 @@ POST dev/api/panel/tasks
 ```sh
 curl -i -X POST \
    -H "Authorization:xxxxxxxxxxxx" \
-   -H "Content-Type:application/x-www-form-urlencoded; charset=UTF-8" \
+   -H "Content-Type:application/x-www-form-urlencoded" \
    -H "Accept:application/json" \
    -d "taskStatus=not_started" \
    -d "taskType=ALL" \
@@ -2779,7 +2779,7 @@ POST dev/api/panel/subscribers/add-subscriber-to-sequence/{subscriber-email}{seq
 curl -i -X POST \
     -H "Authorization:xxxxxxxxxxx" \
    -H "Accept:application/json" \
-   -H "Content-Type: application/x-www-form-urlencoded; charset=utf-8" \
+   -H "Content-Type: application/x-www-form-urlencoded" \
    -d "{}" \
  	"https://app.engagebay.com/dev/api/panel/subscribers/add-subscriber-to-sequence/sample@engagebay.com/1234"
 ```
